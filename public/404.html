@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleena Tahir | Portfolio</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    (function() {
+      // This script checks to see if a redirect is present in the query string,
+      // and if it is, converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to reload the page.
+      var pathSegmentsToKeep = 1; // Adjust based on your repo name (1 for single segment repo names)
+
+      var l = window.location;
+      var origin = l.origin;
+      var repoName = "/My_Portfolio"; // Your GitHub repo name
+      
+      if (l.search) {
+        // If a query string is present, we're coming from the redirect
+        var q = {};
+        l.search.slice(1).split('&').forEach(function(v) {
+          var a = v.split('=');
+          q[a[0]] = a.length > 1 ? a[1] : true;
+        });
+        
+        if (q.p !== undefined) {
+          // If the query parameter 'p' is defined (the path),
+          // redirect to that path
+          var path = q.p;
+          var newUrl = origin + repoName + path;
+          window.history.replaceState(null, null, newUrl);
+        }
+      } else {
+        // If no query string, we need to redirect to the hash router format
+        // Preserving the current path after the repo name
+        var pathname = l.pathname.split('/');
+        var pathLength = pathname.length;
+        
+        // Remove empty first element and repo name from the path segments
+        pathname.splice(0, pathSegmentsToKeep + 1);
+        
+        // Join the remaining path segments
+        var path = pathname.join('/');
+        
+        // Redirect to the main index.html with hash router format
+        if (path && path !== "") {
+          window.location.href = origin + repoName + '/#/' + path;
+        } else {
+          window.location.href = origin + repoName;
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
