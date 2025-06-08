@@ -7,8 +7,8 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const StyledToggleButton = styled(IconButton)(({ theme }) => ({
   position: 'relative',
-  width: 48,
-  height: 48,
+  width: 40,
+  height: 40,
   borderRadius: '50%',
   background: theme.palette.mode === 'light' 
     ? 'linear-gradient(135deg, #FFD54F 0%, #FF8F00 100%)'
@@ -31,7 +31,7 @@ const StyledToggleButton = styled(IconButton)(({ theme }) => ({
   },
   
   '& .MuiSvgIcon-root': {
-    fontSize: '1.4rem',
+    fontSize: '1.2rem',
     transition: 'all 0.3s ease',
   },
 }));
