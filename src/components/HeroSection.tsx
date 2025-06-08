@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import { useTheme as useMuiTheme } from '@mui/material/styles';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import LangtonAntBackground from './LangtonAntBackground';
 import { useTheme } from '../contexts/ThemeContext';
@@ -208,7 +207,6 @@ const DownloadButton = styled('a')`
 
 const HeroSection = () => {
   const { mode } = useTheme();
-  const muiTheme = useMuiTheme();
   const nameRef = useRef<HTMLHeadingElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
