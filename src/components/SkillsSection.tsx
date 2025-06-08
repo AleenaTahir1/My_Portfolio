@@ -22,11 +22,15 @@ const StyledSection = styled(Box)(({ theme }) => ({
 const SkillCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   height: '100%',
-  background: 'rgba(255, 255, 255, 0.9)',
+  background: theme.palette.mode === 'dark' 
+    ? 'rgba(30, 30, 30, 0.9)' 
+    : 'rgba(255, 255, 255, 0.9)',
   backdropFilter: 'blur(10px)',
   borderRadius: theme.spacing(2),
   boxShadow: 'none',
-  border: '1px solid rgba(0, 0, 0, 0.1)',
+  border: theme.palette.mode === 'dark' 
+    ? '1px solid rgba(255, 255, 255, 0.1)' 
+    : '1px solid rgba(0, 0, 0, 0.1)',
   transition: 'all 0.3s ease',
   position: 'relative',
   overflow: 'hidden',

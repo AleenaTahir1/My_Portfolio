@@ -1,16 +1,23 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
+import { useTheme as useMuiTheme } from '@mui/material/styles';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import LangtonAntBackground from './LangtonAntBackground';
+import { useTheme } from '../contexts/ThemeContext';
 
-const StyledSection = styled('section')`
+const StyledSection = styled('section')<{ $isDark: boolean }>`
   min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
-  background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+  background: ${({ $isDark }) => 
+    $isDark 
+      ? 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)' 
+      : 'linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)'
+  };
   padding: 80px 0;
+  transition: background 0.3s ease;
   
   /* Mobile responsive adjustments */
   @media (max-width: 768px) {
@@ -77,59 +84,59 @@ const HeroText = styled('div')`
   text-align: center;
   
   h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #ffffff;
     
     @media (max-width: 768px) {
-      font-size: 3rem;
+      font-size: 2.2rem;
     }
     
     @media (max-width: 480px) {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
   }
   
   h2 {
     font-family: 'Inter', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 500;
     color: #e0e0e0;
     margin-bottom: 2rem;
-    line-height: 1.4;
+    line-height: 1.5;
     
     @media (max-width: 768px) {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       margin-bottom: 1.5rem;
     }
     
     @media (max-width: 480px) {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 1rem;
     }
   }
   
   p {
     font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: #bdbdbd;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto 1.5rem auto;
     
     @media (max-width: 768px) {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       line-height: 1.5;
       max-width: 100%;
       padding: 0 10px;
     }
     
     @media (max-width: 480px) {
-      font-size: 1rem;
-      line-height: 1.4;
+      font-size: 0.9rem;
+      line-height: 1.5;
       margin-bottom: 1rem;
     }
   }
@@ -142,8 +149,8 @@ const DownloadButton = styled('a')`
   margin-top: 2rem;
   background-color: #4ca1af;
   color: #ffffff;
-  padding: 12px 30px;
-  font-size: 1.1rem;
+  padding: 12px 24px;
+  font-size: 0.95rem;
   border-radius: 30px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -200,6 +207,8 @@ const DownloadButton = styled('a')`
 `;
 
 const HeroSection = () => {
+  const { mode } = useTheme();
+  const muiTheme = useMuiTheme();
   const nameRef = useRef<HTMLHeadingElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
@@ -220,7 +229,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <StyledSection id="home">
+    <StyledSection id="home" $isDark={mode === 'dark'}>
       <LangtonAntBackground />
       <ContentWrapper>
         <motion.div

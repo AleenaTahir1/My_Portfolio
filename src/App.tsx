@@ -1,7 +1,8 @@
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Global, css } from '@emotion/react';
-import theme from './theme';
+import { getTheme } from './theme';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import HeroSection from './components/HeroSection';
 import Navbar from './components/Navbar';
 import AboutSection from './components/AboutSection';
@@ -10,50 +11,58 @@ import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
 
-const globalStyles = css`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+const AppContent = () => {
+  const { mode } = useTheme();
+  const theme = getTheme(mode);
 
-  html {
-    scroll-behavior: smooth;
-  }
+  const globalStyles = css`
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    background-color: ${theme.palette.background.default};
-  }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
 
-  #root {
-    width: 100%;
-    min-height: 100vh;
-  }
+    body {
+      width: 100%;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-color: ${theme.palette.background.default};
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      transition: background-color 0.3s ease;
+    }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
+    #root {
+      width: 100%;
+      min-height: 100vh;
+    }
 
-  ::-webkit-scrollbar-track {
-    background: ${theme.palette.background.default};
-  }
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: ${theme.palette.primary.main};
-    border-radius: 5px;
-  }
+    ::-webkit-scrollbar-track {
+      background: ${theme.palette.background.default};
+    }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: ${theme.palette.primary.dark};
-  }
-`;
+    ::-webkit-scrollbar-thumb {
+      background: ${theme.palette.primary.main};
+      border-radius: 5px;
+    }
 
-function App() {
+    ::-webkit-scrollbar-thumb:hover {
+      background: ${theme.palette.primary.dark};
+    }
+  `;
+
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Global styles={globalStyles} />
       <Navbar />
@@ -63,6 +72,14 @@ function App() {
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />
+    </MuiThemeProvider>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }

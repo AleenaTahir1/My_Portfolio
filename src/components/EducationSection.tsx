@@ -23,10 +23,17 @@ const StyledSection = styled(Box)(({ theme }) => ({
 }));
 
 const TimelineItemContent = styled(Box)(({ theme }) => ({
-  background: theme.palette.background.paper,
+  background: theme.palette.mode === 'dark' 
+    ? 'rgba(30, 30, 30, 0.9)' 
+    : theme.palette.background.paper,
   padding: theme.spacing(3),
   borderRadius: theme.spacing(2),
-  boxShadow: theme.shadows[3],
+  boxShadow: theme.palette.mode === 'dark' 
+    ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+    : theme.shadows[3],
+  border: theme.palette.mode === 'dark' 
+    ? '1px solid rgba(255, 255, 255, 0.1)' 
+    : 'none',
   '&:hover': {
     transform: 'translateY(-5px)',
     transition: 'transform 0.3s ease',
@@ -74,8 +81,7 @@ const EducationSection = () => {
             mb: { xs: 4, sm: 5, md: 6 },
             color: 'primary.main',
             textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: { xs: '2.5rem', sm: '3rem', md: '3.75rem' }
+            fontWeight: 'bold'
           }}
         >
           Education
@@ -174,10 +180,16 @@ const EducationSection = () => {
                   >
                     <Card 
                       sx={{ 
-                        boxShadow: 3, 
+                        boxShadow: (theme) => theme.palette.mode === 'dark' 
+                          ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                          : 3,
                         borderRadius: 2,
-                        border: '1px solid rgba(76, 161, 175, 0.2)',
-                        background: 'rgba(255, 255, 255, 0.9)',
+                        border: (theme) => theme.palette.mode === 'dark' 
+                          ? '1px solid rgba(255, 255, 255, 0.1)' 
+                          : '1px solid rgba(76, 161, 175, 0.2)',
+                        background: (theme) => theme.palette.mode === 'dark' 
+                          ? 'rgba(30, 30, 30, 0.9)' 
+                          : 'rgba(255, 255, 255, 0.9)',
                         transition: 'transform 0.3s ease',
                         '&:hover': {
                           transform: 'translateY(-5px)',
@@ -192,7 +204,9 @@ const EducationSection = () => {
                             gap: 1.5, 
                             mb: 1.5,
                             pb: 1.5,
-                            borderBottom: '1px solid rgba(0,0,0,0.08)'
+                            borderBottom: (theme) => theme.palette.mode === 'dark' 
+                              ? '1px solid rgba(255,255,255,0.1)' 
+                              : '1px solid rgba(0,0,0,0.08)'
                           }}
                         >
                           <Box 

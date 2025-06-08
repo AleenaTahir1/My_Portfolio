@@ -16,12 +16,17 @@ import {
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import ThemeToggle from './ThemeToggle';
 
 // Use shouldForwardProp to prevent custom props from being passed to DOM elements
 const StyledAppBar = styled(AppBar, {
   shouldForwardProp: (prop) => prop !== '$isScrolled',
 })<{ $isScrolled: boolean }>(({ theme, $isScrolled }) => ({
-  background: $isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+  background: $isScrolled 
+    ? (theme.palette.mode === 'dark' 
+        ? 'rgba(26, 26, 26, 0.95)' 
+        : 'rgba(255, 255, 255, 0.95)')
+    : 'transparent',
   backdropFilter: $isScrolled ? 'blur(10px)' : 'none',
   boxShadow: $isScrolled ? theme.shadows[4] : 'none',
   transition: 'all 0.3s ease',
@@ -30,10 +35,13 @@ const StyledAppBar = styled(AppBar, {
 const NavButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== '$isScrolled',
 })<{ $isScrolled: boolean }>(({ theme, $isScrolled }) => ({
-  color: $isScrolled ? theme.palette.primary.main : '#fff',
+  color: $isScrolled 
+    ? (theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.primary.main)
+    : '#fff',
   margin: theme.spacing(0, 1),
   fontWeight: 500,
   position: 'relative',
+  transition: 'color 0.3s ease',
   '&:after': {
     content: '""',
     position: 'absolute',
@@ -42,7 +50,9 @@ const NavButton = styled(Button, {
     bottom: 0,
     left: '50%',
     transform: 'translateX(-50%)',
-    backgroundColor: $isScrolled ? theme.palette.primary.main : '#fff',
+    backgroundColor: $isScrolled 
+      ? (theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.primary.main)
+      : '#fff',
     transition: 'width 0.3s ease',
   },
   '&:hover': {
@@ -90,13 +100,26 @@ const Navbar = () => {
           width: 250, 
           right: 0,
           left: 'auto',
-          backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(44, 62, 80, 0.9)',
+          backgroundColor: (theme) => isScrolled 
+            ? (theme.palette.mode === 'dark' 
+                ? 'rgba(26, 26, 26, 0.95)' 
+                : 'rgba(255, 255, 255, 0.95)')
+            : (theme.palette.mode === 'dark' 
+                ? 'rgba(26, 26, 26, 0.9)' 
+                : 'rgba(44, 62, 80, 0.9)'),
           backdropFilter: 'blur(10px)',
         },
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-        <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: isScrolled ? '#2c3e50' : '#fff' }}>
+        <IconButton 
+          onClick={() => setDrawerOpen(false)} 
+          sx={{ 
+            color: (theme) => isScrolled 
+              ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
+              : '#fff' 
+          }}
+        >
           <CloseIcon />
         </IconButton>
       </Box>
@@ -107,9 +130,15 @@ const Navbar = () => {
               onClick={() => scrollToSection(item.toLowerCase())}
               sx={{
                 textAlign: 'center',
-                color: isScrolled ? '#2c3e50' : '#fff',
+                color: (theme) => isScrolled 
+                  ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
+                  : '#fff',
                 '&:hover': {
-                  backgroundColor: isScrolled ? 'rgba(76, 161, 175, 0.1)' : 'rgba(255, 255, 255, 0.1)',
+                  backgroundColor: (theme) => isScrolled 
+                    ? (theme.palette.mode === 'dark' 
+                        ? 'rgba(255, 255, 255, 0.1)' 
+                        : 'rgba(76, 161, 175, 0.1)')
+                    : 'rgba(255, 255, 255, 0.1)',
                 },
               }}
             >
@@ -136,7 +165,7 @@ const Navbar = () => {
           
           {/* Desktop navigation */}
           {!isMobile && (
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               {navItems.map((item) => (
                 <NavButton
                   key={item}
@@ -146,16 +175,20 @@ const Navbar = () => {
                   {item}
                 </NavButton>
               ))}
+              <ThemeToggle />
             </Box>
           )}
           
           {/* Mobile hamburger menu */}
           {isMobile && (
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginRight: 0, paddingRight: 0 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '100%', gap: 1, marginRight: 0, paddingRight: 0 }}>
+              <ThemeToggle />
               <IconButton 
                 onClick={() => setDrawerOpen(true)}
                 sx={{ 
-                  color: isScrolled ? '#2c3e50' : '#fff',
+                  color: (theme) => isScrolled 
+                    ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
+                    : '#fff',
                   marginRight: 0,
                   paddingRight: 0,
                   paddingLeft: 0,

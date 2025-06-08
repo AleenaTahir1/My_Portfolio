@@ -19,10 +19,14 @@ const StyledSection = styled(Box)(({ theme }) => ({
 const FeatureCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   height: '100%',
-  background: 'rgba(255, 255, 255, 0.9)',
+  background: theme.palette.mode === 'dark' 
+    ? 'rgba(30, 30, 30, 0.9)' 
+    : 'rgba(255, 255, 255, 0.9)',
   backdropFilter: 'blur(10px)',
   borderRadius: theme.spacing(2),
-  boxShadow: theme.shadows[10],
+  boxShadow: theme.palette.mode === 'dark' 
+    ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+    : theme.shadows[10],
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -74,8 +78,7 @@ const AboutSection = () => {
             mb: 6,
             color: 'primary.main',
             textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: { xs: '2.5rem', sm: '3rem', md: '3.75rem' }
+            fontWeight: 'bold'
           }}
         >
           About Me
@@ -89,15 +92,15 @@ const AboutSection = () => {
               viewport={{ once: true }}
             >
               <Typography 
-                variant="h5" 
+                variant="body1" 
                 textAlign="center" 
-                maxWidth="800px" 
+                maxWidth="700px" 
                 mx="auto" 
                 mb={{ xs: 4, sm: 6, md: 8 }}
                 color="text.secondary"
                 sx={{
-                  fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' },
-                  lineHeight: { xs: 1.4, sm: 1.5, md: 1.5 },
+                  fontSize: { xs: '1rem', sm: '1.1rem', md: '1.1rem' },
+                  lineHeight: { xs: 1.5, sm: 1.6, md: 1.6 },
                   padding: { xs: '0 10px', sm: '0 15px', md: 0 }
                 }}
               >
@@ -119,21 +122,21 @@ const AboutSection = () => {
                     {feature.icon}
                   </IconWrapper>
                   <Typography 
-                    variant="h5" 
+                    variant="h6" 
                     gutterBottom 
                     fontWeight="bold" 
                     color="primary.main"
                     sx={{ 
-                      fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.5rem' }
+                      fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.25rem' }
                     }}
                   >
                     {feature.title}
                   </Typography>
                   <Typography 
-                    variant="body1" 
+                    variant="body2" 
                     color="text.secondary"
                     sx={{ 
-                      fontSize: { xs: '0.95rem', sm: '1rem', md: '1rem' },
+                      fontSize: { xs: '0.9rem', sm: '0.95rem', md: '1rem' },
                       lineHeight: { xs: 1.5, sm: 1.6 }
                     }}
                   >
