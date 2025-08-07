@@ -198,8 +198,15 @@ const ContactSection = () => {
                     </Typography>
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
                       {contactLinks.map((link, index) => (
-                        <a href={link.link} key={index} style={{ textDecoration: 'none' }}>
-                          <IconButton color="primary">
+                        <a
+                          href={link.link}
+                          key={index}
+                          style={{ textDecoration: 'none' }}
+                          aria-label={link.name}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <IconButton color="primary" aria-label={link.name}>
                             {link.icon}
                           </IconButton>
                         </a>

@@ -9,8 +9,8 @@ const AntContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  pointer-events: none; // Makes sure it doesn't interfere with clicks
-  z-index: 0; // Set to 0 to ensure it stays behind everything
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
+  z-index: 0; /* Keep behind content */
 `;
 
 // Canvas element for drawing the Langton's Ant

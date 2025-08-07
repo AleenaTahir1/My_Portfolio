@@ -11,8 +11,8 @@ const StarfieldContainer = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  pointer-events: none; // Makes sure it doesn't interfere with clicks
-  z-index: 0; // Set to 0 to ensure it stays behind everything including the profile image
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
+  z-index: 0; /* Keep behind content */
 `;
 
 // Canvas element for drawing the neural network
@@ -87,6 +87,8 @@ const StarfieldBackground = () => {
   const mouseInfluenceRadius = useRef<number>(150); // How far the mouse influence reaches
   const lastMouseMoveTime = useRef<number>(0); // For throttling mouse events
   const lastFrameTime = useRef<number>(0); // For limiting frame rate
+  const prefersReducedMotionRef = useRef<boolean>(false);
+  const isVisibleRef = useRef<boolean>(true);
 
   // Initialize the canvas and nodes
   useEffect(() => {
@@ -96,6 +98,22 @@ const StarfieldBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    
+    // Reduced motion support
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    prefersReducedMotionRef.current = mql.matches;
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      prefersReducedMotionRef.current = e.matches;
+      // Redraw statically if reduced motion is enabled
+      if (e.matches) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = 0;
+        drawStatic();
+      } else if (isVisibleRef.current && animationRef.current === 0) {
+        animate(performance.now());
+      }
+    };
+    mql.addEventListener('change', handleMotionChange);
     
     // Throttled mouse event handler - only process every 16ms (~ 60fps)
     const handleMouseMove = (e: MouseEvent) => {
@@ -246,9 +264,32 @@ const StarfieldBackground = () => {
 
     nodesRef.current = createNodes();
 
+    // Intersection observer to pause/resume when offscreen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isVisibleRef.current = entry.isIntersecting;
+        if (prefersReducedMotionRef.current) return; // static mode
+        if (entry.isIntersecting) {
+          if (animationRef.current === 0) animate(performance.now());
+        } else {
+          cancelAnimationFrame(animationRef.current);
+          animationRef.current = 0;
+        }
+      },
+      { root: null, threshold: 0.05 }
+    );
+    observer.observe(container);
+
     // Animation function with frame limiting
     const animate = (timestamp: number) => {
       if (!ctx || !canvas) return;
+      if (prefersReducedMotionRef.current || !isVisibleRef.current) {
+        // Do not animate; ensure we don't keep a RAF id hanging
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = 0;
+        return;
+      }
       
       // Limit to ~40fps for better performance
       const frameInterval = 25; // 1000ms / 40fps ≈ 25ms
@@ -452,14 +493,77 @@ const StarfieldBackground = () => {
       
       animationRef.current = requestAnimationFrame(animate);
     };
+
+    // Draw a single static frame for reduced motion
+    const drawStatic = () => {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const nodes = nodesRef.current.length ? nodesRef.current : createNodes();
+      // Draw limited connections
+      const connections: {fromX: number, fromY: number, toX: number, toY: number, color: string, width: number}[] = [];
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const nodeA = nodes[i];
+          const nodeB = nodes[j];
+          const distance = getDistance(nodeA.x, nodeA.y, nodeB.x, nodeB.y);
+          if (distance < maxDistanceRef.current * 0.8) {
+            const opacity = 1 - (distance / (maxDistanceRef.current * 0.8));
+            connections.push({
+              fromX: nodeA.x,
+              fromY: nodeA.y,
+              toX: nodeB.x,
+              toY: nodeB.y,
+              color: nodeA.isMain || nodeB.isMain
+                ? `rgba(76, 161, 175, ${opacity * 0.4})`
+                : `rgba(255, 255, 255, ${opacity * 0.12})`,
+              width: nodeA.isMain || nodeB.isMain ? 1 : 0.5,
+            });
+          }
+        }
+      }
+      let drawn = 0;
+      for (const conn of connections) {
+        if (drawn > 80) break;
+        ctx.strokeStyle = conn.color;
+        ctx.lineWidth = conn.width;
+        ctx.beginPath();
+        ctx.moveTo(conn.fromX, conn.fromY);
+        ctx.lineTo(conn.toX, conn.toY);
+        ctx.stroke();
+        drawn++;
+      }
+      // Draw nodes
+      for (const node of nodes) {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+        if (node.isMain) {
+          const gradient = ctx.createRadialGradient(
+            node.x, node.y, 0,
+            node.x, node.y, node.size * 2.2
+          );
+          gradient.addColorStop(0, node.color);
+          gradient.addColorStop(1, node.color.replace('0.9', '0'));
+          ctx.fillStyle = gradient;
+        } else {
+          ctx.fillStyle = node.color || 'rgba(255,255,255,0.8)';
+        }
+        ctx.fill();
+      }
+    };
     
-    // Start animation with the current timestamp
-    animate(performance.now());
+    // Start animation unless reduced motion is requested
+    if (prefersReducedMotionRef.current) {
+      drawStatic();
+    } else {
+      animate(performance.now());
+    }
     
     // Cleanup function
     return () => {
       cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', resizeCanvas);
+      mql.removeEventListener('change', handleMotionChange);
+      observer.disconnect();
       
       // Remove mouse event listeners
       const heroSection = document.getElementById('home');

@@ -23,20 +23,20 @@ const SkillCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
   height: '100%',
   background: theme.palette.mode === 'dark' 
-    ? 'rgba(30, 30, 30, 0.9)' 
-    : 'rgba(255, 255, 255, 0.9)',
+    ? 'rgba(30, 30, 30, 0.98)'
+    : 'rgba(255, 255, 255, 0.96)',
   backdropFilter: 'blur(10px)',
   borderRadius: theme.spacing(2),
-  boxShadow: 'none',
+  boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.5)' : 'none',
   border: theme.palette.mode === 'dark' 
-    ? '1px solid rgba(255, 255, 255, 0.1)' 
-    : '1px solid rgba(0, 0, 0, 0.1)',
+    ? '1px solid rgba(255, 255, 255, 0.12)'
+    : '1px solid rgba(0, 0, 0, 0.08)',
   transition: 'all 0.3s ease',
   position: 'relative',
   overflow: 'hidden',
   '&:hover': {
     transform: 'translateY(-5px)',
-    boxShadow: theme.shadows[10],
+    boxShadow: theme.palette.mode === 'dark' ? '0 8px 28px rgba(0,0,0,0.6)' : theme.shadows[10],
     '& .skill-icon': {
       transform: 'scale(1.1)',
       color: theme.palette.primary.main,

@@ -11,15 +11,27 @@ const StyledSection = styled(Box)(({ theme }) => ({
   alignItems: 'center',
 }));
 
-const ProjectCard = styled(Card)({
+const ProjectCard = styled(Card)(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  transition: 'transform 0.3s ease-in-out',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  background:
+    theme.palette.mode === 'dark'
+      ? 'rgba(30, 30, 30, 0.98)'
+      : theme.palette.background.paper,
+  border:
+    theme.palette.mode === 'dark'
+      ? '1px solid rgba(255,255,255,0.12)'
+      : '1px solid rgba(0,0,0,0.06)',
+  boxShadow:
+    theme.palette.mode === 'dark' ? '0 4px 20px rgba(0,0,0,0.5)' : theme.shadows[3],
   '&:hover': {
     transform: 'translateY(-5px)',
+    boxShadow:
+      theme.palette.mode === 'dark' ? '0 8px 28px rgba(0,0,0,0.6)' : theme.shadows[6],
   },
-});
+}));
 
 const ProjectActions = styled(CardActions)({
   marginTop: 'auto',
@@ -109,7 +121,23 @@ const ProjectsSection = () => {
                           key={techIndex}
                           label={tech}
                           size="small"
-                          sx={{ mr: 1, mb: 1 }}
+                          variant="outlined"
+                          sx={(theme) => ({
+                            mr: 1,
+                            mb: 1,
+                            color:
+                              theme.palette.mode === 'dark'
+                                ? theme.palette.grey[100]
+                                : theme.palette.text.primary,
+                            borderColor:
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255,255,255,0.25)'
+                                : 'rgba(0,0,0,0.2)',
+                            backgroundColor:
+                              theme.palette.mode === 'dark'
+                                ? 'rgba(255,255,255,0.06)'
+                                : 'transparent',
+                          })}
                         />
                       ))}
                     </Box>
