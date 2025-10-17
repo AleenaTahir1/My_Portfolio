@@ -1,10 +1,68 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameOfLifeBackground from "./GameOfLifeBackground";
+import GlitchText from "./GlitchText";
+
+// Glitch Frame Component
+const GlitchFrame = ({ isActive }: { isActive: boolean }) => {
+  if (!isActive) return null;
+  
+  return (
+    <>
+      {/* Red glitch frame */}
+      <motion.div
+        className="absolute inset-0 border-4 border-red-500 pointer-events-none opacity-60"
+        animate={{
+          x: [-3, 3, -2, 2, -3],
+          y: [2, -2, 1, -1, 2],
+        }}
+        transition={{
+          duration: 0.15,
+          repeat: Infinity,
+          repeatDelay: 0.8,
+          ease: "easeInOut",
+        }}
+      />
+      
+      {/* Blue glitch frame */}
+      <motion.div
+        className="absolute inset-0 border-4 border-blue-500 pointer-events-none opacity-60"
+        animate={{
+          x: [3, -3, 2, -2, 3],
+          y: [-2, 2, -1, 1, -2],
+        }}
+        transition={{
+          duration: 0.15,
+          repeat: Infinity,
+          repeatDelay: 0.8,
+          delay: 0.075,
+          ease: "easeInOut",
+        }}
+      />
+      
+      {/* Green accent glitch */}
+      <motion.div
+        className="absolute inset-0 border-4 border-green-500 pointer-events-none opacity-40"
+        animate={{
+          x: [-2, 2, -3, 3, -2],
+          y: [1, -1, 2, -2, 1],
+        }}
+        transition={{
+          duration: 0.15,
+          repeat: Infinity,
+          repeatDelay: 0.8,
+          delay: 0.15,
+          ease: "easeInOut",
+        }}
+      />
+    </>
+  );
+};
 
 const HeroSection = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [frameGlitchActive, setFrameGlitchActive] = useState(false);
   const fullText = "Building. Breaking. Learning. Repeating.";
 
   useEffect(() => {
@@ -53,7 +111,10 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center lg:justify-end order-1 lg:order-1"
           >
-            <div className="relative group">
+            <div 
+              className="relative group"
+              onMouseEnter={() => setFrameGlitchActive(true)}
+            >
               {/* Terminal Window Frame */}
               <div className="border-4 border-white bg-brutalist-darkgray shadow-[12px_12px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[16px_16px_0_rgba(255,255,255,0.15)] hover:translate-x-[-4px] hover:translate-y-[-4px]">
                 {/* Terminal Header Bar */}
@@ -140,6 +201,9 @@ const HeroSection = () => {
                 className="absolute inset-0 border-4 border-white pointer-events-none"
                 style={{ transform: "translate(8px, -8px)" }}
               ></motion.div>
+              
+              {/* RGB Glitch Frame - Activated on hover and stays */}
+              <GlitchFrame isActive={frameGlitchActive} />
             </div>
           </motion.div>
 
@@ -170,9 +234,9 @@ const HeroSection = () => {
               transition={{ delay: 0.8 }}
               className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight tracking-tight break-words"
             >
-              SAQLAIN
+              <GlitchText text="SAQLAIN" />
               <br />
-              ABBAS
+              <GlitchText text="ABBAS" />
             </motion.h1>
 
             {/* Subtitle with border */}

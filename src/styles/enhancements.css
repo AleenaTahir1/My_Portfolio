@@ -1,0 +1,373 @@
+/* ========================================
+   DESIGN & ANIMATION ENHANCEMENTS
+   ======================================== */
+
+/* Smooth Scrolling Optimization */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Use will-change for better performance on animated elements */
+.parallax,
+.card-brutalist,
+.card-brutalist-enhanced,
+.card-3d {
+    will-change: transform;
+}
+
+/* Optimize animations for 60fps */
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Better Focus States */
+*:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Button Ripple Effect */
+.btn-brutalist {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-brutalist::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-brutalist:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Touch Feedback for Mobile */
+@media (hover: none) {
+    .btn-brutalist:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
+}
+
+/* Card Enhanced with Gradient Border */
+.card-brutalist-enhanced {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-brutalist-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    transition: left 0.5s ease;
+    z-index: 10;
+}
+
+.card-brutalist-enhanced:hover::before {
+    left: 100%;
+}
+
+/* 3D Card Tilt Effect */
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+}
+
+/* Glitch Effect */
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.glitch-effect {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-effect:hover {
+    animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Pulse Animation */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+.pulse-ring {
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-in {
+    animation: scaleIn 0.5s ease-out;
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+    cursor: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+.cursor-outline {
+    width: 32px;
+    height: 32px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.15s ease;
+}
+
+.cursor-outline.expand {
+    transform: scale(1.5);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-top-color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 2px;
+    background: white;
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* Skeleton Loading */
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.1) 40px,
+        rgba(255, 255, 255, 0.05) 80px
+    );
+    background-size: 200px 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+/* Text Gradient Effect */
+.text-gradient {
+    background: linear-gradient(90deg, #ffffff 0%, #cccccc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Border Glow Effect */
+@keyframes border-glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+}
+
+.border-glow {
+    animation: border-glow 2s ease-in-out infinite;
+}
+
+/* Typing Indicator */
+@keyframes typing-dot {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px);
+    }
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: typing-dot 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Parallax Effect */
+.parallax {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Smooth Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger Animation Delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

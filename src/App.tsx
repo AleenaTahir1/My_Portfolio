@@ -1,3 +1,4 @@
+import { ParallaxProvider } from 'react-scroll-parallax';
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
@@ -6,13 +7,18 @@ import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
 import SEO from "./components/SEO";
 import StructuredData from "./components/StructuredData";
+import LoadingScreen from "./components/LoadingScreen";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   return (
-    <div className="bg-brutalist-black min-h-screen">
-      <SEO />
-      <StructuredData />
-      <Navbar />
+    <ParallaxProvider>
+      <div className="bg-brutalist-black min-h-screen">
+        <LoadingScreen />
+        <CustomCursor />
+        <SEO />
+        <StructuredData />
+        <Navbar />
       <main>
         <HeroSection />
         <AboutSection />
@@ -70,7 +76,8 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </ParallaxProvider>
   );
 }
 
