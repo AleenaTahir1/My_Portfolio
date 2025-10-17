@@ -68,11 +68,12 @@
 @layer components {
     /* Brutalist button */
     .btn-brutalist {
-        @apply font-mono font-bold text-sm md:text-base uppercase tracking-wider;
+        @apply font-mono font-bold text-xs sm:text-sm md:text-base uppercase tracking-wider;
         @apply border-2 border-white bg-black text-white;
-        @apply px-6 py-3 transition-all duration-200;
+        @apply px-4 sm:px-6 py-2 sm:py-3 transition-all duration-200;
         @apply hover:bg-white hover:text-black;
         @apply active:translate-x-[2px] active:translate-y-[2px];
+        @apply min-h-[44px];
         cursor: pointer;
     }
 

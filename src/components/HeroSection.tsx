@@ -32,7 +32,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-brutalist-black overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-brutalist-black overflow-hidden pt-16"
     >
       {/* Game of Life Background */}
       <GameOfLifeBackground />
@@ -44,7 +44,7 @@ const HeroSection = () => {
       ></div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Profile Picture in Terminal Window */}
           <motion.div
@@ -109,7 +109,7 @@ const HeroSection = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}profile.webp`}
                       alt="Saqlain Abbas"
-                      className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white transition-all duration-300 group-hover:border-white group-hover:scale-[1.02]"
+                      className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white transition-all duration-300 group-hover:border-white group-hover:scale-[1.02]"
                     />
 
                     {/* Corner Markers */}
@@ -168,7 +168,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="font-mono font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight"
+              className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight tracking-tight break-words"
             >
               SAQLAIN
               <br />
@@ -180,9 +180,9 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="border-l-4 border-white pl-6 py-3"
+              className="border-l-4 border-white pl-4 sm:pl-6 py-3"
             >
-              <p className="font-mono text-lg md:text-2xl text-gray-300 leading-relaxed">
+              <p className="font-mono text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 leading-relaxed break-words">
                 AI Engineer | Full Stack Engineer
               </p>
             </motion.div>
@@ -227,11 +227,11 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
-              className="flex flex-col sm:flex-row gap-3 pt-4"
+              className="flex flex-col sm:flex-row gap-3 pt-4 w-full"
             >
               <button
                 onClick={scrollToProjects}
-                className="btn-brutalist inline-flex items-center justify-center group"
+                className="btn-brutalist inline-flex items-center justify-center group w-full sm:w-auto text-xs sm:text-sm md:text-base"
               >
                 <span className="text-gray-500 mr-2">{">"}</span>
                 <span>View Projects</span>
@@ -243,7 +243,7 @@ const HeroSection = () => {
               <a
                 href={`${import.meta.env.BASE_URL}SaqlainAbbas_CV.pdf`}
                 download="SaqlainAbbas_CV.pdf"
-                className="btn-brutalist inline-flex items-center justify-center group"
+                className="btn-brutalist inline-flex items-center justify-center group w-full sm:w-auto text-xs sm:text-sm md:text-base"
               >
                 <span className="text-gray-500 mr-2">{">"}</span>
                 <span>Resume.pdf</span>

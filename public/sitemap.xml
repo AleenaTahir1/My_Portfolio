@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://saqlainabbas.app/</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://saqlainabbas.app/profile.webp</image:loc>
+      <image:title>Saqlain Abbas - AI Engineer Profile Picture</image:title>
+      <image:caption>Professional profile picture of Saqlain Abbas, AI Engineer and Full Stack Developer</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Section -->
+  <url>
+    <loc>https://saqlainabbas.app/#about</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Experience Section -->
+  <url>
+    <loc>https://saqlainabbas.app/#experience</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Projects Section -->
+  <url>
+    <loc>https://saqlainabbas.app/#projects</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contact Section -->
+  <url>
+    <loc>https://saqlainabbas.app/#contact</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Resume PDF -->
+  <url>
+    <loc>https://saqlainabbas.app/SaqlainAbbas_CV.pdf</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

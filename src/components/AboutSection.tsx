@@ -6,7 +6,7 @@ const AboutSection = () => {
       id="about"
       className="relative min-h-screen flex items-center bg-brutalist-black border-t-2 border-white noise-bg"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-20 md:py-32 w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 py-20 md:py-32 w-full">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -36,20 +36,20 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="font-mono font-bold text-3xl md:text-5xl text-white leading-tight"
+              className="font-mono font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight break-words"
             >
               CODE IS MY
               <br />
               PLAYGROUND
             </motion.h2>
 
-            <div className="border-l-4 border-white pl-6 space-y-4">
+            <div className="border-l-4 border-white pl-4 sm:pl-6 space-y-4">
               <motion.p
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="font-mono text-base md:text-lg text-gray-300 leading-relaxed"
+                className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
               >
                 I write code that sometimes works. I design things that
                 sometimes look good. Always learning.
@@ -60,7 +60,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="font-mono text-base md:text-lg text-gray-300 leading-relaxed"
+                className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
               >
                 From the mountains of Skardu to the frontiers of AI, I'm on a
                 mission to create intelligent solutions that make a difference.
@@ -71,7 +71,7 @@ const AboutSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="font-mono text-base md:text-lg text-gray-300 leading-relaxed"
+                className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
               >
                 Blending creativity with technical expertise to shape tomorrow's
                 technology.
@@ -84,9 +84,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="border-2 border-white bg-brutalist-darkgray p-6 mt-8 hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform duration-300"
+              className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6 mt-8 hover:translate-x-[-2px] hover:translate-y-[-2px] transition-transform duration-300"
             >
-              <div className="font-mono text-sm space-y-2">
+              <div className="font-mono text-xs sm:text-sm space-y-2 break-words">
                 <div className="text-gray-400">
                   <span className="text-white">{">"}</span> cat about.txt
                 </div>
@@ -96,7 +96,7 @@ const AboutSection = () => {
                 <div className="text-gray-300 pl-4">
                   <span className="text-white">Role:</span> AI Engineer | Full Stack Engineer
                 </div>
-                <div className="text-gray-300 pl-4">
+                <div className="text-gray-300 pl-4 break-words">
                   <span className="text-white">Focus:</span> Machine Learning, Deep Learning, Natural Language Processing (NLP), End-to-End Web & Application Development
                 </div>
                 <div className="text-gray-300 pl-4">
@@ -178,13 +178,6 @@ const AboutSection = () => {
               </div>
             </motion.div>
 
-            {/* Command line hint */}
-            <div className="border-t-2 border-white pt-6 mt-8">
-              <div className="font-mono text-xs md:text-sm text-gray-500">
-                <span className="text-white">Hint:</span> Scroll down to see my
-                work →
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

@@ -63,7 +63,7 @@ const ProjectsSection = () => {
       id="projects"
       className="relative min-h-screen bg-brutalist-black border-t-2 border-white noise-bg py-20 md:py-32"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -75,7 +75,7 @@ const ProjectsSection = () => {
           <div className="font-mono text-sm md:text-base text-gray-400 mb-4">
             <span className="text-white">02.</span> WORK
           </div>
-          <h2 className="font-mono font-bold text-4xl md:text-6xl text-white mb-6">
+          <h2 className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 break-words">
             SELECTED PROJECTS
           </h2>
           <div className="h-px bg-white w-full"></div>
@@ -94,9 +94,9 @@ const ProjectsSection = () => {
               className="group"
             >
               {/* Project Card */}
-              <div className="border-2 border-white bg-brutalist-darkgray transition-all duration-300 hover:translate-x-[-6px] hover:translate-y-[-6px] hover:shadow-[8px_8px_0_rgba(255,255,255,0.1)]">
+              <div className="border-2 border-white bg-brutalist-darkgray transition-all duration-300 hover:translate-x-[-6px] hover:translate-y-[-6px] hover:shadow-[8px_8px_0_rgba(255,255,255,0.1)] overflow-hidden">
                 {/* Project Header */}
-                <div className="border-b-2 border-white p-4 md:p-6 bg-brutalist-black">
+                <div className="border-b-2 border-white p-4 md:p-6 bg-brutalist-black overflow-hidden">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <motion.div
@@ -111,7 +111,7 @@ const ProjectsSection = () => {
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="font-mono font-bold text-lg md:text-xl text-white leading-tight transition-transform duration-300 group-hover:translate-x-2"
+                        className="font-mono font-bold text-base sm:text-lg md:text-xl text-white leading-tight transition-transform duration-300 group-hover:translate-x-2 break-words"
                       >
                         {project.title}
                       </motion.h3>
@@ -140,17 +140,17 @@ const ProjectsSection = () => {
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="font-mono text-sm md:text-base text-gray-300 leading-relaxed"
+                    className="font-mono text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed break-words"
                   >
                     {project.description}
                   </motion.p>
 
                   {/* Technologies */}
                   <div className="border-t-2 border-white pt-4">
-                    <div className="font-mono text-xs text-gray-500 mb-3">
-                      {">"} Tech Stack:
+                    <div className="font-mono text-xs text-gray-500 mb-3 break-words">
+                      {">"}  Tech Stack:
                     </div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 overflow-hidden">
                       {project.technologies.map((tech, techIndex) => (
                         <motion.span
                           key={techIndex}
@@ -158,7 +158,7 @@ const ProjectsSection = () => {
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.7 + techIndex * 0.05 }}
                           whileHover={{ scale: 1.05, y: -2 }}
-                          className="font-mono text-xs border border-white px-3 py-1 text-white bg-brutalist-black transition-all duration-200 hover:bg-white hover:text-black cursor-default"
+                          className="font-mono text-xs border border-white px-2 sm:px-3 py-1 text-white bg-brutalist-black transition-all duration-200 hover:bg-white hover:text-black cursor-default break-all"
                         >
                           {tech}
                         </motion.span>
@@ -231,16 +231,6 @@ const ProjectsSection = () => {
           </motion.a>
         </motion.div>
 
-        {/* Terminal hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 font-mono text-xs md:text-sm text-gray-600"
-        >
-          <span className="text-white">Tip:</span> Click [→] to view source code
-        </motion.div>
       </div>
     </section>
   );

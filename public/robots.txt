@@ -1,0 +1,40 @@
+# robots.txt for https://saqlainabbas.app
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://saqlainabbas.app/sitemap.xml
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Disallow crawling of source maps and config files
+User-agent: *
+Disallow: /*.map$
+Disallow: /config/
+Disallow: /.git/
+
+# Allow crawling of CSS, JS, and images for better indexing
+User-agent: Googlebot
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.pdf$

@@ -37,10 +37,10 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
           isScrolled
             ? "bg-brutalist-black border-b-2 border-white"
-            : "bg-transparent"
+            : "bg-brutalist-black border-b-2 border-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -69,7 +69,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden font-mono text-white text-sm border-2 border-white px-3 py-2 hover:bg-white hover:text-black transition-all duration-200"
+              className="md:hidden font-mono text-white text-base border-2 border-white px-4 py-2 hover:bg-white hover:text-black transition-all duration-200 min-w-[50px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? "[X]" : "[≡]"}
@@ -86,7 +86,7 @@ const Navbar = () => {
           pointerEvents: mobileMenuOpen ? "auto" : "none",
         }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-40 md:hidden bg-brutalist-black"
+        className="fixed inset-0 z-[90] md:hidden bg-brutalist-black"
         style={{ top: "64px" }}
       >
         <div className="flex flex-col items-start p-6 space-y-4">
