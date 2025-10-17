@@ -94,11 +94,10 @@ const AboutSection = () => {
                   <span className="text-white">Location:</span> Skardu, Pakistan
                 </div>
                 <div className="text-gray-300 pl-4">
-                  <span className="text-white">Role:</span> AI & ML Engineer
+                  <span className="text-white">Role:</span> AI Engineer | Full Stack Engineer
                 </div>
                 <div className="text-gray-300 pl-4">
-                  <span className="text-white">Focus:</span> Machine Learning,
-                  Deep Learning, NLP
+                  <span className="text-white">Focus:</span> Machine Learning, Deep Learning, Natural Language Processing (NLP), End-to-End Web & Application Development
                 </div>
                 <div className="text-gray-300 pl-4">
                   <span className="text-white">Status:</span>{" "}
