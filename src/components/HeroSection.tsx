@@ -1,248 +1,275 @@
-import { motion } from 'framer-motion';
-import styled from '@emotion/styled';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import LangtonAntBackground from './LangtonAntBackground';
-import { useTheme } from '../contexts/ThemeContext';
-
-const StyledSection = styled('section')<{ $isDark: boolean }>`
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  background: ${({ $isDark }) => 
-    $isDark 
-      ? 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)' 
-      : 'linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%)'
-  };
-  padding: 80px 0;
-  transition: background 0.3s ease;
-  
-  /* Mobile responsive adjustments */
-  @media (max-width: 768px) {
-    padding: 60px 0;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 40px 0;
-  }
-`;
-
-const ContentWrapper = styled('div')`
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  color: #fff;
-  position: relative;
-  z-index: 2; /* Ensure content is above the background */
-  width: 100%;
-  
-  /* Mobile responsive adjustments */
-  @media (max-width: 768px) {
-    padding: 0 15px;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 0 10px;
-  }
-`;
-
-const ProfileImage = styled('img')`
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  margin: 0 auto 2rem auto;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  border: 4px solid white;
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 3; /* Higher z-index to ensure it's above everything else */
-  display: block;
-  
-  &:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Responsive adjustments for tablets */
-  @media (max-width: 768px) {
-    width: 280px;
-    height: 280px;
-    margin-bottom: 1.5rem;
-  }
-  
-  /* Responsive adjustments for mobile phones */
-  @media (max-width: 480px) {
-    width: 200px;
-    height: 200px;
-    margin-bottom: 1rem;
-    border-width: 3px;
-  }
-`;
-
-const HeroText = styled('div')`
-  text-align: center;
-  
-  h1 {
-    font-family: 'Poppins', 'Inter', sans-serif;
-    font-size: clamp(1.75rem, 2.5vw + 1rem, 3rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #ffffff;
-  }
-  
-  h2 {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1rem, 1vw + 0.9rem, 1.5rem);
-    font-weight: 500;
-    color: #e0e0e0;
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
-  
-  p {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #bdbdbd;
-    max-width: 700px;
-    margin: 0 auto 1.5rem auto;
-    
-    @media (max-width: 768px) {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      max-width: 100%;
-      padding: 0 10px;
-    }
-    
-    @media (max-width: 480px) {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin-bottom: 1rem;
-    }
-  }
-`;
-
-const DownloadButton = styled('a')`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;
-  background-color: #4ca1af;
-  color: #ffffff;
-  padding: 12px 24px;
-  font-size: 0.95rem;
-  border-radius: 30px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
-    transform: translateX(-100%);
-    transition: all 0.6s ease;
-    z-index: -1;
-  }
-  
-  &:hover {
-    background-color: #2c3e50;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-  }
-  
-  &:hover:before {
-    transform: translateX(100%);
-  }
-  
-  &:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-  
-  /* Responsive adjustments for tablets */
-  @media (max-width: 768px) {
-    margin-top: 1.5rem;
-    padding: 10px 25px;
-    font-size: 1rem;
-  }
-  
-  /* Responsive adjustments for mobile phones */
-  @media (max-width: 480px) {
-    margin-top: 1rem;
-    padding: 8px 20px;
-    font-size: 0.9rem;
-  }
-`;
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import GameOfLifeBackground from "./GameOfLifeBackground";
 
 const HeroSection = () => {
-  const { mode } = useTheme();
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const fullText = "Building. Breaking. Learning. Repeating.";
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.5 } }),
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setIsTypingComplete(true);
+      }
+    }, 50);
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <StyledSection id="home" $isDark={mode === 'dark'}>
-      <LangtonAntBackground />
-      <ContentWrapper>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <ProfileImage
-            src={`${import.meta.env.BASE_URL}profile.webp`}
-            alt="Saqlain Abbas"
-          />
-        </motion.div>
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center bg-brutalist-black overflow-hidden"
+    >
+      {/* Game of Life Background */}
+      <GameOfLifeBackground />
 
-        <HeroText>
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-          >
-            Saqlain Abbas
-          </motion.h1>
-          <motion.h2
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-          >
-            AI & Machine Learning Student
-          </motion.h2>
-          
+      {/* Noise overlay */}
+      <div
+        className="absolute inset-0 noise-bg pointer-events-none"
+        style={{ zIndex: 1 }}
+      ></div>
+
+      {/* Main content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Profile Picture in Terminal Window */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center lg:justify-end order-1 lg:order-1"
           >
-            <DownloadButton
-              href={`${import.meta.env.BASE_URL}SaqlainAbbas_CV.pdf`}
-              download="SaqlainAbbas_CV.pdf"
-            >
-              <FileDownloadIcon style={{ marginRight: '10px', fontSize: '1.3rem' }} />
-              Download CV
-            </DownloadButton>
+            <div className="relative group">
+              {/* Terminal Window Frame */}
+              <div className="border-4 border-white bg-brutalist-darkgray shadow-[12px_12px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[16px_16px_0_rgba(255,255,255,0.15)] hover:translate-x-[-4px] hover:translate-y-[-4px]">
+                {/* Terminal Header Bar */}
+                <div className="border-b-4 border-white bg-brutalist-black p-3 md:p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      {/* Terminal Buttons */}
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 border-2 border-white bg-brutalist-black group-hover:bg-white transition-colors"></div>
+                        <div className="w-3 h-3 border-2 border-white bg-brutalist-black group-hover:bg-white transition-colors"></div>
+                        <div className="w-3 h-3 border-2 border-white bg-brutalist-black group-hover:bg-white transition-colors"></div>
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="font-mono text-xs md:text-sm text-white"
+                      >
+                        USER: saqlain_abbas
+                      </motion.div>
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="font-mono text-xs text-gray-500"
+                    >
+                      [ACTIVE]
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Image Container with Scan Lines Effect */}
+                <div className="relative p-4 md:p-6 bg-brutalist-darkgray">
+                  {/* Scan Lines Overlay */}
+                  <div className="absolute inset-0 pointer-events-none opacity-10 z-10">
+                    <div
+                      className="w-full h-full"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 4px)",
+                      }}
+                    ></div>
+                  </div>
+
+                  {/* Profile Image */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="relative"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}profile.webp`}
+                      alt="Saqlain Abbas"
+                      className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white transition-all duration-300 group-hover:border-white group-hover:scale-[1.02]"
+                    />
+
+                    {/* Corner Markers */}
+                    <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-white transition-all duration-300 group-hover:w-8 group-hover:h-8"></div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-white transition-all duration-300 group-hover:w-8 group-hover:h-8"></div>
+                    <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-white transition-all duration-300 group-hover:w-8 group-hover:h-8"></div>
+                    <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-white transition-all duration-300 group-hover:w-8 group-hover:h-8"></div>
+                  </motion.div>
+
+                  {/* Image Label */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="mt-4 font-mono text-xs md:text-sm text-gray-500 text-center border-t-2 border-white pt-3"
+                  >
+                    <span className="text-white">{">"}</span> profile.jpg [
+                    <span className="text-green-500">LOADED</span>]
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Glitch Effect Lines */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ delay: 1, duration: 0.3 }}
+                className="absolute inset-0 border-4 border-white pointer-events-none"
+                style={{ transform: "translate(8px, -8px)" }}
+              ></motion.div>
+            </div>
           </motion.div>
-        </HeroText>
-      </ContentWrapper>
-    </StyledSection>
+
+          {/* Right Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6 md:space-y-8 order-2 lg:order-2"
+          >
+            {/* Terminal prompt line */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6 }}
+              className="font-mono text-xs md:text-sm text-gray-400"
+            >
+              <span className="text-white">saqlain@portfolio</span>
+              <span className="text-gray-500">:</span>
+              <span className="text-white">~</span>
+              <span className="text-gray-500">$</span>
+            </motion.div>
+
+            {/* Main heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="font-mono font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight tracking-tight"
+            >
+              SAQLAIN
+              <br />
+              ABBAS
+            </motion.h1>
+
+            {/* Subtitle with border */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="border-l-4 border-white pl-6 py-3"
+            >
+              <p className="font-mono text-lg md:text-2xl text-gray-300 leading-relaxed">
+                AI Engineer | Full Stack Engineer
+              </p>
+            </motion.div>
+
+            {/* Typewriter text - cursor only shows during typing */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="font-mono text-sm md:text-lg text-white"
+            >
+              <span className="text-gray-500">{"> "}</span>
+              {displayedText}
+              {!isTypingComplete && (
+                <span className="inline-block w-2 h-4 bg-white ml-1 animate-blink"></span>
+              )}
+            </motion.div>
+
+            {/* Website link */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4 }}
+            >
+              <a
+                href="https://saqlainabbas.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs md:text-sm text-gray-500 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 group"
+              >
+                <span className="group-hover:translate-x-[-2px] transition-transform">
+                  →
+                </span>
+                <span className="border-b border-gray-500 group-hover:border-white">
+                  saqlainabbas.app
+                </span>
+              </a>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6 }}
+              className="flex flex-col sm:flex-row gap-3 pt-4"
+            >
+              <button
+                onClick={scrollToProjects}
+                className="btn-brutalist inline-flex items-center justify-center group"
+              >
+                <span className="text-gray-500 mr-2">{">"}</span>
+                <span>View Projects</span>
+                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
+                  _
+                </span>
+              </button>
+
+              <a
+                href={`${import.meta.env.BASE_URL}SaqlainAbbas_CV.pdf`}
+                download="SaqlainAbbas_CV.pdf"
+                className="btn-brutalist inline-flex items-center justify-center group"
+              >
+                <span className="text-gray-500 mr-2">{">"}</span>
+                <span>Resume.pdf</span>
+                <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </a>
+            </motion.div>
+
+            {/* Status indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.8 }}
+              className="pt-6 font-mono text-xs md:text-sm text-gray-500 flex items-center gap-2"
+            >
+              <span className="inline-block w-2 h-2 bg-green-500 animate-pulse"></span>
+              <span>Available for opportunities</span>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom decoration */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-white opacity-20 z-10"></div>
+    </section>
   );
 };
 

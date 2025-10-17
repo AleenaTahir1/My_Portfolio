@@ -1,5 +1,265 @@
-/* Keep CSS minimal; rely on MUI CssBaseline and theme globals */
-html, body, #root { height: 100%; }
-* { box-sizing: border-box; }
-img { max-width: 100%; height: auto; display: block; }
-a { text-decoration: none; }
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background-color: #0a0a0a;
+        color: #ffffff;
+        font-family: "JetBrains Mono", "Space Mono", "IBM Plex Mono", monospace;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    #root {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+        border-left: 1px solid #ffffff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #ffffff;
+        border: 2px solid #0a0a0a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #cccccc;
+    }
+
+    /* Selection */
+    ::selection {
+        background: #ffffff;
+        color: #0a0a0a;
+    }
+
+    ::-moz-selection {
+        background: #ffffff;
+        color: #0a0a0a;
+    }
+}
+
+@layer components {
+    /* Brutalist button */
+    .btn-brutalist {
+        @apply font-mono font-bold text-sm md:text-base uppercase tracking-wider;
+        @apply border-2 border-white bg-black text-white;
+        @apply px-6 py-3 transition-all duration-200;
+        @apply hover:bg-white hover:text-black;
+        @apply active:translate-x-[2px] active:translate-y-[2px];
+        cursor: pointer;
+    }
+
+    /* Brutalist link */
+    .link-brutalist {
+        @apply font-mono font-medium text-white;
+        @apply relative inline-block;
+        @apply hover:before:w-full;
+        @apply transition-all duration-300;
+    }
+
+    .link-brutalist::before {
+        @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-white;
+        @apply transition-all duration-300;
+    }
+
+    /* Terminal cursor */
+    .cursor {
+        @apply inline-block w-[10px] h-[20px] bg-white ml-1;
+        animation: blink 1s step-end infinite;
+    }
+
+    /* Section divider */
+    .section-divider {
+        @apply w-full h-[2px] bg-white my-8;
+    }
+
+    /* Grid lines */
+    .grid-lines {
+        background-image:
+            linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px
+            );
+        background-size: 50px 50px;
+    }
+
+    /* Terminal input */
+    .terminal-input {
+        @apply font-mono bg-transparent border-2 border-white;
+        @apply px-4 py-2 text-white placeholder-gray-500;
+        @apply focus:outline-none focus:ring-0 focus:border-white;
+        @apply transition-all duration-200;
+    }
+
+    .terminal-input:focus {
+        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* Card brutalist */
+    .card-brutalist {
+        @apply border-2 border-white bg-black;
+        @apply transition-all duration-200;
+        @apply hover:translate-x-[-4px] hover:translate-y-[-4px];
+        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .card-brutalist:hover {
+        box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    /* Grayscale images */
+    .grayscale-hover {
+        @apply grayscale transition-all duration-300;
+    }
+
+    .grayscale-hover:hover {
+        @apply grayscale-0;
+    }
+}
+
+@layer utilities {
+    /* Text shadow for brutalist effect */
+    .text-brutalist-shadow {
+        text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* Border animations */
+    .border-animate {
+        position: relative;
+    }
+
+    .border-animate::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border: 2px solid white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .border-animate:hover::after {
+        opacity: 1;
+    }
+
+    /* Noise texture overlay */
+    .noise-bg {
+        position: relative;
+    }
+
+    .noise-bg::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+/* Keyframe animations */
+@keyframes blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .no-print {
+        display: none;
+    }
+}

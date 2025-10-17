@@ -1,213 +1,113 @@
-import { useState, useEffect } from 'react';
-import { 
-  AppBar, 
-  Toolbar, 
-  Button, 
-  Box, 
-  Container, 
-  Drawer, 
-  IconButton, 
-  List, 
-  ListItem, 
-  ListItemButton, 
-  ListItemText, 
-  useMediaQuery 
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import ThemeToggle from './ThemeToggle';
-
-// Use shouldForwardProp to prevent custom props from being passed to DOM elements
-const StyledAppBar = styled(AppBar, {
-  shouldForwardProp: (prop) => prop !== '$isScrolled',
-})<{ $isScrolled: boolean }>(({ theme, $isScrolled }) => ({
-  background: $isScrolled 
-    ? (theme.palette.mode === 'dark' 
-        ? 'rgba(26, 26, 26, 0.95)' 
-        : 'rgba(255, 255, 255, 0.95)')
-    : 'transparent',
-  backdropFilter: $isScrolled ? 'blur(10px)' : 'none',
-  boxShadow: $isScrolled ? theme.shadows[4] : 'none',
-  transition: 'all 0.3s ease',
-}));
-
-const NavButton = styled(Button, {
-  shouldForwardProp: (prop) => prop !== '$isScrolled',
-})<{ $isScrolled: boolean }>(({ theme, $isScrolled }) => ({
-  color: $isScrolled 
-    ? (theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.primary.main)
-    : '#fff',
-  margin: theme.spacing(0, 1),
-  fontWeight: 500,
-  position: 'relative',
-  transition: 'color 0.3s ease',
-  '&:after': {
-    content: '""',
-    position: 'absolute',
-    width: '0%',
-    height: '2px',
-    bottom: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    backgroundColor: $isScrolled 
-      ? (theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.primary.main)
-      : '#fff',
-    transition: 'width 0.3s ease',
-  },
-  '&:hover': {
-    backgroundColor: 'transparent',
-    '&:after': {
-      width: '80%',
-    },
-  },
-}));
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const isMobile = useMediaQuery('(max-width:768px)');
-  const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: "home", label: "00. Home" },
+    { id: "about", label: "01. About" },
+    { id: "experience", label: "02. Experience" },
+    { id: "projects", label: "03. Work" },
+    { id: "contact", label: "04. Contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId.toLowerCase());
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      // Close drawer if it's open after navigation
-      if (drawerOpen) {
-        setDrawerOpen(false);
-      }
+      element.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false);
     }
   };
 
-  // Mobile drawer component
-  const drawer = (
-    <Drawer
-      anchor="right"
-      open={drawerOpen}
-      onClose={() => setDrawerOpen(false)}
-      sx={{
-        '& .MuiDrawer-paper': { 
-          width: 250, 
-          right: 0,
-          left: 'auto',
-          backgroundColor: (theme) => isScrolled 
-            ? (theme.palette.mode === 'dark' 
-                ? 'rgba(26, 26, 26, 0.95)' 
-                : 'rgba(255, 255, 255, 0.95)')
-            : (theme.palette.mode === 'dark' 
-                ? 'rgba(26, 26, 26, 0.9)' 
-                : 'rgba(44, 62, 80, 0.9)'),
-          backdropFilter: 'blur(10px)',
-        },
-      }}
-    >
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-        <IconButton 
-          onClick={() => setDrawerOpen(false)} 
-          sx={{ 
-            color: (theme) => isScrolled 
-              ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
-              : '#fff' 
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      </Box>
-      <List sx={{ pt: 2 }}>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton 
-              onClick={() => scrollToSection(item.toLowerCase())}
-              sx={{
-                textAlign: 'center',
-                color: (theme) => isScrolled 
-                  ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
-                  : '#fff',
-                '&:hover': {
-                  backgroundColor: (theme) => isScrolled 
-                    ? (theme.palette.mode === 'dark' 
-                        ? 'rgba(255, 255, 255, 0.1)' 
-                        : 'rgba(76, 161, 175, 0.1)')
-                    : 'rgba(255, 255, 255, 0.1)',
-                },
-              }}
-            >
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
-  );
-
   return (
-    <StyledAppBar $isScrolled={isScrolled} sx={{ zIndex: 1200 }}>
-      <Container maxWidth="lg" sx={{ padding: isMobile ? '0' : '0 24px' }}>
-        <Toolbar sx={{ 
-          display: 'flex', 
-          justifyContent: isMobile ? 'flex-end' : 'center', 
-          gap: 2, 
-          paddingRight: isMobile ? 2 : 16,
-          paddingLeft: isMobile ? 8 : 16,
-          minHeight: '56px'
-        }}>
-          {!isMobile && <Box sx={{ flexGrow: 1 }} />}
-          
-          {/* Desktop navigation */}
-          {!isMobile && (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+    <>
+      {/* Desktop & Mobile Navbar */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.3 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-brutalist-black border-b-2 border-white"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo/Brand */}
+            <button
+              onClick={() => scrollToSection("home")}
+              className="font-mono text-white text-sm md:text-base font-bold hover:opacity-70 transition-opacity"
+            >
+              <span className="text-gray-500">$</span> SA
+            </button>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
-                <NavButton
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  $isScrolled={isScrolled}
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="font-mono text-white text-sm px-4 py-2 hover:bg-white hover:text-black transition-all duration-200 border-2 border-transparent hover:border-white"
                 >
-                  {item}
-                </NavButton>
+                  {item.label}
+                </button>
               ))}
-              <ThemeToggle />
-            </Box>
-          )}
-          
-          {/* Mobile hamburger menu */}
-          {isMobile && (
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '100%', gap: 1, marginRight: 0, paddingRight: 0 }}>
-              <ThemeToggle />
-              <IconButton 
-                onClick={() => setDrawerOpen(true)}
-                sx={{ 
-                  color: (theme) => isScrolled 
-                    ? (theme.palette.mode === 'dark' ? '#ffffff' : '#2c3e50')
-                    : '#fff',
-                  marginRight: 0,
-                  paddingRight: 0,
-                  paddingLeft: 0,
-                  marginLeft: 0,
-                  position: 'relative',
-                  right: 0
-                }}
-                edge="end"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-          )}
-          
-          {!isMobile && <Box sx={{ flexGrow: 1 }} />}
-        </Toolbar>
-      </Container>
-      {drawer}
-    </StyledAppBar>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden font-mono text-white text-sm border-2 border-white px-3 py-2 hover:bg-white hover:text-black transition-all duration-200"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? "[X]" : "[≡]"}
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: mobileMenuOpen ? 1 : 0,
+          pointerEvents: mobileMenuOpen ? "auto" : "none",
+        }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 z-40 md:hidden bg-brutalist-black"
+        style={{ top: "64px" }}
+      >
+        <div className="flex flex-col items-start p-6 space-y-4">
+          {navItems.map((item, index) => (
+            <motion.button
+              key={item.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{
+                opacity: mobileMenuOpen ? 1 : 0,
+                x: mobileMenuOpen ? 0 : -20,
+              }}
+              transition={{ delay: index * 0.1 }}
+              onClick={() => scrollToSection(item.id)}
+              className="font-mono text-white text-lg w-full text-left border-2 border-white px-4 py-3 hover:bg-white hover:text-black transition-all duration-200"
+            >
+              {item.label}
+            </motion.button>
+          ))}
+        </div>
+      </motion.div>
+    </>
   );
 };
 

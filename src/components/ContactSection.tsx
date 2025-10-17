@@ -1,239 +1,242 @@
-import React, { useState } from 'react';
-import { Box, Container, Typography, Paper, IconButton, Grid, TextField, Button, Alert, Snackbar } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { motion } from 'framer-motion';
-import EmailIcon from '@mui/icons-material/Email';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-
-const StyledSection = styled(Box)(({ theme }) => ({
-  minHeight: '100vh',
-  padding: theme.spacing(15, 2),
-  background: theme.palette.background.default,
-  display: 'flex',
-  alignItems: 'center',
-}));
-
-const ContactCard = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  borderRadius: theme.spacing(2),
-  boxShadow: theme.palette.mode === 'dark' 
-    ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
-    : theme.shadows[10],
-  background: theme.palette.mode === 'dark' 
-    ? 'rgba(30, 30, 30, 0.9)' 
-    : 'rgba(255, 255, 255, 0.9)',
-  backdropFilter: 'blur(10px)',
-  transition: 'transform 0.3s ease',
-  '&:hover': {
-    transform: 'translateY(-5px)',
-  },
-}));
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useForm, ValidationError } from "@formspree/react";
 
 const ContactSection = () => {
-  // Form submission state
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isError, setIsError] = useState(false);
-  
-  // Form data state
+  const [state, handleSubmit] = useForm("xanyrdko"); // Replace with your Formspree ID
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    try {
-      // Using user's Formspree ID: manobqba
-      const response = await fetch('https://formspree.io/f/manobqba', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      
-      if (response.ok) {
-        setIsSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      } else {
-        setIsError(true);
-      }
-    } catch (error) {
-      setIsError(true);
-    }
-  };
-  
-  const handleCloseSnackbar = () => {
-    setIsSubmitted(false);
-    setIsError(false);
-  };
-  const contactLinks = [
-    {
-      name: 'Email',
-      icon: <EmailIcon />,
-      link: 'mailto:saqlainrazee@gmail.com',
-      text: 'saqlainrazee@gmail.com'
-    },
-    {
-      name: 'LinkedIn',
-      icon: <LinkedInIcon />,
-      link: 'https://www.linkedin.com/in/saqlainrazee',
-      text: 'linkedin.com/in/saqlainrazee'
-    },
-    {
-      name: 'GitHub',
-      icon: <GitHubIcon />,
-      link: 'https://github.com/Razee4315',
-      text: 'github.com/Razee4315'
-    }
-  ];
-  
+  if (state.succeeded) {
+    return (
+      <section
+        id="contact"
+        className="relative min-h-screen flex items-center bg-brutalist-black border-t-2 border-white noise-bg"
+      >
+        <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-32 w-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="border-2 border-white p-8 md:p-12 text-center"
+          >
+            <div className="font-mono space-y-4">
+              <div className="text-green-500 text-4xl mb-4">[✓]</div>
+              <div className="text-white text-xl md:text-2xl font-bold">
+                MESSAGE SENT SUCCESSFULLY
+              </div>
+              <div className="text-gray-400 text-sm md:text-base">
+                Thanks for reaching out! I'll get back to you soon.
+              </div>
+              <div className="pt-6">
+                <button
+                  onClick={() => window.location.reload()}
+                  className="btn-brutalist"
+                >
+                  <span className="text-gray-500 mr-2">{">"}</span>
+                  Send Another Message
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <>
-      <StyledSection id="contact">
-        <Container maxWidth="lg">
-          <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={12} md={8}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+    <section
+      id="contact"
+      className="relative min-h-screen flex items-center bg-brutalist-black border-t-2 border-white noise-bg"
+    >
+      <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-32 w-full">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <div className="font-mono text-sm md:text-base text-gray-400 mb-4">
+            <span className="text-white">03.</span> CONTACT
+          </div>
+          <h2 className="font-mono font-bold text-4xl md:text-6xl text-white mb-6">
+            GET IN TOUCH
+          </h2>
+          <div className="h-px bg-white w-full"></div>
+        </motion.div>
+
+        {/* Terminal-style Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="border-2 border-white bg-brutalist-darkgray p-6 md:p-8"
+        >
+          {/* Terminal Header */}
+          <div className="border-b-2 border-white pb-4 mb-6">
+            <div className="font-mono text-sm text-gray-400">
+              <span className="text-white">saqlain@portfolio</span>
+              <span className="text-gray-500">:</span>
+              <span className="text-white">~/contact</span>
+              <span className="text-gray-500">$</span>
+              <span className="text-white ml-2">send_message</span>
+            </div>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="font-mono text-sm text-gray-400 block"
               >
-                <ContactCard>
-                  <Typography variant="h3" gutterBottom align="center" color="primary">
-                    Get in Touch
-                  </Typography>
-                  <Typography variant="body1" align="center" paragraph sx={{ mb: 4 }}>
-                    I'm always open to new opportunities and collaborations.
-                  </Typography>
+                <span className="text-white">{">"}</span> Enter your name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="terminal-input w-full"
+                placeholder="John Doe"
+              />
+              <ValidationError
+                prefix="Name"
+                field="name"
+                errors={state.errors}
+              />
+            </div>
 
+            {/* Email Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="font-mono text-sm text-gray-400 block"
+              >
+                <span className="text-white">{">"}</span> Enter your email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="terminal-input w-full"
+                placeholder="john@example.com"
+              />
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+              />
+            </div>
 
+            {/* Message Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="message"
+                className="font-mono text-sm text-gray-400 block"
+              >
+                <span className="text-white">{">"}</span> Enter your message:
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={6}
+                className="terminal-input w-full resize-none"
+                placeholder="Type your message here..."
+              />
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+              />
+            </div>
 
+            {/* Submit Button */}
+            <div className="pt-4">
+              <button
+                type="submit"
+                disabled={state.submitting}
+                className="btn-brutalist w-full md:w-auto"
+              >
+                <span className="text-gray-500 mr-2">{">"}</span>
+                {state.submitting ? "Sending..." : "Send Message"}
+                <span className="ml-2">→</span>
+              </button>
+            </div>
 
-                  {/* Using direct form submission to Formspree */}
-                  <form onSubmit={handleSubmit}>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          name="name"
-                          label="Name"
-                          variant="outlined"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          fullWidth
-                          name="email"
-                          label="Email"
-                          variant="outlined"
-                          required
-                          type="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          name="subject"
-                          label="Subject"
-                          variant="outlined"
-                          value={formData.subject}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          name="message"
-                          label="Message"
-                          variant="outlined"
-                          multiline
-                          rows={4}
-                          required
-                          value={formData.message}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="large"
-                          fullWidth
-                          type="submit"
-                          sx={{ mt: 2 }}
-                        >
-                          Send Message
-                        </Button>
-                      </Grid>
-                    </Grid>
-                  </form>
+            {/* Error Display */}
+            {state.errors && Object.keys(state.errors).length > 0 && (
+              <div className="border-2 border-red-500 bg-brutalist-black p-4 mt-4">
+                <div className="font-mono text-sm text-red-500">
+                  [ERROR] Failed to send message. Please try again.
+                </div>
+              </div>
+            )}
+          </form>
+        </motion.div>
 
-                  <Box sx={{ mt: 4, textAlign: 'center' }}>
-                    <Typography variant="h6" gutterBottom color="primary.main">
-                      Connect With Me
-                    </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
-                      {contactLinks.map((link, index) => (
-                        <a
-                          href={link.link}
-                          key={index}
-                          style={{ textDecoration: 'none' }}
-                          aria-label={link.name}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <IconButton color="primary" aria-label={link.name}>
-                            {link.icon}
-                          </IconButton>
-                        </a>
-                      ))}
-                    </Box>
-                  </Box>
-                </ContactCard>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </Container>
-      </StyledSection>
+        {/* Alternative Contact Methods */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
+          {/* Email */}
+          <div className="border-2 border-white bg-brutalist-darkgray p-6">
+            <div className="font-mono">
+              <div className="text-xs text-gray-500 mb-2">[EMAIL]</div>
+              <a
+                href="mailto:saqlainabbas315@gmail.com"
+                className="text-white hover:underline text-sm md:text-base break-all"
+              >
+                saqlainabbas315@gmail.com
+              </a>
+            </div>
+          </div>
 
-      {/* Success notification */}
-      <Snackbar open={isSubmitted} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-          Message sent successfully! Thanks for reaching out! I'll get back to you soon.
-        </Alert>
-      </Snackbar>
-
-      {/* Error notification */}
-      <Snackbar open={isError} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%' }}>
-          Failed to send message. Please try again or contact me directly.
-        </Alert>
-      </Snackbar>
-    </>
+          {/* LinkedIn */}
+          <div className="border-2 border-white bg-brutalist-darkgray p-6">
+            <div className="font-mono">
+              <div className="text-xs text-gray-500 mb-2">[LINKEDIN]</div>
+              <a
+                href="https://linkedin.com/in/saqlain-abbas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:underline text-sm md:text-base break-all"
+              >
+                linkedin.com/in/saqlain-abbas
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

@@ -1,86 +1,72 @@
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { Global, css } from '@emotion/react';
-import { getTheme } from './theme';
-import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import HeroSection from './components/HeroSection';
-import Navbar from './components/Navbar';
-import AboutSection from './components/AboutSection';
-import EducationSection from './components/EducationSection';
-import SkillsSection from './components/SkillsSection';
-import ProjectsSection from './components/ProjectsSection';
-import ContactSection from './components/ContactSection';
-
-const AppContent = () => {
-  const { mode } = useTheme();
-  const theme = getTheme(mode);
-
-  const globalStyles = css`
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      width: 100%;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-color: ${theme.palette.background.default};
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      transition: background-color 0.3s ease;
-    }
-
-    #root {
-      width: 100%;
-      min-height: 100vh;
-    }
-
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: ${theme.palette.background.default};
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: ${theme.palette.primary.main};
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: ${theme.palette.primary.dark};
-    }
-  `;
-
-  return (
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline />
-      <Global styles={globalStyles} />
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <EducationSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <ContactSection />
-    </MuiThemeProvider>
-  );
-};
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import AboutSection from "./components/AboutSection";
+import ExperienceSection from "./components/ExperienceSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ContactSection from "./components/ContactSection";
 
 function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <div className="bg-brutalist-black min-h-screen">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t-2 border-white bg-brutalist-black py-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="font-mono text-sm text-gray-500 space-y-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <span className="text-white">saqlain@portfolio</span>
+                <span className="text-gray-600">:</span>
+                <span className="text-white">~</span>
+                <span className="text-gray-600">$</span>
+                <span className="ml-2">© 2024 Saqlain Abbas</span>
+              </div>
+
+              <div className="flex gap-6">
+                <a
+                  href="https://github.com/Razee4315"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline transition-all duration-300"
+                >
+                  [GitHub]
+                </a>
+                <a
+                  href="https://linkedin.com/in/saqlain-abbas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline transition-all duration-300"
+                >
+                  [LinkedIn]
+                </a>
+                <a
+                  href="mailto:saqlainabbas315@gmail.com"
+                  className="text-white hover:underline transition-all duration-300"
+                >
+                  [Email]
+                </a>
+                <a
+                  href="https://saqlainabbas.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:underline transition-all duration-300"
+                >
+                  [Website]
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
 
