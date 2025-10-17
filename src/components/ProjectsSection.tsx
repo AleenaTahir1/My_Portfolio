@@ -11,12 +11,12 @@ const ProjectsSection = () => {
       year: "2024",
     },
     {
-      title: "BinarySearchTreeVisualization",
+      title: "Hill Icon Skardu Hotel",
       description:
-        "An educational tool providing real-time visualization of BST operations through interactive animations.",
-      technologies: ["C++", "Qt6", "OpenGL", "CMake"],
-      github: "https://github.com/Razee4315/BinarySearchTreeVisualization",
-      year: "2024",
+        "A beautiful, fully-functional hotel booking website for Hill Icon Skardu. Features real-time room availability, online booking system, customer order management, and integrated Twilio notifications. Optimized for SEO with server-side rendering and responsive design.",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "Twilio API", "SEO Optimization"],
+      github: "https://www.hilliconskardu.com",
+      year: "2025",
     },
     {
       title: "Panda Chat",

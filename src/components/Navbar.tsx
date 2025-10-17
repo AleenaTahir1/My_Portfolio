@@ -8,9 +8,10 @@ const Navbar = () => {
   const navItems = [
     { id: "home", label: "00. Home" },
     { id: "about", label: "01. About" },
-    { id: "experience", label: "02. Experience" },
-    { id: "projects", label: "03. Work" },
-    { id: "contact", label: "04. Contact" },
+    { id: "education", label: "02. Education" },
+    { id: "experience", label: "03. Experience" },
+    { id: "projects", label: "04. Work" },
+    { id: "contact", label: "05. Contact" },
   ];
 
   useEffect(() => {
