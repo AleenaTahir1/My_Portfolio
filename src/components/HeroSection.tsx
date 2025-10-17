@@ -62,7 +62,6 @@ const GlitchFrame = ({ isActive }: { isActive: boolean }) => {
 const HeroSection = () => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [frameGlitchActive, setFrameGlitchActive] = useState(false);
   const fullText = "Building. Breaking. Learning. Repeating.";
 
   useEffect(() => {
@@ -113,7 +112,6 @@ const HeroSection = () => {
           >
             <div 
               className="relative group"
-              onMouseEnter={() => setFrameGlitchActive(true)}
             >
               {/* Terminal Window Frame */}
               <div className="border-4 border-white bg-brutalist-darkgray shadow-[12px_12px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[16px_16px_0_rgba(255,255,255,0.15)] hover:translate-x-[-4px] hover:translate-y-[-4px]">
@@ -202,8 +200,8 @@ const HeroSection = () => {
                 style={{ transform: "translate(8px, -8px)" }}
               ></motion.div>
               
-              {/* RGB Glitch Frame - Activated on hover and stays */}
-              <GlitchFrame isActive={frameGlitchActive} />
+              {/* RGB Glitch Frame - Always active */}
+              <GlitchFrame isActive={true} />
             </div>
           </motion.div>
 

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 interface GlitchTextProps {
   text: string;
@@ -7,19 +6,15 @@ interface GlitchTextProps {
 }
 
 const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
-  const [isActivated, setIsActivated] = useState(false);
-
   return (
     <motion.div
       className={`relative inline-block ${className}`}
-      onMouseEnter={() => setIsActivated(true)}
     >
       {/* Main text */}
       <span className="relative z-10">{text}</span>
       
-      {/* Glitch layers - activate on hover and stay */}
-      {isActivated && (
-        <>
+      {/* Glitch layers - always active */}
+      <>
           {/* Red glitch layer */}
           <motion.span
             className="absolute top-0 left-0 text-red-500 opacity-70"
@@ -54,8 +49,7 @@ const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
           >
             {text}
           </motion.span>
-        </>
-      )}
+      </>
     </motion.div>
   );
 };
