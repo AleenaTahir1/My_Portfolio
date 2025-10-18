@@ -205,17 +205,17 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {/* Email */}
           <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
             <div className="font-mono">
               <div className="text-xs text-gray-500 mb-2">[EMAIL]</div>
               <a
-                href="mailto:saqlainabbas315@gmail.com"
+                href="mailto:saqlainrazee@gmail.com"
                 className="text-white hover:underline text-sm md:text-base break-all"
               >
-                saqlainabbas315@gmail.com
+                saqlainrazee@gmail.com
               </a>
             </div>
           </div>
@@ -225,12 +225,27 @@ const ContactSection = () => {
             <div className="font-mono">
               <div className="text-xs text-gray-500 mb-2">[LINKEDIN]</div>
               <a
-                href="https://linkedin.com/in/saqlain-abbas"
+                href="https://www.linkedin.com/in/saqlainrazee/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:underline text-sm md:text-base break-all"
               >
-                linkedin.com/in/saqlain-abbas
+                linkedin.com/in/saqlainrazee
+              </a>
+            </div>
+          </div>
+
+          {/* GitHub */}
+          <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
+            <div className="font-mono">
+              <div className="text-xs text-gray-500 mb-2">[GITHUB]</div>
+              <a
+                href="https://github.com/Razee4315"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:underline text-sm md:text-base break-all"
+              >
+                github.com/Razee4315
               </a>
             </div>
           </div>
