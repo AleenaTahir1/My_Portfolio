@@ -5,6 +5,7 @@ const EducationSection = () => {
   const educationData = [
     {
       degree: "Bachelor of Science in Artificial Intelligence",
+      shortName: "BSAI",
       institution: "National University of Technology (NUTECH)",
       location: "Islamabad, Pakistan",
       duration: "Aug 2023 – Present",
@@ -13,6 +14,7 @@ const EducationSection = () => {
     },
     {
       degree: "HSSC Computer Science",
+      shortName: "HSSC_CS",
       institution: "Public School and College Skardu",
       location: "Skardu, Pakistan",
       duration: "Jun 2020 – May 2022",
@@ -58,7 +60,7 @@ const EducationSection = () => {
               <div className="border-b-2 border-white pb-4 mb-4">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="font-mono text-xs md:text-sm text-gray-500">
-                    <span className="text-white">[{index + 1}]</span> /education/{edu.degree.toLowerCase().replace(/ /g, '_')}
+                    <span className="text-white">[{index + 1}]</span> /education/{edu.shortName}
                   </div>
                   <div className="font-mono text-xs md:text-sm">
                     <span className={edu.status === "Currently in 4th semester" ? "text-green-500" : "text-gray-500"}>
