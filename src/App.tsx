@@ -52,7 +52,7 @@ function App() {
                   [GitHub]
                 </a>
                 <a
-                  href="https://linkedin.com/in/saqlain-abbas"
+                  href="https://www.linkedin.com/in/saqlainrazee/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:underline transition-all duration-300"
@@ -60,7 +60,7 @@ function App() {
                   [LinkedIn]
                 </a>
                 <a
-                  href="mailto:saqlainabbas315@gmail.com"
+                  href="mailto:saqlainrazee@gmail.com"
                   className="text-white hover:underline transition-all duration-300"
                 >
                   [Email]
