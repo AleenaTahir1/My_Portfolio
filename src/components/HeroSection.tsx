@@ -1,63 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import GameOfLifeBackground from "./GameOfLifeBackground";
 import GlitchText from "./GlitchText";
 
-// Glitch Frame Component
-const GlitchFrame = ({ isActive }: { isActive: boolean }) => {
-  if (!isActive) return null;
-  
-  return (
-    <>
-      {/* Red glitch frame */}
-      <motion.div
-        className="absolute inset-0 border-4 border-red-500 pointer-events-none opacity-60"
-        animate={{
-          x: [-3, 3, -2, 2, -3],
-          y: [2, -2, 1, -1, 2],
-        }}
-        transition={{
-          duration: 0.15,
-          repeat: Infinity,
-          repeatDelay: 0.8,
-          ease: "easeInOut",
-        }}
-      />
-      
-      {/* Blue glitch frame */}
-      <motion.div
-        className="absolute inset-0 border-4 border-blue-500 pointer-events-none opacity-60"
-        animate={{
-          x: [3, -3, 2, -2, 3],
-          y: [-2, 2, -1, 1, -2],
-        }}
-        transition={{
-          duration: 0.15,
-          repeat: Infinity,
-          repeatDelay: 0.8,
-          delay: 0.075,
-          ease: "easeInOut",
-        }}
-      />
-      
-      {/* Green accent glitch */}
-      <motion.div
-        className="absolute inset-0 border-4 border-green-500 pointer-events-none opacity-40"
-        animate={{
-          x: [-2, 2, -3, 3, -2],
-          y: [1, -1, 2, -2, 1],
-        }}
-        transition={{
-          duration: 0.15,
-          repeat: Infinity,
-          repeatDelay: 0.8,
-          delay: 0.15,
-          ease: "easeInOut",
-        }}
-      />
-    </>
-  );
-};
+// Removed GameOfLifeBackground for better performance
+// Removed GlitchFrame for better performance
 
 const HeroSection = () => {
   const [displayedText, setDisplayedText] = useState("");
@@ -91,14 +37,8 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-brutalist-black overflow-hidden pt-16"
     >
-      {/* Game of Life Background */}
-      <GameOfLifeBackground />
-
-      {/* Noise overlay */}
-      <div
-        className="absolute inset-0 noise-bg pointer-events-none"
-        style={{ zIndex: 1 }}
-      ></div>
+      {/* Simple gradient background instead of Game of Life */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brutalist-black via-brutalist-black to-gray-900" style={{ zIndex: 0 }}></div>
 
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 w-full">
@@ -147,16 +87,7 @@ const HeroSection = () => {
 
                 {/* Image Container with Scan Lines Effect */}
                 <div className="relative p-4 md:p-6 bg-brutalist-darkgray">
-                  {/* Scan Lines Overlay */}
-                  <div className="absolute inset-0 pointer-events-none opacity-10 z-10">
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.5) 2px, rgba(255,255,255,0.5) 4px)",
-                      }}
-                    ></div>
-                  </div>
+                  {/* Simplified Scan Lines - removed for better performance */}
 
                   {/* Profile Image */}
                   <motion.div
@@ -167,7 +98,8 @@ const HeroSection = () => {
                   >
                     <img
                       src={`${import.meta.env.BASE_URL}profile.webp`}
-                      alt="Saqlain Abbas"
+                      alt="Saqlain Abbas - AI Engineer and Full Stack Developer professional profile picture"
+                      fetchPriority="high"
                       className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white transition-all duration-300 group-hover:border-white group-hover:scale-[1.02]"
                     />
 
@@ -199,9 +131,6 @@ const HeroSection = () => {
                 className="absolute inset-0 border-4 border-white pointer-events-none"
                 style={{ transform: "translate(8px, -8px)" }}
               ></motion.div>
-              
-              {/* RGB Glitch Frame - Always active */}
-              <GlitchFrame isActive={true} />
             </div>
           </motion.div>
 
@@ -220,9 +149,9 @@ const HeroSection = () => {
               className="font-mono text-xs md:text-sm text-gray-400"
             >
               <span className="text-white">saqlain@portfolio</span>
-              <span className="text-gray-500">:</span>
+              <span className="text-gray-400">:</span>
               <span className="text-white">~</span>
-              <span className="text-gray-500">$</span>
+              <span className="text-gray-400">$</span>
             </motion.div>
 
             {/* Main heading */}
@@ -256,7 +185,7 @@ const HeroSection = () => {
               transition={{ delay: 1.2 }}
               className="font-mono text-sm md:text-lg text-white"
             >
-              <span className="text-gray-500">{"> "}</span>
+              <span className="text-gray-400">{"> "}</span>
               {displayedText}
               {!isTypingComplete && (
                 <span className="inline-block w-2 h-4 bg-white ml-1 animate-blink"></span>
@@ -295,7 +224,7 @@ const HeroSection = () => {
                 onClick={scrollToProjects}
                 className="btn-brutalist inline-flex items-center justify-center group w-full sm:w-auto text-xs sm:text-sm md:text-base"
               >
-                <span className="text-gray-500 mr-2">{">"}</span>
+                <span className="text-gray-400 mr-2">{">"}</span>
                 <span>View Projects</span>
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
                   _
@@ -307,7 +236,7 @@ const HeroSection = () => {
                 download="SaqlainAbbas_CV.pdf"
                 className="btn-brutalist inline-flex items-center justify-center group w-full sm:w-auto text-xs sm:text-sm md:text-base"
               >
-                <span className="text-gray-500 mr-2">{">"}</span>
+                <span className="text-gray-400 mr-2">{">"}</span>
                 <span>Resume.pdf</span>
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
                   →

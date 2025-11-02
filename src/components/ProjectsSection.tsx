@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ProjectSchema from "./ProjectSchema";
 
 const ProjectsSection = () => {
   const projects = [
@@ -38,7 +39,7 @@ const ProjectsSection = () => {
         "Fine-tuned an LLM on university data to create a custom chatbot, deployed with Gradio for interactive use.",
       technologies: ["Python", "LLM Fine-tuning", "Gradio"],
       github: null,
-      year: "2023",
+      year: "2025",
     },
     {
       title: "NUTECH Virtual Tour",
@@ -46,7 +47,7 @@ const ProjectsSection = () => {
         "An interactive campus tour using React and 360° media, focusing on optimized user experience.",
       technologies: ["React", "JavaScript", "360° Media"],
       github: "https://razee4315.github.io/nutech-tour",
-      year: "2023",
+      year: "2025",
     },
     {
       title: "Pitch and Yaw Coordinate Finder",
@@ -54,7 +55,7 @@ const ProjectsSection = () => {
         "An HTML5/JavaScript tool to extract spherical coordinates from images, addressing a specific technical gap.",
       technologies: ["HTML5", "JavaScript", "Image Processing"],
       github: "https://razee4315.github.io/pitch-and-yaw-finder",
-      year: "2023",
+      year: "2025",
     },
   ];
 
@@ -63,6 +64,7 @@ const ProjectsSection = () => {
       id="projects"
       className="relative min-h-screen bg-brutalist-black border-t-2 border-white noise-bg py-20 md:py-32"
     >
+      <ProjectSchema projects={projects} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
         <motion.div
@@ -147,7 +149,7 @@ const ProjectsSection = () => {
 
                   {/* Technologies */}
                   <div className="border-t-2 border-white pt-4">
-                    <div className="font-mono text-xs text-gray-500 mb-3 break-words">
+                    <div className="font-mono text-xs text-gray-400 mb-3 break-words">
                       {">"}  Tech Stack:
                     </div>
                     <div className="flex flex-wrap gap-2 overflow-hidden">
@@ -180,7 +182,7 @@ const ProjectsSection = () => {
                         rel="noopener noreferrer"
                         className="font-mono text-sm text-white hover:underline inline-flex items-center gap-2 group"
                       >
-                        <span className="text-gray-500 group-hover:text-white transition-colors">
+                        <span className="text-gray-400 group-hover:text-white transition-colors">
                           $
                         </span>
                         <span>view_project</span>
@@ -213,7 +215,7 @@ const ProjectsSection = () => {
           transition={{ delay: 0.3 }}
           className="mt-16 border-2 border-white p-8 md:p-12 text-center"
         >
-          <div className="font-mono text-sm text-gray-500 mb-4">
+          <div className="font-mono text-sm text-gray-400 mb-4">
             {">"} More projects on GitHub
           </div>
           <motion.a

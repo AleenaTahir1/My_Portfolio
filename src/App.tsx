@@ -10,6 +10,7 @@ import SEO from "./components/SEO";
 import StructuredData from "./components/StructuredData";
 import LoadingScreen from "./components/LoadingScreen";
 import CustomCursor from "./components/CustomCursor";
+import ScrollProgress from "./components/ScrollProgress";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <div className="bg-brutalist-black min-h-screen">
         <LoadingScreen />
         <CustomCursor />
+        <ScrollProgress />
         <SEO />
         <StructuredData />
         <Navbar />

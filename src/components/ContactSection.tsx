@@ -91,9 +91,9 @@ const ContactSection = () => {
           <div className="border-b-2 border-white pb-4 mb-6">
             <div className="font-mono text-xs sm:text-sm text-gray-400 break-words">
               <span className="text-white">saqlain@portfolio</span>
-              <span className="text-gray-500">:</span>
+              <span className="text-gray-400">:</span>
               <span className="text-white">~/contact</span>
-              <span className="text-gray-500">$</span>
+              <span className="text-gray-400">$</span>
               <span className="text-white ml-2">send_message</span>
             </div>
           </div>
@@ -182,7 +182,7 @@ const ContactSection = () => {
                 disabled={state.submitting}
                 className="btn-brutalist w-full md:w-auto text-xs sm:text-sm md:text-base"
               >
-                <span className="text-gray-500 mr-2">{">"}</span>
+                <span className="text-gray-400 mr-2">{">"}</span>
                 {state.submitting ? "Sending..." : "Send Message"}
                 <span className="ml-2">→</span>
               </button>
@@ -210,7 +210,7 @@ const ContactSection = () => {
           {/* Email */}
           <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
             <div className="font-mono">
-              <div className="text-xs text-gray-500 mb-2">[EMAIL]</div>
+              <div className="text-xs text-gray-400 mb-2">[EMAIL]</div>
               <a
                 href="mailto:saqlainrazee@gmail.com"
                 className="text-white hover:underline text-sm md:text-base break-all"
@@ -223,7 +223,7 @@ const ContactSection = () => {
           {/* LinkedIn */}
           <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
             <div className="font-mono">
-              <div className="text-xs text-gray-500 mb-2">[LINKEDIN]</div>
+              <div className="text-xs text-gray-400 mb-2">[LINKEDIN]</div>
               <a
                 href="https://www.linkedin.com/in/saqlainrazee/"
                 target="_blank"
@@ -238,7 +238,7 @@ const ContactSection = () => {
           {/* GitHub */}
           <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
             <div className="font-mono">
-              <div className="text-xs text-gray-500 mb-2">[GITHUB]</div>
+              <div className="text-xs text-gray-400 mb-2">[GITHUB]</div>
               <a
                 href="https://github.com/Razee4315"
                 target="_blank"

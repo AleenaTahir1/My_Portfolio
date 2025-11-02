@@ -31,24 +31,12 @@ const CustomCursor = () => {
       }
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, []);
 
@@ -56,26 +44,19 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Simple minimalistic cursor - single square */}
       <motion.div
-        className="fixed w-2 h-2 bg-white pointer-events-none z-[9999] mix-blend-difference rounded-full"
+        className="fixed w-3 h-3 border border-white pointer-events-none z-[9999] mix-blend-difference"
         animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isHovering ? 0.5 : 1,
+          x: mousePosition.x - 6,
+          y: mousePosition.y - 6,
+          scale: isHovering ? 1.8 : 1,
         }}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
-      />
-      
-      {/* Cursor outline */}
-      <motion.div
-        className="fixed w-8 h-8 border-2 border-white pointer-events-none z-[9999] mix-blend-difference rounded-full"
-        animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
+        transition={{ 
+          type: "tween",
+          duration: 0.1,
+          ease: "linear"
         }}
-        transition={{ type: "spring", stiffness: 150, damping: 15 }}
       />
     </>
   );

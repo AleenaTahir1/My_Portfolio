@@ -74,7 +74,7 @@
     .btn-brutalist {
         @apply font-mono font-bold text-xs sm:text-sm md:text-base uppercase tracking-wider;
         @apply border-2 border-white bg-black text-white;
-        @apply px-4 sm:px-6 py-2 sm:py-3 transition-all duration-200;
+        @apply px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300;
         @apply hover:bg-white hover:text-black;
         @apply active:translate-x-[2px] active:translate-y-[2px];
         @apply min-h-[44px];
@@ -124,9 +124,9 @@
     /* Terminal input */
     .terminal-input {
         @apply font-mono bg-transparent border-2 border-white;
-        @apply px-4 py-2 text-white placeholder-gray-500;
+        @apply px-4 py-2 text-white placeholder-gray-400;
         @apply focus:outline-none focus:ring-0 focus:border-white;
-        @apply transition-all duration-200;
+        @apply transition-all duration-300;
     }
 
     .terminal-input:focus {
@@ -136,7 +136,7 @@
     /* Card brutalist */
     .card-brutalist {
         @apply border-2 border-white bg-black;
-        @apply transition-all duration-200;
+        @apply transition-all duration-300;
         @apply hover:translate-x-[-4px] hover:translate-y-[-4px];
         box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.8);
     }
