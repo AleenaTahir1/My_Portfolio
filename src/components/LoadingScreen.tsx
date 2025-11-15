@@ -18,17 +18,17 @@ const LoadingScreen = () => {
   ];
 
   useEffect(() => {
-    // Progress increases over 3 seconds (30ms * 100 = 3000ms)
+    // Progress increases over 1.5 seconds (15ms * 100 = 1500ms) - faster for better UX
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 500);
+          setTimeout(() => setIsLoading(false), 300);
           return 100;
         }
-        return prev + 2; // Increase by 2 each time for faster progress
+        return prev + 4; // Increase by 4 each time for faster progress
       });
-    }, 30); // Reduced from 50ms to 30ms
+    }, 15); // Reduced from 30ms to 15ms for faster loading
 
     return () => clearInterval(interval);
   }, []);

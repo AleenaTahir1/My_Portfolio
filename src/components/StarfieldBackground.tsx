@@ -158,8 +158,8 @@ const StarfieldBackground = () => {
       // Adjust node density based on device type
       // Use fewer nodes on mobile for better performance
       const isMobile = isMobileDevice();
-      const densityFactor = isMobile ? 20000 : 12000;
-      const maxNodes = isMobile ? 60 : 100;
+      const densityFactor = isMobile ? 25000 : 15000;
+      const maxNodes = isMobile ? 40 : 70;
       const numNodes = Math.min(Math.floor(canvas.width * canvas.height / densityFactor), maxNodes);
       
       // Distribute nodes more randomly across the entire screen
@@ -291,8 +291,8 @@ const StarfieldBackground = () => {
         return;
       }
       
-      // Limit to ~40fps for better performance
-      const frameInterval = 25; // 1000ms / 40fps ≈ 25ms
+      // Limit to ~30fps for better performance
+      const frameInterval = 33; // 1000ms / 30fps ≈ 33ms
       if (timestamp - lastFrameTime.current < frameInterval) {
         animationRef.current = requestAnimationFrame(animate);
         return;
@@ -416,7 +416,7 @@ const StarfieldBackground = () => {
       // How many connections to draw - limit for performance
       // Significantly limit connections on mobile
       const isMobile = isMobileDevice();
-      const maxConnections = isMobile ? 50 : 100;
+      const maxConnections = isMobile ? 30 : 60;
       let numConnectionsDrawn = 0;
       
       // Batch render connections for better performance

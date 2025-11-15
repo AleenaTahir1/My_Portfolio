@@ -88,9 +88,9 @@ const GameOfLifeBackground = () => {
       }
     };
 
-    // Animation loop - SLOWER (30 FPS instead of 10)
+    // Animation loop - SLOWER (45 FPS instead of 30) for better performance
     let frameCount = 0;
-    const fps = 30; // Higher number = slower animation
+    const fps = 45; // Higher number = slower animation, better performance
     const animate = () => {
       frameCount++;
       if (frameCount % fps === 0) {

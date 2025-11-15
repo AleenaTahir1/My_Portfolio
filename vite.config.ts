@@ -19,6 +19,8 @@ export default defineConfig({
           'react-vendor': ['react', 'react-dom'],
           'framer-motion': ['framer-motion'],
           'mui-vendor': ['@mui/material', '@mui/icons-material'],
+          'gsap': ['gsap'],
+          'lenis': ['@studio-freight/lenis'],
         },
       },
     },
@@ -26,9 +28,22 @@ export default defineConfig({
     minify: 'esbuild',
     // Increase chunk size warning limit
     chunkSizeWarningLimit: 1000,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Optimize source maps for production
+    sourcemap: false,
+    // Optimize target browsers
+    target: 'es2015',
   },
   // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion'],
+    include: ['react', 'react-dom', 'framer-motion', '@mui/material', '@mui/icons-material'],
+    exclude: ['@emailjs/browser'],
+  },
+  // Enable compression
+  server: {
+    hmr: {
+      overlay: false,
+    },
   },
 })

@@ -1,16 +1,26 @@
+import { lazy, Suspense } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import EducationSection from "./components/EducationSection";
-import ExperienceSection from "./components/ExperienceSection";
-import ProjectsSection from "./components/ProjectsSection";
-import ContactSection from "./components/ContactSection";
 import SEO from "./components/SEO";
 import StructuredData from "./components/StructuredData";
 import LoadingScreen from "./components/LoadingScreen";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
+
+// Lazy load non-critical components for better performance
+const AboutSection = lazy(() => import("./components/AboutSection"));
+const EducationSection = lazy(() => import("./components/EducationSection"));
+const ExperienceSection = lazy(() => import("./components/ExperienceSection"));
+const ProjectsSection = lazy(() => import("./components/ProjectsSection"));
+const ContactSection = lazy(() => import("./components/ContactSection"));
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-brutalist-black">
+    <div className="font-mono text-white text-sm">Loading...</div>
+  </div>
+);
 
 function App() {
   return (
@@ -24,11 +34,21 @@ function App() {
         <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
-        <EducationSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <ContactSection />
+        <Suspense fallback={<SectionLoader />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <EducationSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ExperienceSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ProjectsSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ContactSection />
+        </Suspense>
       </main>
 
       {/* Footer */}

@@ -4,6 +4,38 @@ import ProjectSchema from "./ProjectSchema";
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Spartan",
+      description:
+        "Engineered a full-stack call agent application for real estate professionals to manage client interactions. Integrated Twilio for phone calls/SMS, Deepgram for transcription, and OpenAI for AI-driven suggestions and filtering. Utilized Supabase for real-time database management and authentication.",
+      technologies: ["Next.js", "Supabase", "Twilio", "Deepgram", "OpenAI API"],
+      github: null,
+      year: "2024",
+    },
+    {
+      title: "Jessy AI",
+      description:
+        "Developed a bespoke AI personal assistant and health monitor tailored to a specific user's needs. Built a FastAPI backend with PostgreSQL and integrated OpenAI for conversational logic. Implemented voice-to-text (Whisper) and text-to-speech (Piper) for a complete voice-interactive experience.",
+      technologies: ["Next.js", "PostgreSQL", "FastAPI", "OpenAI API", "Piper", "Whisper"],
+      github: null,
+      year: "2024",
+    },
+    {
+      title: "All Organics",
+      description:
+        "Created an e-commerce platform for influencers to curate and sell their favorite organic products. Implemented user authentication and product management using Firebase (Firestore and Auth). Integrated Stripe for secure payment processing, enabling followers to purchase products easily.",
+      technologies: ["React", "Firebase", "Stripe"],
+      github: null,
+      year: "2024",
+    },
+    {
+      title: "Raver AI",
+      description:
+        "Developed a digital marketplace for designers to sell AI-generated or custom images. Built with Next.js for a high-performance frontend and integrated Stripe for payment transactions.",
+      technologies: ["Next.js", "Stripe"],
+      github: null,
+      year: "2024",
+    },
+    {
       title: "DisasterConnect",
       description:
         "A web platform for disaster response, featuring real-time communication and interactive mapping.",

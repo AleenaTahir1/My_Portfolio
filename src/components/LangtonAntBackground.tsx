@@ -119,7 +119,7 @@ const rules = ruleSets[Math.floor(Math.random() * ruleSets.length)];
       antsRef.current = [];
       
       // Create multiple ants for more interesting patterns
-      const antCount = isMobileDevice() ? 5 : 10; // More starting points as requested
+      const antCount = isMobileDevice() ? 3 : 6; // Reduced for better performance
       
       // Create a function to get a completely random position
       const getRandomPosition = () => {
@@ -161,8 +161,8 @@ const rules = ruleSets[Math.floor(Math.random() * ruleSets.length)];
     
     // Framerate and step control - dramatically reduced for better performance
     let lastFrameTime = 0;
-    const frameLimit = 1000 / 20; // Further reduced to 20fps for better performance
-    let stepsPerFrame = isMobileDevice() ? 1 : 2; // Minimum steps per frame for slower motion
+    const frameLimit = 1000 / 15; // Further reduced to 15fps for better performance
+    let stepsPerFrame = isMobileDevice() ? 1 : 1; // Minimum steps per frame for slower motion
     
     // Animation function
     const animate = (timestamp: number) => {
