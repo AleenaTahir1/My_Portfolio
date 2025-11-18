@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import styled from '@emotion/styled';
 import { useCanvas } from '../hooks/useCanvas';
 
@@ -82,7 +82,7 @@ const StarfieldBackground = () => {
     
     // Update nodes
     const nodes = nodesRef.current;
-    const isMobile = isMobileDevice();
+    // const isMobile = isMobileDevice(); // Removed unused variable
     const mouse = mousePositionRef.current;
     
     // Spatial partitioning

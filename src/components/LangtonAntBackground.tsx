@@ -95,7 +95,7 @@ const LangtonAntBackground = () => {
      }
   }, []);
 
-  const draw = useCallback((ctx: CanvasRenderingContext2D, frameCount: number, width: number, height: number) => {
+  const draw = useCallback((ctx: CanvasRenderingContext2D, _frameCount: number, width: number, height: number) => {
     const isMobile = isMobileDevice();
     const cellSize = isMobile ? 12 : 18;
     
