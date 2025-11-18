@@ -23,9 +23,9 @@ const GlitchText = ({ text, className = "" }: GlitchTextProps) => {
               y: [1, -1, 1, -2, 2]
             }}
             transition={{ 
-              duration: 0.15, 
+              duration: 0.2, 
               repeat: Infinity,
-              repeatDelay: 0.8,
+              repeatDelay: 3,
               ease: "easeInOut"
             }}
           >

@@ -94,15 +94,18 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen bg-brutalist-black border-t-2 border-white noise-bg py-20 md:py-32"
+      className="relative min-h-screen bg-brutalist-black border-t-2 border-white py-20 md:py-32 overflow-hidden"
     >
+      {/* Static noise background container - absolute and contained */}
+      <div className="absolute inset-0 noise-bg opacity-30 pointer-events-none"></div>
+      
       <ProjectSchema projects={projects} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
@@ -122,117 +125,85 @@ const ProjectsSection = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.01 }}
-              className="group"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: index % 2 * 0.1 }}
+              className="group h-full"
             >
-              {/* Project Card */}
-              <div className="border-2 border-white bg-brutalist-darkgray transition-all duration-300 hover:translate-x-[-6px] hover:translate-y-[-6px] hover:shadow-[8px_8px_0_rgba(255,255,255,0.1)] overflow-hidden">
+              {/* Project Card - removed expensive heavy scale hover, used translate instead */}
+              <div className="h-full border-2 border-white bg-brutalist-darkgray transition-transform duration-300 group-hover:translate-x-[-4px] group-hover:translate-y-[-4px] flex flex-col shadow-[4px_4px_0_rgba(255,255,255,0.1)] group-hover:shadow-[8px_8px_0_rgba(255,255,255,0.15)]">
                 {/* Project Header */}
-                <div className="border-b-2 border-white p-4 md:p-6 bg-brutalist-black overflow-hidden">
+                <div className="border-b-2 border-white p-4 md:p-6 bg-brutalist-black overflow-hidden shrink-0">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="font-mono text-xs text-gray-500 mb-2"
-                      >
+                      <div className="font-mono text-xs text-gray-500 mb-2">
                         [{String(index + 1).padStart(2, "0")}] / {project.year}
-                      </motion.div>
-                      <motion.h3
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="font-mono font-bold text-base sm:text-lg md:text-xl text-white leading-tight transition-transform duration-300 group-hover:translate-x-2 break-words"
-                      >
+                      </div>
+                      <h3 className="font-mono font-bold text-base sm:text-lg md:text-xl text-white leading-tight transition-transform duration-300 group-hover:translate-x-2 break-words">
                         {project.title}
-                      </motion.h3>
+                      </h3>
                     </div>
                     {project.github && (
-                      <motion.a
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4 }}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-xs border-2 border-white px-3 py-2 text-white hover:bg-white hover:text-black transition-all duration-200 shrink-0"
+                        className="font-mono text-xs border-2 border-white px-3 py-2 text-white hover:bg-white hover:text-black transition-all duration-200 shrink-0 transform group-hover:rotate-6"
+                        aria-label="View Source Code"
                       >
                         [→]
-                      </motion.a>
+                      </a>
                     )}
                   </div>
                 </div>
 
                 {/* Project Body */}
-                <div className="p-4 md:p-6 space-y-4">
-                  {/* Description */}
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="font-mono text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed break-words"
-                  >
+                <div className="p-4 md:p-6 space-y-4 flex-grow flex flex-col">
+                  {/* Description - Static rendering for performance */}
+                  <p className="font-mono text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed break-words flex-grow">
                     {project.description}
-                  </motion.p>
+                  </p>
 
                   {/* Technologies */}
-                  <div className="border-t-2 border-white pt-4">
+                  <div className="border-t-2 border-white pt-4 mt-auto">
                     <div className="font-mono text-xs text-gray-400 mb-3 break-words">
                       {">"}  Tech Stack:
                     </div>
                     <div className="flex flex-wrap gap-2 overflow-hidden">
                       {project.technologies.map((tech, techIndex) => (
-                        <motion.span
+                        <span
                           key={techIndex}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.7 + techIndex * 0.05 }}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          className="font-mono text-xs border border-white px-2 sm:px-3 py-1 text-white bg-brutalist-black transition-all duration-200 hover:bg-white hover:text-black cursor-default break-all"
+                          className="font-mono text-xs border border-white px-2 sm:px-3 py-1 text-white bg-brutalist-black transition-colors duration-200 hover:bg-white hover:text-black cursor-default break-all"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                   </div>
 
                   {/* View Link */}
-                  {project.github && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.9 }}
-                      className="pt-2"
-                    >
+                  <div className="pt-2">
+                    {project.github ? (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-mono text-sm text-white hover:underline inline-flex items-center gap-2 group"
+                        className="font-mono text-sm text-white hover:underline inline-flex items-center gap-2 group/link"
                       >
-                        <span className="text-gray-400 group-hover:text-white transition-colors">
+                        <span className="text-gray-400 group-hover/link:text-white transition-colors">
                           $
                         </span>
                         <span>view_project</span>
-                        <span className="group-hover:translate-x-1 transition-transform">
+                        <span className="group-hover/link:translate-x-1 transition-transform">
                           →
                         </span>
                       </a>
-                    </motion.div>
-                  )}
-
-                  {!project.github && (
-                    <div className="pt-2">
-                      <div className="font-mono text-sm text-gray-600 inline-flex items-center gap-2">
+                    ) : (
+                      <div className="font-mono text-sm text-gray-600 inline-flex items-center gap-2 cursor-not-allowed">
                         <span className="text-gray-700">$</span>
                         <span>private_repository</span>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -244,25 +215,23 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
           className="mt-16 border-2 border-white p-8 md:p-12 text-center"
         >
           <div className="font-mono text-sm text-gray-400 mb-4">
             {">"} More projects on GitHub
           </div>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <a
             href="https://github.com/Razee4315"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-brutalist inline-flex items-center gap-2 group"
+            className="btn-brutalist inline-flex items-center gap-2 group hover:scale-105 active:scale-95 transition-transform"
           >
             <span>View All Work</span>
             <span className="inline-block group-hover:translate-x-1 transition-transform">
               →
             </span>
-          </motion.a>
+          </a>
         </motion.div>
 
       </div>

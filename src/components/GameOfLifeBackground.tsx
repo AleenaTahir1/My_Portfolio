@@ -1,61 +1,57 @@
-import { useEffect, useRef } from "react";
+import { useRef, useCallback } from "react";
+import { useCanvas } from "../hooks/useCanvas";
 
 const GameOfLifeBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const gridRef = useRef<number[][]>([]);
+  const colsRef = useRef(0);
+  const rowsRef = useRef(0);
+  const cellSize = 20;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // Initialize grid
+  const initGrid = useCallback((width: number, height: number) => {
+    const cols = Math.floor(width / cellSize);
+    const rows = Math.floor(height / cellSize);
+    colsRef.current = cols;
+    rowsRef.current = rows;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    gridRef.current = Array(rows)
+      .fill(null)
+      .map(() =>
+        Array(cols)
+          .fill(null)
+          .map(() => (Math.random() > 0.85 ? 1 : 0))
+      );
+  }, []);
 
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    // Game of Life configuration
-    const cellSize = 20;
-    const cols = Math.floor(canvas.width / cellSize);
-    const rows = Math.floor(canvas.height / cellSize);
-
-    // Initialize grid with random cells
-    let grid: number[][] = [];
-    const initializeGrid = () => {
-      grid = Array(rows)
-        .fill(null)
-        .map(() =>
-          Array(cols)
-            .fill(null)
-            .map(() => (Math.random() > 0.85 ? 1 : 0))
-        );
-    };
-    initializeGrid();
-
-    // Count neighbors
-    const countNeighbors = (x: number, y: number): number => {
-      let count = 0;
-      for (let i = -1; i <= 1; i++) {
-        for (let j = -1; j <= 1; j++) {
-          if (i === 0 && j === 0) continue;
-          const row = (x + i + rows) % rows;
-          const col = (y + j + cols) % cols;
-          count += grid[row][col];
-        }
+  const countNeighbors = (grid: number[][], x: number, y: number, rows: number, cols: number) => {
+    let count = 0;
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) continue;
+        const row = (x + i + rows) % rows;
+        const col = (y + j + cols) % cols;
+        count += grid[row][col];
       }
-      return count;
-    };
+    }
+    return count;
+  };
 
-    // Update grid based on Game of Life rules
-    const updateGrid = () => {
+  const draw = useCallback((ctx: CanvasRenderingContext2D, frameCount: number, width: number, height: number) => {
+    // Initialize if needed or resized significantly
+    if (gridRef.current.length === 0 || 
+        Math.abs(gridRef.current.length - Math.floor(height / cellSize)) > 2) {
+      initGrid(width, height);
+    }
+
+    // Update grid every 5 frames for visible speed (approx 12 updates/sec at 60fps)
+    if (frameCount % 5 === 0) {
+      const grid = gridRef.current;
+      const rows = rowsRef.current;
+      const cols = colsRef.current;
+      
       const newGrid = grid.map((row, x) =>
         row.map((cell, y) => {
-          const neighbors = countNeighbors(x, y);
-          // Conway's Game of Life rules
+          const neighbors = countNeighbors(grid, x, y, rows, cols);
           if (cell === 1) {
             return neighbors === 2 || neighbors === 3 ? 1 : 0;
           } else {
@@ -63,51 +59,29 @@ const GameOfLifeBackground = () => {
           }
         })
       );
-      grid = newGrid;
-    };
+      gridRef.current = newGrid;
+    }
 
-    // Draw grid
-    const draw = () => {
-      // Clear canvas with black background
-      ctx.fillStyle = "#0a0a0a";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Draw
+    ctx.fillStyle = "#0a0a0a";
+    ctx.fillRect(0, 0, width, height);
 
-      // Draw cells
-      for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < cols; j++) {
-          if (grid[i][j] === 1) {
-            // Draw white cells with brutalist style
-            ctx.fillStyle = "#ffffff";
-            ctx.fillRect(j * cellSize, i * cellSize, cellSize - 2, cellSize - 2);
-          } else {
-            // Draw grid lines
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
-            ctx.strokeRect(j * cellSize, i * cellSize, cellSize, cellSize);
-          }
+    const grid = gridRef.current;
+    ctx.fillStyle = "#ffffff";
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
+
+    for (let i = 0; i < rowsRef.current; i++) {
+      for (let j = 0; j < colsRef.current; j++) {
+        if (grid[i] && grid[i][j] === 1) {
+          ctx.fillRect(j * cellSize, i * cellSize, cellSize - 2, cellSize - 2);
+        } else {
+          ctx.strokeRect(j * cellSize, i * cellSize, cellSize, cellSize);
         }
       }
-    };
+    }
+  }, [initGrid]);
 
-    // Animation loop - SLOWER (45 FPS instead of 30) for better performance
-    let frameCount = 0;
-    const fps = 45; // Higher number = slower animation, better performance
-    const animate = () => {
-      frameCount++;
-      if (frameCount % fps === 0) {
-        updateGrid();
-        draw();
-      }
-      animationId = requestAnimationFrame(animate);
-    };
-
-    let animationId = requestAnimationFrame(animate);
-
-    // Cleanup
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resizeCanvas);
-    };
-  }, []);
+  const canvasRef = useCanvas(draw, { animate: true });
 
   return (
     <canvas
