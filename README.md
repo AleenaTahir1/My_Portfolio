@@ -69,7 +69,7 @@ Inspired by [Polar.sh](https://polar.sh), [Linear.app](https://linear.app/compan
 
 ```bash
 # Install dependencies
-npm install
+npm install --legacy-peer-deps
 
 # Run development server
 npm run dev

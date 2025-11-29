@@ -4,6 +4,22 @@ import ProjectSchema from "./ProjectSchema";
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Portkiller",
+      description:
+        "A fast Windows utility to visualize and kill processes blocking specific ports. Built with Tauri, Rust, and Preact.",
+      technologies: ["Tauri", "Rust", "Preact"],
+      github: "https://github.com/Razee4315/portkiller/releases/tag/main",
+      year: "2025",
+    },
+    {
+      title: "ClipStream",
+      description:
+        "A lightweight, context-aware clipboard manager for Windows that feels native to the OS.",
+      technologies: ["Rust", "Windows API"],
+      github: "https://github.com/Razee4315/clipstream/releases/tag/build",
+      year: "2025",
+    },
+    {
       title: "Spartan",
       description:
         "Engineered a full-stack call agent application for real estate professionals to manage client interactions. Integrated Twilio for phone calls/SMS, Deepgram for transcription, and OpenAI for AI-driven suggestions and filtering. Utilized Supabase for real-time database management and authentication.",
@@ -98,7 +114,7 @@ const ProjectsSection = () => {
     >
       {/* Static noise background container - absolute and contained */}
       <div className="absolute inset-0 noise-bg opacity-30 pointer-events-none"></div>
-      
+
       <ProjectSchema projects={projects} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         {/* Section Header */}

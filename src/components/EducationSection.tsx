@@ -9,7 +9,7 @@ const EducationSection = () => {
       institution: "National University of Technology (NUTECH)",
       location: "Islamabad, Pakistan",
       duration: "Aug 2023 – Present",
-      status: "Currently in 4th semester",
+      status: "Currently in 5th semester",
       description: "Specializing in Machine Learning, Deep Learning, and AI Systems Development."
     },
     {

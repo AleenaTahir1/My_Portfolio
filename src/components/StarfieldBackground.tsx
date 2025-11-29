@@ -17,7 +17,7 @@ const StarfieldContainer = styled.div`
 const NetworkCanvas = styled.canvas`
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  opacity: 1.0;
 `;
 
 const isMobileDevice = () => window.innerWidth <= 768;
@@ -38,25 +38,25 @@ type Node = {
   isMain: boolean;
   color: string;
   pulseSpeed: number;
-  phase: number; 
+  phase: number;
 };
 
 const StarfieldBackground = () => {
   const nodesRef = useRef<Node[]>([]);
-  const mousePositionRef = useRef<{x: number, y: number} | null>(null);
-  const maxDistance = 120;
+  const mousePositionRef = useRef<{ x: number, y: number } | null>(null);
+  const maxDistance = 150;
   const initializedRef = useRef(false);
 
   // Initialize nodes
   const initNodes = useCallback((width: number, height: number) => {
     const isMobile = isMobileDevice();
-    const count = isMobile ? 40 : 80; // Reduced count for better performance
+    const count = isMobile ? 60 : 120; // Increased count for better visibility
     const nodes: Node[] = [];
 
     for (let i = 0; i < count; i++) {
       const isMain = Math.random() < 0.15;
       const speed = isMain ? 0.3 : 0.5;
-      
+
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -79,12 +79,12 @@ const StarfieldBackground = () => {
     }
 
     ctx.clearRect(0, 0, width, height);
-    
+
     // Update nodes
     const nodes = nodesRef.current;
     // const isMobile = isMobileDevice(); // Removed unused variable
     const mouse = mousePositionRef.current;
-    
+
     // Spatial partitioning
     const gridSize = maxDistance;
     const grid: Map<string, number[]> = new Map();
@@ -104,25 +104,25 @@ const StarfieldBackground = () => {
       if (mouse) {
         const dx = mouse.x - node.x;
         const dy = mouse.y - node.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
+        const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 200) {
-           const force = (200 - dist) / 200;
-           if (node.isMain) {
-              // Attract
-              node.x += (dx / dist) * force * 0.5;
-              node.y += (dy / dist) * force * 0.5;
-           } else {
-              // Repel
-              node.x -= (dx / dist) * force * 1;
-              node.y -= (dy / dist) * force * 1;
-           }
+          const force = (200 - dist) / 200;
+          if (node.isMain) {
+            // Attract
+            node.x += (dx / dist) * force * 0.5;
+            node.y += (dy / dist) * force * 0.5;
+          } else {
+            // Repel
+            node.x -= (dx / dist) * force * 1;
+            node.y -= (dy / dist) * force * 1;
+          }
         }
       }
 
       // Bounce
       if (node.x < 0 || node.x > width) node.vx *= -1;
       if (node.y < 0 || node.y > height) node.vy *= -1;
-      
+
       // Clamp
       node.x = Math.max(0, Math.min(width, node.x));
       node.y = Math.max(0, Math.min(height, node.y));
@@ -135,52 +135,52 @@ const StarfieldBackground = () => {
 
     // Draw connections
     ctx.lineWidth = 0.5;
-    
+
     // Check connections using grid
     // Only check current cell and neighbors (top-left, top, top-right, left) to avoid duplicates
     const neighborOffsets = [
-       {x: 0, y: 0}, {x: 1, y: 0}, {x: 0, y: 1}, {x: 1, y: 1} 
+      { x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }
     ];
 
     // Helper to draw line
     const drawLine = (n1: Node, n2: Node, dist: number) => {
-        const opacity = 1 - dist / maxDistance;
-        if (opacity <= 0) return;
-        
-        ctx.beginPath();
-        ctx.strokeStyle = n1.isMain || n2.isMain 
-           ? `rgba(76, 161, 175, ${opacity * 0.5})`
-           : `rgba(255, 255, 255, ${opacity * 0.15})`;
-        ctx.moveTo(n1.x, n1.y);
-        ctx.lineTo(n2.x, n2.y);
-        ctx.stroke();
+      const opacity = 1 - dist / maxDistance;
+      if (opacity <= 0) return;
+
+      ctx.beginPath();
+      ctx.strokeStyle = n1.isMain || n2.isMain
+        ? `rgba(76, 161, 175, ${opacity * 0.5})`
+        : `rgba(255, 255, 255, ${opacity * 0.3})`;
+      ctx.moveTo(n1.x, n1.y);
+      ctx.lineTo(n2.x, n2.y);
+      ctx.stroke();
     };
 
     grid.forEach((indices, key) => {
-        const [gx, gy] = key.split(',').map(Number);
-        
-        // Check against nodes in same cell and neighbor cells
-        neighborOffsets.forEach(offset => {
-            const neighborKey = `${gx + offset.x},${gy + offset.y}`;
-            const neighborIndices = grid.get(neighborKey);
-            if (!neighborIndices) return;
+      const [gx, gy] = key.split(',').map(Number);
 
-            for (const i of indices) {
-                for (const j of neighborIndices) {
-                    if (offset.x === 0 && offset.y === 0 && i >= j) continue; // avoid self and duplicates in same cell
-                    
-                    const n1 = nodes[i];
-                    const n2 = nodes[j];
-                    const dx = n1.x - n2.x;
-                    const dy = n1.y - n2.y;
-                    const dist = Math.sqrt(dx*dx + dy*dy);
-                    
-                    if (dist < maxDistance) {
-                        drawLine(n1, n2, dist);
-                    }
-                }
+      // Check against nodes in same cell and neighbor cells
+      neighborOffsets.forEach(offset => {
+        const neighborKey = `${gx + offset.x},${gy + offset.y}`;
+        const neighborIndices = grid.get(neighborKey);
+        if (!neighborIndices) return;
+
+        for (const i of indices) {
+          for (const j of neighborIndices) {
+            if (offset.x === 0 && offset.y === 0 && i >= j) continue; // avoid self and duplicates in same cell
+
+            const n1 = nodes[i];
+            const n2 = nodes[j];
+            const dx = n1.x - n2.x;
+            const dy = n1.y - n2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < maxDistance) {
+              drawLine(n1, n2, dist);
             }
-        });
+          }
+        }
+      });
     });
 
     // Draw nodes
@@ -188,19 +188,19 @@ const StarfieldBackground = () => {
       ctx.beginPath();
       const pulse = 1 + Math.sin(frameCount * node.pulseSpeed + node.phase) * 0.2;
       ctx.arc(node.x, node.y, node.size * pulse, 0, Math.PI * 2);
-      
+
       if (node.isMain) {
-          // Efficient glow
-          ctx.fillStyle = `${node.color}, 0.8)`;
-          ctx.fill();
-          
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, node.size * pulse * 2, 0, Math.PI * 2);
-          ctx.fillStyle = `${node.color}, 0.2)`;
-          ctx.fill();
+        // Efficient glow
+        ctx.fillStyle = `${node.color}, 0.8)`;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.size * pulse * 2, 0, Math.PI * 2);
+        ctx.fillStyle = `${node.color}, 0.2)`;
+        ctx.fill();
       } else {
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-          ctx.fill();
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fill();
       }
     });
 
@@ -209,31 +209,31 @@ const StarfieldBackground = () => {
   const canvasRef = useCanvas(draw, { animate: true });
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-     const rect = canvasRef.current?.getBoundingClientRect();
-     if (rect) {
-         mousePositionRef.current = {
-             x: e.clientX - rect.left,
-             y: e.clientY - rect.top
-         };
-     }
+    const rect = canvasRef.current?.getBoundingClientRect();
+    if (rect) {
+      mousePositionRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      };
+    }
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-      mousePositionRef.current = null;
+    mousePositionRef.current = null;
   }, []);
 
   useEffect(() => {
-      const hero = document.getElementById('home');
+    const hero = document.getElementById('home');
+    if (hero) {
+      hero.addEventListener('mousemove', handleMouseMove);
+      hero.addEventListener('mouseleave', handleMouseLeave);
+    }
+    return () => {
       if (hero) {
-          hero.addEventListener('mousemove', handleMouseMove);
-          hero.addEventListener('mouseleave', handleMouseLeave);
+        hero.removeEventListener('mousemove', handleMouseMove);
+        hero.removeEventListener('mouseleave', handleMouseLeave);
       }
-      return () => {
-          if (hero) {
-              hero.removeEventListener('mousemove', handleMouseMove);
-              hero.removeEventListener('mouseleave', handleMouseLeave);
-          }
-      };
+    };
   }, [handleMouseMove, handleMouseLeave]);
 
   return (

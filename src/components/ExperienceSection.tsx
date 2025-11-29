@@ -8,6 +8,10 @@ const ExperienceSection = () => {
       year: "2025",
       location: "Islamabad, Pakistan",
       id: "01",
+      description: [
+        "Spearheaded the development of scalable web solutions, optimizing frontend performance and backend efficiency.",
+        "Collaborated with cross-functional teams to deliver high-quality software products on time."
+      ]
     },
     {
       company: "Neuralogic",
@@ -15,6 +19,10 @@ const ExperienceSection = () => {
       year: "2025",
       location: "Islamabad, Pakistan",
       id: "02",
+      description: [
+        "Contributed to the architecture and implementation of complex software systems, ensuring high code quality and maintainability.",
+        "Implemented robust APIs and integrated third-party services to enhance application functionality."
+      ]
     },
   ];
 
@@ -117,23 +125,17 @@ const ExperienceSection = () => {
                     <div className="text-gray-500 transition-all duration-300 group-hover:text-gray-400">
                       <span className="text-white">{">"}</span> cat role.txt
                     </div>
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="pl-4 text-gray-300 leading-relaxed transition-all duration-300 group-hover:translate-x-2 break-words"
-                    >
-                      Building scalable web applications and innovative
-                      solutions.
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.7 }}
-                      className="pl-4 text-gray-300 leading-relaxed transition-all duration-300 group-hover:translate-x-2 break-words"
-                    >
-                      Working with modern technologies and best practices.
-                    </motion.div>
+                    {exp.description.map((desc, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.6 + (i * 0.1) }}
+                        className="pl-4 text-gray-300 leading-relaxed transition-all duration-300 group-hover:translate-x-2 break-words"
+                      >
+                        {desc}
+                      </motion.div>
+                    ))}
                   </motion.div>
 
                   {/* Tech Stack Indicator */}

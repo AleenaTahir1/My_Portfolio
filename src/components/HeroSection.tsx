@@ -36,28 +36,28 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center bg-brutalist-black overflow-hidden pt-16"
     >
       <HeroBackgroundAnimation />
-      
+
       {/* Gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brutalist-black/90 via-brutalist-black/80 to-transparent" style={{ zIndex: 0 }}></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-brutalist-black/80 via-brutalist-black/60 to-transparent" style={{ zIndex: 0 }}></div>
 
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 pb-24 md:pb-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Profile Picture in Terminal Window */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center lg:justify-end order-1 lg:order-1"
+            className="flex justify-center lg:justify-end order-1 lg:order-1 w-full"
           >
-            <div 
+            <div
               className="relative group perspective-1000"
             >
               {/* Terminal Window Frame - Added subtle interactive rotation on hover */}
-              <motion.div 
+              <motion.div
                 whileHover={{ rotateY: 5, rotateX: -5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                className="border-4 border-white bg-brutalist-darkgray shadow-[12px_12px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-[20px_20px_0_rgba(255,255,255,0.2)]"
+                className="border-4 border-white bg-brutalist-darkgray shadow-none md:shadow-[12px_12px_0_rgba(255,255,255,0.1)] transition-all duration-300 hover:shadow-none md:hover:shadow-[20px_20px_0_rgba(255,255,255,0.2)]"
               >
                 {/* Terminal Header Bar */}
                 <div className="border-b-4 border-white bg-brutalist-black p-3 md:p-4">
@@ -97,7 +97,7 @@ const HeroSection = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.5 }}
-                    className="relative"
+                    className="relative w-fit mx-auto"
                   >
                     <img
                       src={`${import.meta.env.BASE_URL}profile.webp`}
@@ -131,21 +131,21 @@ const HeroSection = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{ delay: 1, duration: 0.3 }}
-                className="absolute inset-0 border-4 border-white pointer-events-none"
+                className="absolute inset-0 border-4 border-white pointer-events-none hidden md:block"
                 style={{ transform: "translate(8px, -8px)" }}
               ></motion.div>
-            </div>
-          </motion.div>
+            </div >
+          </motion.div >
 
           {/* Right Column - Text Content */}
-          <motion.div
+          < motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6 md:space-y-8 order-2 lg:order-2"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 md:space-y-8 order-2 lg:order-2 w-full"
           >
             {/* Terminal prompt line */}
-            <motion.div
+            < motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
@@ -155,7 +155,7 @@ const HeroSection = () => {
               <span className="text-gray-400">:</span>
               <span className="text-white">~</span>
               <span className="text-gray-400">$</span>
-            </motion.div>
+            </motion.div >
 
             {/* Main heading */}
             <motion.h1
@@ -174,7 +174,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="border-l-4 border-white pl-4 sm:pl-6 py-3 hover:border-l-8 transition-all duration-300 hover:bg-white/5"
+              className="border-b-2 lg:border-b-0 lg:border-l-4 border-white pb-2 lg:pb-0 lg:pl-6 py-3 hover:lg:border-l-8 transition-all duration-300 hover:bg-white/5 w-fit mx-auto lg:mx-0"
             >
               <p className="font-mono text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 leading-relaxed break-words">
                 AI Engineer | Full Stack Engineer
@@ -196,7 +196,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Website link */}
-            <motion.div
+            < motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.4 }}
@@ -214,14 +214,14 @@ const HeroSection = () => {
                   saqlainabbas.app
                 </span>
               </a>
-            </motion.div>
+            </motion.div >
 
             {/* CTA Buttons */}
-            <motion.div
+            < motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
-              className="flex flex-col sm:flex-row gap-3 pt-4 w-full"
+              className="flex flex-col sm:flex-row gap-3 pt-4 w-full justify-center lg:justify-start"
             >
               <button
                 onClick={scrollToProjects}
@@ -245,39 +245,39 @@ const HeroSection = () => {
                   →
                 </span>
               </a>
-            </motion.div>
+            </motion.div >
 
             {/* Status indicator */}
-            <motion.div
+            < motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.8 }}
-              className="pt-6 font-mono text-xs md:text-sm text-gray-500 flex items-center gap-2"
+              className="pt-6 font-mono text-xs md:text-sm text-gray-500 flex items-center justify-center lg:justify-start gap-2"
             >
               <span className="inline-block w-2 h-2 bg-green-500 animate-pulse"></span>
               <span>Available for opportunities</span>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
+            </motion.div >
+          </motion.div >
+        </div >
+      </div >
 
       {/* Scroll Indicator */}
-      <motion.div 
+      < motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{ delay: 2, duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 cursor-pointer hidden md:block"
         onClick={scrollToProjects}
       >
         <div className="flex flex-col items-center gap-2">
-           <span className="font-mono text-xs text-gray-500">SCROLL</span>
-           <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+          <span className="font-mono text-xs text-gray-500">SCROLL</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
         </div>
-      </motion.div>
+      </motion.div >
 
       {/* Bottom decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white opacity-20 z-10"></div>
-    </section>
+      < div className="absolute bottom-0 left-0 right-0 h-px bg-white opacity-20 z-10" ></div >
+    </section >
   );
 };
 

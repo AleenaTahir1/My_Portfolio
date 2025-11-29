@@ -32,74 +32,74 @@ function App() {
         <SEO />
         <StructuredData />
         <Navbar />
-      <main>
-        <HeroSection />
-        <Suspense fallback={<SectionLoader />}>
-          <AboutSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <EducationSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ExperienceSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ProjectsSection />
-        </Suspense>
-        <Suspense fallback={<SectionLoader />}>
-          <ContactSection />
-        </Suspense>
-      </main>
+        <main>
+          <HeroSection />
+          <Suspense fallback={<SectionLoader />}>
+            <AboutSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <EducationSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <ExperienceSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <ProjectsSection />
+          </Suspense>
+          <Suspense fallback={<SectionLoader />}>
+            <ContactSection />
+          </Suspense>
+        </main>
 
-      {/* Footer */}
-      <footer className="border-t-2 border-white bg-brutalist-black py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-          <div className="font-mono text-xs sm:text-sm text-gray-500 space-y-4">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <div className="break-words">
-                <span className="text-white">saqlain@portfolio</span>
-                <span className="text-gray-600">:</span>
-                <span className="text-white">~</span>
-                <span className="text-gray-600">$</span>
-                <span className="ml-2">© 2024 Saqlain Abbas</span>
-              </div>
+        {/* Footer */}
+        <footer className="border-t-2 border-white bg-brutalist-black py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+            <div className="font-mono text-xs sm:text-sm text-gray-500 space-y-4">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div className="break-words">
+                  <span className="text-white">saqlain@portfolio</span>
+                  <span className="text-gray-600">:</span>
+                  <span className="text-white">~</span>
+                  <span className="text-gray-600">$</span>
+                  <span className="ml-2">© 2025 Saqlain Abbas</span>
+                </div>
 
-              <div className="flex flex-wrap gap-3 sm:gap-6">
-                <a
-                  href="https://github.com/Razee4315"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:underline transition-all duration-300"
-                >
-                  [GitHub]
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/saqlainrazee/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:underline transition-all duration-300"
-                >
-                  [LinkedIn]
-                </a>
-                <a
-                  href="mailto:saqlainrazee@gmail.com"
-                  className="text-white hover:underline transition-all duration-300"
-                >
-                  [Email]
-                </a>
-                <a
-                  href="https://saqlainabbas.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:underline transition-all duration-300"
-                >
-                  [Website]
-                </a>
+                <div className="flex flex-wrap gap-3 sm:gap-6">
+                  <a
+                    href="https://github.com/Razee4315"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:underline transition-all duration-300"
+                  >
+                    [GitHub]
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/saqlainrazee/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:underline transition-all duration-300"
+                  >
+                    [LinkedIn]
+                  </a>
+                  <a
+                    href="mailto:saqlainrazee@gmail.com"
+                    className="text-white hover:underline transition-all duration-300"
+                  >
+                    [Email]
+                  </a>
+                  <a
+                    href="https://saqlainabbas.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:underline transition-all duration-300"
+                  >
+                    [Website]
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
       </div>
     </ParallaxProvider>
   );
