@@ -72,9 +72,9 @@ const AIGridBackground = () => {
 
         // Grid settings
         const gridSize = 60;
-        const lineColor = dark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.06)';
-        const accentColor = dark ? 'rgba(76, 161, 175, 0.5)' : 'rgba(50, 100, 140, 0.5)';
-        const pointColor = dark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.3)';
+        const lineColor = dark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.03)';
+        const accentColor = dark ? 'rgba(76, 161, 175, 0.2)' : 'rgba(50, 100, 140, 0.2)';
+        const pointColor = dark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.2)';
 
         // Draw straight grid lines
         ctx.strokeStyle = lineColor;

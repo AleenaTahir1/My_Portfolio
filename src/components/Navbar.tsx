@@ -47,10 +47,9 @@ const Navbar = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="font-mono text-[var(--text-primary)] text-sm px-4 py-2 transition-all duration-200 border-2 border-transparent hover:border-b-[var(--border-color)] relative group"
+                  className="font-mono text-[var(--text-primary)] text-sm px-4 py-2 transition-all duration-200 border-b-2 border-transparent hover:border-[var(--border-color)]"
                 >
-                  <span className="relative z-10">{item.label}</span>
-                  <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-[var(--text-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
+                  {item.label}
                 </button>
               ))}
               <ThemeToggle />
