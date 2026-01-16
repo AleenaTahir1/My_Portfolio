@@ -1,12 +1,12 @@
-import StarfieldBackground from './StarfieldBackground';
+import AIGridBackground from './AIGridBackground';
 
 /**
- * This component is a wrapper around StarfieldBackground for backward compatibility.
- * We've migrated from Three.js to a custom Canvas implementation for better performance.
+ * This component wraps the background animation for the hero section.
+ * Using AI-themed grid animation with subtle wave effects and floating data points.
  */
 const HeroBackgroundAnimation = () => {
-  // Simply return the new StarfieldBackground component
-  return <StarfieldBackground />;
+  return <AIGridBackground />;
 };
 
 export default HeroBackgroundAnimation;
+
