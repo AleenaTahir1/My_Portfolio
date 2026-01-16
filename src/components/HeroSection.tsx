@@ -37,9 +37,6 @@ const HeroSection = () => {
     >
       <HeroBackgroundAnimation />
 
-      {/* Gradient overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brutalist-black/80 via-brutalist-black/60 to-transparent" style={{ zIndex: 0 }}></div>
-
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 pb-24 md:pb-32 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -103,7 +100,7 @@ const HeroSection = () => {
                       src={`${import.meta.env.BASE_URL}profile.webp`}
                       alt="Saqlain Abbas - AI Engineer and Full Stack Developer professional profile picture"
                       fetchPriority="high"
-                      className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-white transition-all duration-300 group-hover:grayscale-0 grayscale hover:scale-[1.02]"
+                      className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-[var(--border-color)] transition-all duration-300 hover:scale-[1.02]"
                     />
 
                     {/* Corner Markers */}
@@ -260,20 +257,6 @@ const HeroSection = () => {
           </motion.div >
         </div >
       </div >
-
-      {/* Scroll Indicator */}
-      < motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ delay: 2, duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 cursor-pointer hidden md:block"
-        onClick={scrollToProjects}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-mono text-xs text-gray-500">SCROLL</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
-        </div>
-      </motion.div >
 
       {/* Bottom decoration */}
       < div className="absolute bottom-0 left-0 right-0 h-px bg-white opacity-20 z-10" ></div >

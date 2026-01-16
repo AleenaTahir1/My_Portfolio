@@ -17,15 +17,15 @@ const ContactSection = lazy(() => import("./components/ContactSection"));
 
 // Loading fallback component
 const SectionLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-brutalist-black">
-    <div className="font-mono text-white text-sm">Loading...</div>
+  <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+    <div className="font-mono text-[var(--text-primary)] text-sm">Loading...</div>
   </div>
 );
 
 function App() {
   return (
     <ParallaxProvider>
-      <div className="bg-brutalist-black min-h-screen">
+      <div className="bg-[var(--bg-primary)] min-h-screen transition-colors duration-300">
         <LoadingScreen />
         <CustomCursor />
         <ScrollProgress />
@@ -52,7 +52,7 @@ function App() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t-2 border-white bg-brutalist-black py-8">
+        <footer className="border-t-2 border-[var(--border-color)] bg-[var(--bg-primary)] py-8 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
             <div className="font-mono text-xs sm:text-sm text-gray-500 space-y-4">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">

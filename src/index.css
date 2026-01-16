@@ -5,6 +5,42 @@
 @tailwind utilities;
 
 @layer base {
+
+    /* Theme CSS Variables */
+    :root {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1a1a1a;
+        --bg-tertiary: #2a2a2a;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --text-muted: #666666;
+        --border-color: #ffffff;
+        --accent-color: #22c55e;
+        --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Dark Theme (default) */
+    html.dark {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1a1a1a;
+        --bg-tertiary: #2a2a2a;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --text-muted: #666666;
+        --border-color: #ffffff;
+    }
+
+    /* Light Theme */
+    html.light {
+        --bg-primary: #f5f5f5;
+        --bg-secondary: #e5e5e5;
+        --bg-tertiary: #d4d4d4;
+        --text-primary: #0a0a0a;
+        --text-secondary: #404040;
+        --text-muted: #737373;
+        --border-color: #0a0a0a;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -25,12 +61,13 @@
         width: 100%;
         min-height: 100vh;
         overflow-x: hidden;
-        background-color: #0a0a0a;
-        color: #ffffff;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
         font-family: "JetBrains Mono", "Space Mono", "IBM Plex Mono", monospace;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        transition: var(--transition-theme);
     }
 
     #root {
@@ -44,118 +81,204 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: #0a0a0a;
-        border-left: 1px solid #ffffff;
+        background: var(--bg-primary);
+        border-left: 1px solid var(--border-color);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #ffffff;
-        border: 2px solid #0a0a0a;
+        background: var(--border-color);
+        border: 2px solid var(--bg-primary);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #cccccc;
+        background: var(--text-secondary);
     }
 
     /* Selection */
     ::selection {
-        background: #ffffff;
-        color: #0a0a0a;
+        background: var(--text-primary);
+        color: var(--bg-primary);
     }
 
     ::-moz-selection {
-        background: #ffffff;
-        color: #0a0a0a;
+        background: var(--text-primary);
+        color: var(--bg-primary);
     }
 }
 
 @layer components {
-    /* Brutalist button */
+    /* ===== THEME-AWARE BRUTALIST COMPONENTS ===== */
+
+    /* Brutalist button - theme aware */
     .btn-brutalist {
         @apply font-mono font-bold text-xs sm:text-sm md:text-base uppercase tracking-wider;
-        @apply border-2 border-white bg-black text-white;
         @apply px-4 sm:px-6 py-2 sm:py-3 transition-all duration-300;
-        @apply hover:bg-white hover:text-black;
         @apply active:translate-x-[2px] active:translate-y-[2px];
         @apply min-h-[44px];
         cursor: pointer;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        border: 2px solid var(--border-color);
+    }
+
+    .btn-brutalist:hover {
+        background-color: var(--text-primary);
+        color: var(--bg-primary);
     }
 
     /* Brutalist link */
     .link-brutalist {
-        @apply font-mono font-medium text-white;
+        @apply font-mono font-medium;
         @apply relative inline-block;
         @apply hover:before:w-full;
         @apply transition-all duration-300;
+        color: var(--text-primary);
     }
 
     .link-brutalist::before {
-        @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-white;
+        @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px];
         @apply transition-all duration-300;
+        background-color: var(--text-primary);
     }
 
     /* Terminal cursor */
     .cursor {
-        @apply inline-block w-[10px] h-[20px] bg-white ml-1;
+        @apply inline-block w-[10px] h-[20px] ml-1;
+        background-color: var(--text-primary);
         animation: blink 1s step-end infinite;
     }
 
     /* Section divider */
     .section-divider {
-        @apply w-full h-[2px] bg-white my-8;
-    }
-
-    /* Grid lines */
-    .grid-lines {
-        background-image:
-            linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.05) 1px,
-                transparent 1px
-            );
-        background-size: 50px 50px;
-    }
-
-    /* Terminal input */
-    .terminal-input {
-        @apply font-mono bg-transparent border-2 border-white;
-        @apply px-4 py-2 text-white placeholder-gray-400;
-        @apply focus:outline-none focus:ring-0 focus:border-white;
-        @apply transition-all duration-300;
-    }
-
-    .terminal-input:focus {
-        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    /* Card brutalist */
-    .card-brutalist {
-        @apply border-2 border-white bg-black;
-        @apply transition-all duration-300;
-        @apply hover:translate-x-[-4px] hover:translate-y-[-4px];
-        box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.8);
-    }
-
-    .card-brutalist:hover {
-        box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.8);
-    }
-
-    /* Grayscale images */
-    .grayscale-hover {
-        @apply grayscale transition-all duration-300;
-    }
-
-    .grayscale-hover:hover {
-        @apply grayscale-0;
+        @apply w-full h-[2px] my-8;
+        background-color: var(--border-color);
     }
 }
 
+/* ===== GLOBAL THEME OVERRIDES ===== */
+/* These override hardcoded Tailwind color classes in light mode */
+
+html.light .bg-brutalist-black {
+    background-color: var(--bg-primary) !important;
+}
+
+html.light .bg-brutalist-darkgray {
+    background-color: var(--bg-secondary) !important;
+}
+
+html.light .bg-brutalist-gray {
+    background-color: var(--bg-tertiary) !important;
+}
+
+html.light .text-white {
+    color: var(--text-primary) !important;
+}
+
+html.light .text-gray-300 {
+    color: var(--text-secondary) !important;
+}
+
+html.light .text-gray-400 {
+    color: var(--text-secondary) !important;
+}
+
+html.light .text-gray-500 {
+    color: var(--text-muted) !important;
+}
+
+html.light .text-gray-600 {
+    color: var(--text-muted) !important;
+}
+
+html.light .border-white {
+    border-color: var(--border-color) !important;
+}
+
+html.light .bg-white {
+    background-color: var(--text-primary) !important;
+}
+
+html.light .text-black {
+    color: var(--bg-primary) !important;
+}
+
+/* Card brutalist - theme aware with texture */
+.card-brutalist {
+    @apply transition-all duration-300;
+    @apply hover:translate-x-[-4px] hover:translate-y-[-4px];
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-primary);
+    box-shadow: 4px 4px 0 var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Noise texture overlay */
+.card-brutalist::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Corner accent marks */
+.card-brutalist::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid var(--border-color);
+    border-left: 2px solid var(--border-color);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.card-brutalist:hover::after {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+}
+
+.card-brutalist:hover {
+    box-shadow: 8px 8px 0 var(--border-color);
+}
+
+/* Ensure content is above texture */
+.card-brutalist>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Terminal input - theme aware */
+.terminal-input {
+    @apply font-mono;
+    @apply px-4 py-2;
+    @apply focus:outline-none focus:ring-0;
+    @apply transition-all duration-300;
+    background-color: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.terminal-input::placeholder {
+    color: var(--text-muted);
+}
+
+.terminal-input:focus {
+    border-color: var(--border-color);
+    box-shadow: 4px 4px 0 var(--border-color);
+}
+
 @layer utilities {
+
     /* Text shadow for brutalist effect */
     .text-brutalist-shadow {
         text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.2);
@@ -203,10 +326,12 @@
 
 /* Keyframe animations */
 @keyframes blink {
+
     0%,
     50% {
         opacity: 1;
     }
+
     51%,
     100% {
         opacity: 0;
@@ -217,6 +342,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -227,6 +353,7 @@
         transform: translateX(-20px);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -237,6 +364,7 @@
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
@@ -244,6 +372,7 @@
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
