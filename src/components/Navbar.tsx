@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -14,15 +13,6 @@ const Navbar = () => {
     { id: "projects", label: "04. Work" },
     { id: "contact", label: "05. Contact" },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -57,9 +47,10 @@ const Navbar = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="font-mono text-[var(--text-primary)] text-sm px-4 py-2 hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200 border-2 border-transparent hover:border-[var(--border-color)]"
+                  className="font-mono text-[var(--text-primary)] text-sm px-4 py-2 transition-all duration-200 border-2 border-transparent hover:border-b-[var(--border-color)] relative group"
                 >
-                  {item.label}
+                  <span className="relative z-10">{item.label}</span>
+                  <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-[var(--text-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></span>
                 </button>
               ))}
               <ThemeToggle />
@@ -68,7 +59,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden font-mono text-[var(--text-primary)] text-base border-2 border-[var(--border-color)] px-4 py-2 hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200 min-w-[50px] min-h-[44px] flex items-center justify-center"
+              className="md:hidden font-mono text-[var(--text-primary)] text-base border-2 border-[var(--border-color)] px-4 py-2 hover:opacity-70 transition-all duration-200 min-w-[50px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? "[X]" : "[≡]"}
@@ -99,7 +90,7 @@ const Navbar = () => {
               }}
               transition={{ delay: index * 0.1 }}
               onClick={() => scrollToSection(item.id)}
-              className="font-mono text-[var(--text-primary)] text-lg w-full text-left border-2 border-[var(--border-color)] px-4 py-3 hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)] transition-all duration-200"
+              className="font-mono text-[var(--text-primary)] text-lg w-full text-left border-2 border-[var(--border-color)] px-4 py-3 hover:opacity-70 transition-all duration-200"
             >
               {item.label}
             </motion.button>
