@@ -28,13 +28,13 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     if (savedMode) {
       return savedMode;
     }
-    
+
     // Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      return 'light';
     }
-    
-    return 'light';
+
+    return 'dark';
   });
 
   const toggleTheme = () => {
@@ -42,6 +42,13 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     setMode(newMode);
     localStorage.setItem('theme-mode', newMode);
   };
+
+  // Apply theme class to document
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(mode);
+  }, [mode]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -63,4 +70,4 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-}; 
+};

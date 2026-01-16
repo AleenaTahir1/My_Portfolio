@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import styled from '@emotion/styled';
 import { useCanvas } from '../hooks/useCanvas';
 
@@ -22,11 +22,21 @@ const NetworkCanvas = styled.canvas`
 
 const isMobileDevice = () => window.innerWidth <= 768;
 
-const getRandomColor = () => {
-  const r = Math.floor(Math.random() * 50);
-  const g = Math.floor(Math.random() * 100 + 120);
-  const b = Math.floor(Math.random() * 80 + 175);
-  return `rgba(${r}, ${g}, ${b}`; // Intentionally missing alpha to add later
+// Theme-aware color generator
+const getRandomColor = (isDark: boolean) => {
+  if (isDark) {
+    // Dark mode: blue-ish colors
+    const r = Math.floor(Math.random() * 50);
+    const g = Math.floor(Math.random() * 100 + 120);
+    const b = Math.floor(Math.random() * 80 + 175);
+    return `rgba(${r}, ${g}, ${b}`;
+  } else {
+    // Light mode: darker accent colors
+    const r = Math.floor(Math.random() * 80 + 50);
+    const g = Math.floor(Math.random() * 80 + 80);
+    const b = Math.floor(Math.random() * 100 + 120);
+    return `rgba(${r}, ${g}, ${b}`;
+  }
 };
 
 type Node = {
@@ -46,11 +56,34 @@ const StarfieldBackground = () => {
   const mousePositionRef = useRef<{ x: number, y: number } | null>(null);
   const maxDistance = 150;
   const initializedRef = useRef(false);
+  const [isDark, setIsDark] = useState(true);
+  const isDarkRef = useRef(isDark);
+
+  // Listen for theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    checkTheme();
+
+    // Observe class changes on html element
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Keep ref in sync and reinitialize on theme change
+  useEffect(() => {
+    isDarkRef.current = isDark;
+    initializedRef.current = false; // Force reinitialization with new colors
+  }, [isDark]);
 
   // Initialize nodes
   const initNodes = useCallback((width: number, height: number) => {
     const isMobile = isMobileDevice();
-    const count = isMobile ? 60 : 120; // Increased count for better visibility
+    const count = isMobile ? 60 : 120;
     const nodes: Node[] = [];
 
     for (let i = 0; i < count; i++) {
@@ -64,14 +97,14 @@ const StarfieldBackground = () => {
         vx: (Math.random() - 0.5) * speed,
         vy: (Math.random() - 0.5) * speed,
         isMain,
-        color: isMain ? getRandomColor() : 'rgba(255, 255, 255',
+        color: isMain ? getRandomColor(isDark) : (isDark ? 'rgba(255, 255, 255' : 'rgba(0, 0, 0'),
         pulseSpeed: Math.random() * 0.05 + 0.02,
         phase: Math.random() * Math.PI * 2
       });
     }
     nodesRef.current = nodes;
     initializedRef.current = true;
-  }, []);
+  }, [isDark]);
 
   const draw = useCallback((ctx: CanvasRenderingContext2D, frameCount: number, width: number, height: number) => {
     if (!initializedRef.current) {
@@ -148,9 +181,10 @@ const StarfieldBackground = () => {
       if (opacity <= 0) return;
 
       ctx.beginPath();
+      const currentIsDark = isDarkRef.current;
       ctx.strokeStyle = n1.isMain || n2.isMain
-        ? `rgba(76, 161, 175, ${opacity * 0.5})`
-        : `rgba(255, 255, 255, ${opacity * 0.3})`;
+        ? currentIsDark ? `rgba(76, 161, 175, ${opacity * 0.5})` : `rgba(50, 100, 140, ${opacity * 0.5})`
+        : currentIsDark ? `rgba(255, 255, 255, ${opacity * 0.3})` : `rgba(0, 0, 0, ${opacity * 0.3})`;
       ctx.moveTo(n1.x, n1.y);
       ctx.lineTo(n2.x, n2.y);
       ctx.stroke();
@@ -199,7 +233,7 @@ const StarfieldBackground = () => {
         ctx.fillStyle = `${node.color}, 0.2)`;
         ctx.fill();
       } else {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        ctx.fillStyle = isDarkRef.current ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.4)';
         ctx.fill();
       }
     });

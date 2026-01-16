@@ -1,89 +1,35 @@
-import { IconButton, Tooltip } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { motion } from 'framer-motion';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
-
-const StyledToggleButton = styled(IconButton)(({ theme }) => ({
-  position: 'relative',
-  width: 40,
-  height: 40,
-  borderRadius: '50%',
-  background: theme.palette.mode === 'light' 
-    ? 'linear-gradient(135deg, #FFD54F 0%, #FF8F00 100%)'
-    : 'linear-gradient(135deg, #5C6BC0 0%, #3F51B5 100%)',
-  color: '#FFFFFF',
-  boxShadow: theme.palette.mode === 'light'
-    ? '0 4px 12px rgba(255, 193, 7, 0.4)'
-    : '0 4px 12px rgba(63, 81, 181, 0.4)',
-  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-  
-  '&:hover': {
-    transform: 'scale(1.1)',
-    boxShadow: theme.palette.mode === 'light'
-      ? '0 6px 20px rgba(255, 193, 7, 0.6)'
-      : '0 6px 20px rgba(63, 81, 181, 0.6)',
-  },
-  
-  '&:active': {
-    transform: 'scale(0.95)',
-  },
-  
-  '& .MuiSvgIcon-root': {
-    fontSize: '1.2rem',
-    transition: 'all 0.3s ease',
-  },
-}));
-
-const IconWrapper = styled(motion.div)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: '100%',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-});
 
 const ThemeToggle = () => {
   const { mode, toggleTheme } = useTheme();
 
-  const iconVariants = {
-    initial: { scale: 0, rotate: -180, opacity: 0 },
-    animate: { scale: 1, rotate: 0, opacity: 1 },
-    exit: { scale: 0, rotate: 180, opacity: 0 },
-  };
-
   return (
-    <Tooltip 
-      title={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
-      arrow
-      placement="bottom"
+    <motion.button
+      onClick={toggleTheme}
+      className="font-mono text-xs border-2 border-[var(--border-color)] px-3 py-2 transition-all duration-200 flex items-center gap-2 bg-[var(--bg-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)]"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
     >
-      <StyledToggleButton 
-        onClick={toggleTheme}
-        aria-label={`Switch to ${mode === 'light' ? 'dark' : 'light'} mode`}
-      >
-        <IconWrapper
+      <AnimatePresence mode="wait">
+        <motion.span
           key={mode}
-          variants={iconVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 20,
-            duration: 0.3
-          }}
+          initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
+          transition={{ duration: 0.2 }}
+          className="inline-block w-4 text-center"
         >
-          {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
-        </IconWrapper>
-      </StyledToggleButton>
-    </Tooltip>
+          {mode === 'dark' ? '○' : '●'}
+        </motion.span>
+      </AnimatePresence>
+      <span className="hidden sm:inline uppercase tracking-wider">
+        {mode === 'dark' ? 'Light' : 'Dark'}
+      </span>
+    </motion.button>
   );
 };
 
-export default ThemeToggle; 
+export default ThemeToggle;
+
