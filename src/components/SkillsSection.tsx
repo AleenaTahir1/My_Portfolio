@@ -4,12 +4,10 @@ import { motion } from 'framer-motion';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import CodeIcon from '@mui/icons-material/Code';
-import BiotechIcon from '@mui/icons-material/Biotech';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import WebIcon from '@mui/icons-material/Web';
 import BuildIcon from '@mui/icons-material/Build';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
-import PersonIcon from '@mui/icons-material/Person';
 
 const StyledSection = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
@@ -83,34 +81,34 @@ type SkillCategory = {
 
 const skillsData: SkillCategory[] = [
   {
-    category: "Programming Languages",
-    icon: <CodeIcon />,
-    bgIcon: <DataObjectIcon />,
-    skills: ["Python", "JavaScript", "SQL", "R", "Java", "C++"]
-  },
-  {
-    category: "Web Development",
-    icon: <WebIcon />,
-    bgIcon: <CodeIcon />,
-    skills: ["React", "Django", "HTML5", "CSS", "WebSocket", "Gradio"]
-  },
-  {
-    category: "AI And Data Science",
+    category: "AI & Agents",
     icon: <PsychologyIcon />,
     bgIcon: <AutoFixHighIcon />,
-    skills: ["LLM Fine-tuning", "Custom Chatbot Development", "Image Processing Basics", "Data Analysis and Visualization"]
+    skills: ["n8n", "LangChain", "RAG", "OpenAI", "Ollama", "Gemini"]
   },
   {
-    category: "Development Tools",
+    category: "Backend",
     icon: <TerminalIcon />,
-    bgIcon: <BuildIcon />,
-    skills: ["Git", "GitHub", "VS Code", "Visual Studio", "Jupyter Notebooks", "Spyder"]
+    bgIcon: <DataObjectIcon />,
+    skills: ["FastAPI", "Supabase", "ChromaDB", "MongoDB", "Rust", "Python", "Go"]
   },
   {
-    category: "Key Competencies",
-    icon: <PersonIcon />,
-    bgIcon: <BiotechIcon />,
-    skills: ["Analytical Problem-Solving", "Attention to Detail", "Proactive Learning", "Team Collaboration"]
+    category: "DevOps",
+    icon: <BuildIcon />,
+    bgIcon: <CodeIcon />,
+    skills: ["AWS", "CI/CD", "GitHub Actions", "Docker", "Vercel"]
+  },
+  {
+    category: "Frontend",
+    icon: <WebIcon />,
+    bgIcon: <CodeIcon />,
+    skills: ["React", "Next.js", "Tailwind CSS", "TypeScript", "JavaScript"]
+  },
+  {
+    category: "Languages",
+    icon: <CodeIcon />,
+    bgIcon: <DataObjectIcon />,
+    skills: ["Python", "Rust", "Go", "JavaScript", "TypeScript"]
   }
 ];
 

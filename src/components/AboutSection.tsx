@@ -38,9 +38,7 @@ const AboutSection = () => {
               transition={{ delay: 0.3 }}
               className="font-mono font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight break-words"
             >
-              CODE IS MY
-              <br />
-              PLAYGROUND
+              FULL STACK AI DEVELOPER
             </motion.h2>
 
             <div className="border-l-4 border-white pl-4 sm:pl-6 space-y-4">
@@ -51,8 +49,7 @@ const AboutSection = () => {
                 transition={{ delay: 0.4 }}
                 className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
               >
-                I write code that sometimes works. I design things that
-                sometimes look good. Always learning.
+                Need a developer who understands the entire stack from DB to UI and AI? I am Aleena, a Full Stack AI Engineer specializing in building heavy-lifting applications.
               </motion.p>
 
               <motion.p
@@ -62,19 +59,7 @@ const AboutSection = () => {
                 transition={{ delay: 0.5 }}
                 className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
               >
-                From the mountains of Skardu to the frontiers of AI, I'm on a
-                mission to create intelligent solutions that make a difference.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-                className="font-mono text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed break-words"
-              >
-                Blending creativity with technical expertise to shape tomorrow's
-                technology.
+                I combine the speed of Rust and Go with the versatility of Python and React to deliver software that is fast, smart, and scalable. From apps to custom agents, I handle the technical challenges so you can focus on growth.
               </motion.p>
             </div>
 
@@ -91,13 +76,7 @@ const AboutSection = () => {
                   <span className="text-white">{">"}</span> cat about.txt
                 </div>
                 <div className="text-gray-300 pl-4">
-                  <span className="text-white">Location:</span> Skardu, Pakistan
-                </div>
-                <div className="text-gray-300 pl-4">
-                  <span className="text-white">Role:</span> AI Engineer | Full Stack Engineer
-                </div>
-                <div className="text-gray-300 pl-4 break-words">
-                  <span className="text-white">Focus:</span> Machine Learning, Deep Learning, Natural Language Processing (NLP), End-to-End Web & Application Development
+                  <span className="text-white">Location:</span> Islamabad, Pakistan
                 </div>
                 <div className="text-gray-300 pl-4">
                   <span className="text-white">Status:</span>{" "}
@@ -115,7 +94,7 @@ const AboutSection = () => {
             transition={{ delay: 0.4 }}
             className="space-y-6"
           >
-            {/* Feature 1 */}
+            {/* Soft Skill 1 - Problem Solver */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -127,16 +106,15 @@ const AboutSection = () => {
               <div className="font-mono">
                 <div className="text-sm text-gray-500 mb-2">[01]</div>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  AI ENTHUSIAST
+                  PROBLEM SOLVER
                 </h3>
                 <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                  Transforming complex data into intelligent solutions.
-                  Passionate about pushing the boundaries of AI technology.
+                  Breaking down complex challenges into actionable solutions with analytical thinking and creative approaches.
                 </p>
               </div>
             </motion.div>
 
-            {/* Feature 2 */}
+            {/* Soft Skill 2 - Fast Learner */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -148,16 +126,15 @@ const AboutSection = () => {
               <div className="font-mono">
                 <div className="text-sm text-gray-500 mb-2">[02]</div>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  PROBLEM SOLVER
+                  FAST LEARNER
                 </h3>
                 <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                  Turning challenges into opportunities through innovative
-                  coding and creative thinking.
+                  Quickly adapting to new technologies and frameworks. Always exploring cutting-edge tools to stay ahead.
                 </p>
               </div>
             </motion.div>
 
-            {/* Feature 3 */}
+            {/* Soft Skill 3 - Team Player */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -169,11 +146,10 @@ const AboutSection = () => {
               <div className="font-mono">
                 <div className="text-sm text-gray-500 mb-2">[03]</div>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  TECH EXPLORER
+                  TEAM PLAYER
                 </h3>
                 <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                  Always learning and exploring new technologies to build the
-                  future of AI applications.
+                  Collaborating effectively with cross-functional teams, communicating clearly, and delivering results together.
                 </p>
               </div>
             </motion.div>

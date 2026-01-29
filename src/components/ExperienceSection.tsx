@@ -4,25 +4,30 @@ const ExperienceSection = () => {
   const experiences = [
     {
       company: "CCRIPT Agency",
-      role: "Full Stack Engineer",
-      year: "2025",
-      location: "Islamabad, Pakistan",
+      role: "Full Stack AI Engineer",
+      year: "2025 - Present",
+      location: "Remote",
       id: "01",
-      description: [
-        "Spearheaded the development of scalable web solutions, optimizing frontend performance and backend efficiency.",
-        "Collaborated with cross-functional teams to deliver high-quality software products on time."
-      ]
+      description: "Building end-to-end AI-powered web applications with modern tech stack.",
+      technologies: ["React", "FastAPI", "Python", "LangChain", "OpenAI", "PostgreSQL"],
     },
     {
       company: "Neuralogic",
-      role: "Full Stack Engineer",
-      year: "2025",
-      location: "Islamabad, Pakistan",
+      role: "AI Engineer",
+      year: "2025 - Present",
+      location: "Remote",
       id: "02",
-      description: [
-        "Contributed to the architecture and implementation of complex software systems, ensuring high code quality and maintainability.",
-        "Implemented robust APIs and integrated third-party services to enhance application functionality."
-      ]
+      description: "Developing intelligent automation solutions and AI agents for business workflows.",
+      technologies: ["n8n", "LangChain", "RAG", "Ollama", "Gemini", "Python"],
+    },
+    {
+      company: "Ocryz Pvt Ltd",
+      role: "AI Developer (Internship)",
+      year: "2025",
+      location: "Hybrid",
+      id: "03",
+      description: "Created web applications with integrated AI chatbots for enhanced user experience.",
+      technologies: ["React", "Python", "FastAPI", "OpenAI", "Tailwind CSS"],
     },
   ];
 
@@ -106,7 +111,7 @@ const ExperienceSection = () => {
                           <span className="text-gray-300">{exp.year}</span>
                         </div>
                         <div className="transition-colors duration-300 group-hover:text-gray-400">
-                          <span className="text-white">Location:</span>{" "}
+                          <span className="text-white">Work mode:</span>{" "}
                           <span className="text-gray-300">{exp.location}</span>
                         </div>
                       </div>
@@ -114,57 +119,31 @@ const ExperienceSection = () => {
                   </div>
                 </div>
 
-                {/* Card Body - Terminal Style */}
+                {/* Card Body - Description & Tech Stack */}
                 <div className="p-4 sm:p-6 md:p-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="font-mono text-xs sm:text-sm space-y-2"
+                    className="font-mono text-sm md:text-base text-gray-400 mb-4"
                   >
-                    <div className="text-gray-500 transition-all duration-300 group-hover:text-gray-400">
-                      <span className="text-white">{">"}</span> cat role.txt
-                    </div>
-                    {exp.description.map((desc, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.6 + (i * 0.1) }}
-                        className="pl-4 text-gray-300 leading-relaxed transition-all duration-300 group-hover:translate-x-2 break-words"
-                      >
-                        {desc}
-                      </motion.div>
-                    ))}
-                  </motion.div>
-
-                  {/* Tech Stack Indicator */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="mt-6 pt-6 border-t-2 border-white"
-                  >
+                    {exp.description}
+                  </motion.p>
+                  <div className="border-t-2 border-white pt-4">
                     <div className="font-mono text-xs text-gray-500 mb-3">
                       {">"} Tech Stack:
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {["React", "Node.js", "TypeScript", "Full Stack"].map(
-                        (tech, techIndex) => (
-                          <motion.span
-                            key={techIndex}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.9 + techIndex * 0.1 }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="font-mono text-xs border border-white px-3 py-1 text-white bg-brutalist-black transition-all duration-200 hover:bg-white hover:text-black cursor-default"
-                          >
-                            {tech}
-                          </motion.span>
-                        )
-                      )}
+                      {exp.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="font-mono text-xs border border-white px-2 sm:px-3 py-1 text-white bg-brutalist-black transition-colors duration-200 hover:bg-white hover:text-black cursor-default"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>

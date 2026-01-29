@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { useForm, ValidationError } from "@formspree/react";
 
 const ContactSection = () => {
@@ -90,7 +91,7 @@ const ContactSection = () => {
           {/* Terminal Header */}
           <div className="border-b-2 border-white pb-4 mb-6">
             <div className="font-mono text-xs sm:text-sm text-gray-400 break-words">
-              <span className="text-white">saqlain@portfolio</span>
+              <span className="text-white">aleena@portfolio</span>
               <span className="text-gray-400">:</span>
               <span className="text-white">~/contact</span>
               <span className="text-gray-400">$</span>
@@ -199,56 +200,57 @@ const ContactSection = () => {
           </form>
         </motion.div>
 
-        {/* Alternative Contact Methods */}
+        {/* Social Icons - React Icons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-12 flex justify-center items-center gap-8 sm:gap-12"
         >
-          {/* Email */}
-          <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
-            <div className="font-mono">
-              <div className="text-xs text-gray-400 mb-2">[EMAIL]</div>
-              <a
-                href="mailto:saqlainrazee@gmail.com"
-                className="text-white hover:underline text-sm md:text-base break-all"
-              >
-                saqlainrazee@gmail.com
-              </a>
-            </div>
-          </div>
-
-          {/* LinkedIn */}
-          <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
-            <div className="font-mono">
-              <div className="text-xs text-gray-400 mb-2">[LINKEDIN]</div>
-              <a
-                href="https://www.linkedin.com/in/saqlainrazee/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:underline text-sm md:text-base break-all"
-              >
-                linkedin.com/in/saqlainrazee
-              </a>
-            </div>
-          </div>
-
-          {/* GitHub */}
-          <div className="border-2 border-white bg-brutalist-darkgray p-4 sm:p-6">
-            <div className="font-mono">
-              <div className="text-xs text-gray-400 mb-2">[GITHUB]</div>
-              <a
-                href="https://github.com/Razee4315"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:underline text-sm md:text-base break-all"
-              >
-                github.com/Razee4315
-              </a>
-            </div>
-          </div>
+          <a
+            href="https://github.com/AleenaTahir1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-all duration-300 hover:scale-110"
+            aria-label="GitHub"
+          >
+            <FaGithub size={40} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/aleenatahir/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-all duration-300 hover:scale-110"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin size={40} />
+          </a>
+          <a
+            href="https://wa.me/923105968568"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-all duration-300 hover:scale-110"
+            aria-label="WhatsApp"
+          >
+            <FaWhatsapp size={40} />
+          </a>
+          <a
+            href="https://www.instagram.com/aleenaatahirr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-all duration-300 hover:scale-110"
+            aria-label="Instagram"
+          >
+            <FaInstagram size={40} />
+          </a>
+          <a
+            href="mailto:aleenatahirf23@nutech.edu.pk"
+            className="text-[var(--text-primary)] hover:text-[var(--accent-color)] transition-all duration-300 hover:scale-110"
+            aria-label="Email"
+          >
+            <FaEnvelope size={40} />
+          </a>
         </motion.div>
       </div>
     </section>

@@ -5,51 +5,35 @@ const StructuredData = () => {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://saqlainabbas.app/#person",
-    name: "Saqlain Abbas",
-    alternateName: "Razee4315",
-    url: "https://saqlainabbas.app",
+    "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+    name: "Aleena Tahir",
+    alternateName: "AleenaTahir1",
+    url: "https://aleenatahir1.github.io/My_Portfolio",
     image: {
       "@type": "ImageObject",
-      url: "https://saqlainabbas.app/profile.webp",
+      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
       width: 400,
       height: 400,
     },
     description:
-      "AI Engineer and Full Stack Developer specializing in Machine Learning, Deep Learning, NLP, and end-to-end web development.",
-    jobTitle: "AI Engineer | Full Stack Developer",
+      "Full Stack AI Engineer — 2nd-year AI student at NUTECH, building web apps and AI-powered tools.",
+    jobTitle: "Full Stack AI Engineer",
     worksFor: [
-      {
-        "@type": "Organization",
-        name: "CCRIPT Agency",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Islamabad",
-          addressCountry: "Pakistan",
-        },
-      },
-      {
-        "@type": "Organization",
-        name: "Neuralogic",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Islamabad",
-          addressCountry: "Pakistan",
-        },
-      },
+      { "@type": "Organization", name: "Neura" },
+      { "@type": "Organization", name: "Cript" },
+      { "@type": "Organization", name: "Ocryz" },
     ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Skardu",
-      addressRegion: "Gilgit-Baltistan",
+      addressLocality: "Westridge-3, Rawalpindi",
+      addressRegion: "Islamabad",
       addressCountry: "Pakistan",
     },
-    email: "saqlainabbas315@gmail.com",
-    telephone: "+92-XXX-XXXXXXX",
+    email: "aleenatahirf23@nutech.edu.pk",
     sameAs: [
-      "https://github.com/Razee4315",
-      "https://linkedin.com/in/saqlain-abbas",
-      "https://saqlainabbas.app",
+      "https://github.com/AleenaTahir1",
+      "https://linkedin.com/in/aleenatahir",
+      "https://aleenatahir1.github.io/My_Portfolio",
     ],
     knowsAbout: [
       "Artificial Intelligence",
@@ -80,20 +64,20 @@ const StructuredData = () => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://saqlainabbas.app/#website",
-    url: "https://saqlainabbas.app",
-    name: "Saqlain Abbas Portfolio",
+    "@id": "https://aleenatahir1.github.io/My_Portfolio/#website",
+    url: "https://aleenatahir1.github.io/My_Portfolio",
+    name: "Aleena Tahir Portfolio",
     description:
-      "Professional portfolio of Saqlain Abbas - AI Engineer and Full Stack Developer",
+      "Professional portfolio of Aleena Tahir — Full Stack AI Engineer",
     publisher: {
-      "@id": "https://saqlainabbas.app/#person",
+      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
     },
     inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://saqlainabbas.app/?s={search_term_string}",
+        urlTemplate: "https://aleenatahir1.github.io/My_Portfolio/?s={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -103,20 +87,20 @@ const StructuredData = () => {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://saqlainabbas.app/#webpage",
-    url: "https://saqlainabbas.app",
-    name: "Saqlain Abbas | AI Engineer & Full Stack Developer",
+    "@id": "https://aleenatahir1.github.io/My_Portfolio/#webpage",
+    url: "https://aleenatahir1.github.io/My_Portfolio",
+    name: "Aleena Tahir | Full Stack AI Engineer",
     description:
-      "Portfolio showcasing AI and full-stack development projects by Saqlain Abbas",
+      "Portfolio of Aleena Tahir — Full Stack AI Engineer",
     isPartOf: {
-      "@id": "https://saqlainabbas.app/#website",
+      "@id": "https://aleenatahir1.github.io/My_Portfolio/#website",
     },
     about: {
-      "@id": "https://saqlainabbas.app/#person",
+      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: "https://saqlainabbas.app/profile.webp",
+      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
     },
     datePublished: "2024-01-01T00:00:00+00:00",
     dateModified: new Date().toISOString(),
@@ -127,11 +111,11 @@ const StructuredData = () => {
   const profilePageSchema = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    "@id": "https://saqlainabbas.app/#profilepage",
-    url: "https://saqlainabbas.app",
-    name: "Saqlain Abbas - Professional Profile",
+    "@id": "https://aleenatahir1.github.io/My_Portfolio/#profilepage",
+    url: "https://aleenatahir1.github.io/My_Portfolio",
+    name: "Aleena Tahir - Professional Profile",
     mainEntity: {
-      "@id": "https://saqlainabbas.app/#person",
+      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
     },
     inLanguage: "en-US",
   };
@@ -145,31 +129,31 @@ const StructuredData = () => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://saqlainabbas.app/",
+        item: "https://aleenatahir1.github.io/My_Portfolio/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About",
-        item: "https://saqlainabbas.app/#about",
+        item: "https://aleenatahir1.github.io/My_Portfolio/#about",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Experience",
-        item: "https://saqlainabbas.app/#experience",
+        item: "https://aleenatahir1.github.io/My_Portfolio/#experience",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Projects",
-        item: "https://saqlainabbas.app/#projects",
+        item: "https://aleenatahir1.github.io/My_Portfolio/#projects",
       },
       {
         "@type": "ListItem",
         position: 5,
         name: "Contact",
-        item: "https://saqlainabbas.app/#contact",
+        item: "https://aleenatahir1.github.io/My_Portfolio/#contact",
       },
     ],
   };
@@ -178,19 +162,16 @@ const StructuredData = () => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://saqlainabbas.app/#organization",
-    name: "Saqlain Abbas - Freelance Development",
-    url: "https://saqlainabbas.app",
+    "@id": "https://aleenatahir1.github.io/My_Portfolio/#organization",
+    name: "Aleena Tahir Portfolio",
+    url: "https://aleenatahir1.github.io/My_Portfolio",
     logo: {
       "@type": "ImageObject",
-      url: "https://saqlainabbas.app/profile.webp",
-    },
-    founder: {
-      "@id": "https://saqlainabbas.app/#person",
+      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
     },
     sameAs: [
-      "https://github.com/Razee4315",
-      "https://linkedin.com/in/saqlain-abbas",
+      "https://github.com/AleenaTahir1",
+      "https://linkedin.com/in/aleenatahir",
     ],
   };
 

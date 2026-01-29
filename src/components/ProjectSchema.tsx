@@ -16,13 +16,13 @@ const ProjectSchema = ({ projects }: ProjectSchemaProps) => {
   const projectSchemas = projects.map((project, index) => ({
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "@id": `https://saqlainabbas.app/#project-${index + 1}`,
+    "@id": `https://aleenatahir1.github.io/My_Portfolio/#project-${index + 1}`,
     name: project.title,
     description: project.description,
     creator: {
       "@type": "Person",
-      "@id": "https://saqlainabbas.app/#person",
-      name: "Saqlain Abbas",
+      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+      name: "Aleena Tahir",
     },
     dateCreated: `${project.year}-01-01`,
     keywords: project.technologies.join(", "),

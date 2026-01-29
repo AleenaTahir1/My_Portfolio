@@ -4,105 +4,74 @@ import ProjectSchema from "./ProjectSchema";
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Portkiller",
+      title: "Gig Synappix",
       description:
-        "A fast Windows utility to visualize and kill processes blocking specific ports. Built with Tauri, Rust, and Preact.",
-      technologies: ["Tauri", "Rust", "Preact"],
-      github: "https://github.com/Razee4315/portkiller/releases/tag/main",
+        "Hire & Get Hired! A full platform for smarter connections with backend in FastAPI and frontend in React with AI chatbot. Post your task or find your next side hustle.",
+      technologies: ["FastAPI", "React", "AI Chatbot", "Python", "PostgreSQL"],
+      github: "https://github.com/AleenaTahir1/GigSynappix",
+      link: "https://github.com/AleenaTahir1/GigSynappix",
       year: "2025",
     },
     {
-      title: "ClipStream",
+      title: "Hill Icon Skardu",
       description:
-        "A lightweight, context-aware clipboard manager for Windows that feels native to the OS.",
-      technologies: ["Rust", "Windows API"],
-      github: "https://github.com/Razee4315/clipstream/releases/tag/build",
+        "Built a complete website for Hill Icon Skardu Hotel from scratch. Designed logo and custom icons. Developed in Next.js with fast performance, WhatsApp integration for booking, and SEO optimization.",
+      technologies: ["Next.js", "WhatsApp API", "SEO", "Vercel", "Tailwind CSS"],
+      github: "https://hilliconskardu.com/",
+      link: "https://hilliconskardu.com/",
       year: "2025",
     },
     {
-      title: "Spartan",
+      title: "OmniRecall",
       description:
-        "Engineered a full-stack call agent application for real estate professionals to manage client interactions. Integrated Twilio for phone calls/SMS, Deepgram for transcription, and OpenAI for AI-driven suggestions and filtering. Utilized Supabase for real-time database management and authentication.",
-      technologies: ["Next.js", "Supabase", "Twilio", "Deepgram", "OpenAI API"],
-      github: null,
-      year: "2024",
-    },
-    {
-      title: "Jessy AI",
-      description:
-        "Developed a bespoke AI personal assistant and health monitor tailored to a specific user's needs. Built a FastAPI backend with PostgreSQL and integrated OpenAI for conversational logic. Implemented voice-to-text (Whisper) and text-to-speech (Piper) for a complete voice-interactive experience.",
-      technologies: ["Next.js", "PostgreSQL", "FastAPI", "OpenAI API", "Piper", "Whisper"],
-      github: null,
-      year: "2024",
-    },
-    {
-      title: "All Organics",
-      description:
-        "Created an e-commerce platform for influencers to curate and sell their favorite organic products. Implemented user authentication and product management using Firebase (Firestore and Auth). Integrated Stripe for secure payment processing, enabling followers to purchase products easily.",
-      technologies: ["React", "Firebase", "Stripe"],
-      github: null,
-      year: "2024",
-    },
-    {
-      title: "Raver AI",
-      description:
-        "Developed a digital marketplace for designers to sell AI-generated or custom images. Built with Next.js for a high-performance frontend and integrated Stripe for payment transactions.",
-      technologies: ["Next.js", "Stripe"],
-      github: null,
-      year: "2024",
-    },
-    {
-      title: "DisasterConnect",
-      description:
-        "A web platform for disaster response, featuring real-time communication and interactive mapping.",
-      technologies: ["Python", "Django", "React", "WebSocket", "PostgreSQL"],
-      github: "https://github.com/Razee4315/DisasterConnect",
-      year: "2024",
-    },
-    {
-      title: "Hill Icon Skardu Hotel",
-      description:
-        "A beautiful, fully-functional hotel booking website for Hill Icon Skardu. Features real-time room availability, online booking system, customer order management, and integrated Twilio notifications. Optimized for SEO with server-side rendering and responsive design.",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "Twilio API", "SEO Optimization"],
-      github: "https://www.hilliconskardu.com",
+        "AI-Powered Knowledge Assistant built in Rust. Privacy-first desktop AI with Spotlight-style interface, multi-provider support (Gemini, OpenAI, Anthropic, Ollama), and RAG for local PDFs and code files.",
+      technologies: ["Rust", "RAG", "OpenAI", "Ollama", "Tauri"],
+      github: "https://github.com/Razee4315/omnirecall",
+      link: "https://github.com/Razee4315/omnirecall",
       year: "2025",
     },
     {
-      title: "Panda Chat",
+      title: "Scoutly",
       description:
-        "A modern real-time chat application with instant messaging, file sharing, and an intuitive user interface.",
-      technologies: [
-        "TypeScript",
-        "React",
-        "Firebase",
-        "WebSocket",
-        "Material-UI",
-      ],
-      github: "https://github.com/Razee4315/panda_chat",
-      year: "2024",
-    },
-    {
-      title: "Nutech Chatbot Assistant",
-      description:
-        "Fine-tuned an LLM on university data to create a custom chatbot, deployed with Gradio for interactive use.",
-      technologies: ["Python", "LLM Fine-tuning", "Gradio"],
-      github: null,
+        "Automated Job Search Agent. An n8n workflow that takes a CV, analyzes it using AI, searches multiple job platforms, and sends a summary email with relevant job details.",
+      technologies: ["n8n", "AI", "Automation", "Email API", "LangChain"],
+      github: "https://github.com/AleenaTahir1/Scodly-Agent",
+      link: "https://github.com/AleenaTahir1/Scodly-Agent",
       year: "2025",
     },
     {
       title: "NUTECH Virtual Tour",
       description:
-        "An interactive campus tour using React and 360° media, focusing on optimized user experience.",
-      technologies: ["React", "JavaScript", "360° Media"],
-      github: "https://razee4315.github.io/nutech-tour",
+        "Comprehensive 360° virtual tour platform for the university. Engineered an immersive digital experience with event-specific navigation features for prospective students and families.",
+      technologies: ["React", "Three.js", "360° Photography", "WebGL"],
+      github: "https://razee4315.github.io/nutech-tour-threejs/",
+      link: "https://razee4315.github.io/nutech-tour-threejs/",
       year: "2025",
     },
     {
-      title: "Pitch and Yaw Coordinate Finder",
+      title: "UNBROKEN",
       description:
-        "An HTML5/JavaScript tool to extract spherical coordinates from images, addressing a specific technical gap.",
-      technologies: ["HTML5", "JavaScript", "Image Processing"],
-      github: "https://razee4315.github.io/pitch-and-yaw-finder",
+        "Brutalist E-Commerce Experience. High-impact fullscreen landing page for performance equipment with raw industrial aesthetic, video-first interface, and tactical HUD data visualizations.",
+      technologies: ["React", "Tailwind CSS", "Video", "Clip-path", "Framer Motion"],
+      github: "https://github.com/AleenaTahir1/UNBROKEN",
+      year: "2025",
+    },
+    {
+      title: "Nami",
+      description:
+        "Real-time chat application like WhatsApp built in Rust. Share images, videos, chat with online status - more secure and lightweight than traditional solutions.",
+      technologies: ["Rust", "WebSocket", "Real-time", "Encryption", "Tauri"],
+      github: "https://github.com/AleenaTahir1/nami",
+      link: "https://github.com/AleenaTahir1/nami",
+      year: "2025",
+    },
+    {
+      title: "CropWise",
+      description:
+        "Crop Disease Classification Web Application using CNN to classify diseases in crop leaves from uploaded images. Features AI-powered prediction, model training pipeline, and Flask web interface.",
+      technologies: ["Python", "TensorFlow", "Flask", "CNN", "Tailwind CSS"],
+      github: "https://github.com/AleenaTahir1/CropWise",
+      link: "https://github.com/AleenaTahir1/CropWise",
       year: "2025",
     },
   ];
@@ -196,11 +165,11 @@ const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  {/* View Link */}
-                  <div className="pt-2">
-                    {project.github ? (
+                  {/* View Link - only show if project has a link */}
+                  {project.link && (
+                    <div className="pt-2">
                       <a
-                        href={project.github}
+                        href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="font-mono text-sm text-white hover:underline inline-flex items-center gap-2 group/link"
@@ -213,13 +182,8 @@ const ProjectsSection = () => {
                           →
                         </span>
                       </a>
-                    ) : (
-                      <div className="font-mono text-sm text-gray-600 inline-flex items-center gap-2 cursor-not-allowed">
-                        <span className="text-gray-700">$</span>
-                        <span>private_repository</span>
-                      </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -238,7 +202,7 @@ const ProjectsSection = () => {
             {">"} More projects on GitHub
           </div>
           <a
-            href="https://github.com/Razee4315"
+            href="https://github.com/AleenaTahir1"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-brutalist inline-flex items-center gap-2 group hover:scale-105 active:scale-95 transition-transform"

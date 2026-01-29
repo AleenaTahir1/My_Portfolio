@@ -13,17 +13,17 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Saqlain Abbas | AI Engineer & Full Stack Developer",
-  description = "Saqlain Abbas - AI Engineer and Full Stack Developer from Skardu, Pakistan. Specializing in Machine Learning, Deep Learning, NLP, and end-to-end web development. Building intelligent solutions that make a difference.",
-  canonical = "https://saqlainabbas.app/",
-  ogImage = "https://saqlainabbas.app/profile.webp",
+  title = "Aleena Tahir | Full Stack AI Engineer & DevOps Specialist",
+  description = "Aleena Tahir - Full Stack AI Engineer specializing in AI Agents, RAG pipelines, LangChain, and end-to-end web development. Building fast, smart, and scalable applications.",
+  canonical = "https://aleenatahir1.github.io/My_Portfolio/",
+  ogImage = "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
   ogType = "website",
   twitterCard = "summary_large_image",
-  keywords = "AI Engineer, Machine Learning Engineer, Full Stack Developer, Deep Learning, NLP, Natural Language Processing, React Developer, Python Developer, Web Development, Saqlain Abbas, AI Solutions, Skardu Pakistan, Software Engineer, Tech Portfolio",
-  author = "Saqlain Abbas",
+  keywords = "Full Stack AI Engineer, AI Agents, RAG, LangChain, DevOps, React, Python, Aleena Tahir, Islamabad Pakistan, Software Engineer, Tech Portfolio",
+  author = "Aleena Tahir",
   noindex = false,
 }: SEOProps) => {
-  const siteUrl = "https://saqlainabbas.app";
+  const siteUrl = "https://aleenatahir1.github.io/My_Portfolio";
   const fullImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 
   return (
@@ -54,7 +54,7 @@ const SEO = ({
       <meta property="og:image:alt" content={`${author} - Profile Picture`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="Saqlain Abbas Portfolio" />
+      <meta property="og:site_name" content="Aleena Tahir Portfolio" />
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
@@ -64,22 +64,20 @@ const SEO = ({
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={fullImageUrl} />
       <meta property="twitter:image:alt" content={`${author} - Profile Picture`} />
-      <meta name="twitter:creator" content="@saqlainabbas" />
+      <meta name="twitter:creator" content="@aleenaatahirr" />
 
       {/* Additional Meta Tags */}
       <meta name="theme-color" content="#0a0a0a" />
       <meta name="msapplication-TileColor" content="#0a0a0a" />
-      <meta name="application-name" content="Saqlain Abbas Portfolio" />
-      <meta name="apple-mobile-web-app-title" content="Saqlain Abbas" />
+      <meta name="application-name" content="Aleena Tahir Portfolio" />
+      <meta name="apple-mobile-web-app-title" content="Aleena Tahir" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="format-detection" content="telephone=no" />
 
       {/* Geographic Tags */}
-      <meta name="geo.region" content="PK-GB" />
-      <meta name="geo.placename" content="Skardu" />
-      <meta name="geo.position" content="35.2971;75.6333" />
-      <meta name="ICBM" content="35.2971, 75.6333" />
+      <meta name="geo.region" content="PK-IS" />
+      <meta name="geo.placename" content="Islamabad" />
 
       {/* Language */}
       <meta httpEquiv="content-language" content="en" />

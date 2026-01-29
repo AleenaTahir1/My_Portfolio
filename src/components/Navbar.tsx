@@ -8,10 +8,11 @@ const Navbar = () => {
   const navItems = [
     { id: "home", label: "00. Home" },
     { id: "about", label: "01. About" },
-    { id: "education", label: "02. Education" },
-    { id: "experience", label: "03. Experience" },
-    { id: "projects", label: "04. Work" },
-    { id: "contact", label: "05. Contact" },
+    { id: "skills", label: "02. Skills" },
+    { id: "education", label: "03. Education" },
+    { id: "experience", label: "04. Experience" },
+    { id: "projects", label: "05. Work" },
+    { id: "contact", label: "06. Contact" },
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -38,7 +39,7 @@ const Navbar = () => {
               onClick={() => scrollToSection("home")}
               className="font-mono text-[var(--text-primary)] text-sm md:text-base font-bold hover:opacity-70 transition-opacity"
             >
-              <span className="text-[var(--text-muted)]">$</span> SA
+              <span className="text-[var(--text-muted)]">$</span> AT
             </button>
 
             {/* Desktop Navigation */}

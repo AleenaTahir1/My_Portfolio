@@ -12,13 +12,13 @@ export default {
       },
       colors: {
         brutalist: {
-          black: '#0a0a0a',
-          darkgray: '#1a1a1a',
-          gray: '#2a2a2a',
-          lightgray: '#3a3a3a',
-          white: '#ffffff',
-          offwhite: '#f5f5f5',
-          border: '#ffffff',
+          black: '#1a1612',
+          darkgray: '#2a2420',
+          gray: '#3a3430',
+          lightgray: '#4a4440',
+          white: '#e8ddd4',
+          offwhite: '#f5f0eb',
+          border: '#c4a77d',
         }
       },
       animation: {

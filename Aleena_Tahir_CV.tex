@@ -1,0 +1,191 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (Modified for Aleena Tahir)
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Aleena Tahir} \\ \vspace{1pt}
+    \small Rawalpindi/Islamabad, Pakistan $|$ +92-310-596-8568 \\ 
+    \small \href{mailto:aleenatahirf23@nutech.edu.pk}{aleenatahirf23@nutech.edu.pk} $|$
+    \href{https://github.com/AleenaTahir1}{github.com/AleenaTahir1} $|$
+    \href{https://www.linkedin.com/in/aleenatahir/}{linkedin.com/in/aleenatahir/} $|$
+    \href{https://www.instagram.com/aleenaatahirr/}{instagram.com/aleenaatahirr/} $|$
+    \href{https://wa.me/923105968568}{wa.me/923105968568} $|$
+    \href{https://YOUR-PORTFOLIO-LINK-HERE}{Portfolio}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\small{
+Full Stack AI Engineer specializing in Agents and DevOps. I build heavy-lifting applications that are fast, smart, and scalable. From AI-powered workflows to backend APIs and modern UIs, I handle the entire stack so you can focus on growth.
+}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\resumeSubHeadingListStart
+  \resumeItem{\textbf{Languages:} Python, TypeScript/JavaScript, Rust, Go}
+  \resumeItem{\textbf{AI \& Agents:} n8n, LangChain, RAG, OpenAI API, Gemini, Ollama}
+  \resumeItem{\textbf{Backend \& Data:} FastAPI, Supabase (Postgres), MongoDB, ChromaDB, REST APIs}
+  \resumeItem{\textbf{Frontend:} React, Next.js, Tailwind CSS}
+  \resumeItem{\textbf{DevOps:} AWS, Docker, CI/CD, GitHub Actions}
+  \resumeItem{\textbf{Tools:} Git/GitHub, Linux, Vite}
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Ccript Agency}{Remote}
+    {Full Stack AI Engineer, Agents \& DevOps Specialist}{2025 -- Present}
+
+  \resumeSubheading
+    {Neuralogic}{Remote}
+    {Full Stack AI Engineer, Agents \& DevOps Specialist}{2025 -- Present}
+
+  \resumeSubheading
+    {Ocryz Pvt Ltd}{Hybrid}
+    {AI Developer Intern}{2025}
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Gig Synappix} $|$ \emph{FastAPI, React, AI Chatbot}}{2025}
+  \resumeItemListStart
+    \resumeItem{Built a full gig marketplace platform (hire/get hired) with a FastAPI backend, React frontend, and AI chatbot experience.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Hill Icon (Skardu Hotel Website)} $|$ \emph{Next.js, SEO, WhatsApp Integration}}{2025}
+  \resumeItemListStart
+    \resumeItem{Designed and developed the full website with custom branding, performance-focused UI, SEO, deployment, and WhatsApp booking flow.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{NUTECH 360\textdegree\ Virtual Tour} $|$ \emph{React, 360\textdegree\ Media, Deployment}}{2025}
+  \resumeItemListStart
+    \resumeItem{Delivered an immersive campus virtual tour platform with guided navigation features for events and visitors.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Scoutly (Automated Job Search Agent)} $|$ \emph{n8n, LLMs, Email Automation}}{2025}
+  \resumeItemListStart
+    \resumeItem{Automates job discovery by analyzing a CV with AI, searching platforms, and emailing curated summaries with relevant roles.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{OmniRecall (AI Knowledge Assistant)} $|$ \emph{Rust, RAG, Multi-LLM Providers}}{2025}
+  \resumeItemListStart
+    \resumeItem{Built a privacy-first desktop assistant with global hotkeys, Spotlight-style UI, local RAG over PDFs/code, and multi-provider LLM support.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Nami (Real-time Chat)} $|$ \emph{Rust}}{2025}
+  \resumeItemListStart
+    \resumeItem{Developed a secure, lightweight real-time chat app with media sharing and presence/status features.}
+  \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Cropwise (Crop Disease Classification)} $|$ \emph{Python, CNNs, Flask}}{2025}
+  \resumeItemListStart
+    \resumeItem{Web app for crop disease prediction from leaf images using CNN-based classification; includes training pipeline and UI.}
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {National University of Technology (NUTECH)}{Islamabad, Pakistan}
+    {Bachelor of Science in Artificial Intelligence -- CGPA: 3.88/4.00}{Aug 2023 -- Present}
+  \resumeSubheading
+    {Army Public School Saddar}{Peshawar, Pakistan}
+    {FSc (Computer Science)}{Aug 2021 -- Jun 2023}
+  \resumeSubheading
+    {Frontier Corps Public School}{Peshawar, Pakistan}
+    {Matriculation (Science)}{Aug 2019 -- Jun 2021}
+\resumeSubHeadingListEnd
+
+\end{document}

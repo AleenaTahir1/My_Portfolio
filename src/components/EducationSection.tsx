@@ -9,17 +9,29 @@ const EducationSection = () => {
       institution: "National University of Technology (NUTECH)",
       location: "Islamabad, Pakistan",
       duration: "Aug 2023 – Present",
-      status: "Currently in 5th semester",
-      description: "Specializing in Machine Learning, Deep Learning, and AI Systems Development."
+      status: "In progress",
+      cgpa: "CGPA: 3.88/4.00",
+      description: "Specializing in AI, machine learning, and full-stack development."
     },
     {
-      degree: "HSSC Computer Science",
-      shortName: "HSSC_CS",
-      institution: "Public School and College Skardu",
-      location: "Skardu, Pakistan",
-      duration: "Jun 2020 – May 2022",
+      degree: "FSc (Computer Science)",
+      shortName: "FSc_CS",
+      institution: "Army Public School Saddar",
+      location: "Peshawar, Pakistan",
+      duration: "Aug 2021 – Jun 2023",
       status: "Completed",
-      description: "Studied computer science fundamentals, programming, and mathematics."
+      cgpa: null,
+      description: "Computer science fundamentals, programming, and mathematics."
+    },
+    {
+      degree: "Matriculation (Science)",
+      shortName: "Matric",
+      institution: "Frontier Corps Public School",
+      location: "Peshawar, Pakistan",
+      duration: "Aug 2019 – Jun 2021",
+      status: "Completed",
+      cgpa: null,
+      description: "Science stream, foundation for higher studies."
     }
   ];
 
@@ -63,7 +75,7 @@ const EducationSection = () => {
                     <span className="text-white">[{index + 1}]</span> /education/{edu.shortName}
                   </div>
                   <div className="font-mono text-xs md:text-sm">
-                    <span className={edu.status === "Currently in 4th semester" ? "text-green-500" : "text-gray-500"}>
+                    <span className={edu.status === "In progress" ? "text-green-500" : "text-gray-500"}>
                       [{edu.status.toUpperCase()}]
                     </span>
                   </div>
@@ -89,6 +101,12 @@ const EducationSection = () => {
                   <span className="text-gray-500">{">"}  </span>
                   <span className="text-white">Duration:</span> {edu.duration}
                 </div>
+                {edu.cgpa && (
+                  <div className="font-mono text-sm md:text-base text-gray-300">
+                    <span className="text-gray-500">{">"}  </span>
+                    <span className="text-white">{edu.cgpa}</span>
+                  </div>
+                )}
               </div>
 
               {/* Description */}

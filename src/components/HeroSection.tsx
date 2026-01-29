@@ -72,7 +72,7 @@ const HeroSection = () => {
                         transition={{ delay: 0.3 }}
                         className="font-mono text-xs md:text-sm text-white"
                       >
-                        USER: saqlain_abbas
+                        USER: aleena_tahir
                       </motion.div>
                     </div>
                     <motion.div
@@ -98,7 +98,7 @@ const HeroSection = () => {
                   >
                     <img
                       src={`${import.meta.env.BASE_URL}profile.webp`}
-                      alt="Saqlain Abbas - AI Engineer and Full Stack Developer professional profile picture"
+                      alt="Aleena Tahir - Full Stack AI Engineer professional profile picture"
                       fetchPriority="high"
                       className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-[var(--border-color)] transition-all duration-300 hover:scale-[1.02]"
                     />
@@ -148,7 +148,7 @@ const HeroSection = () => {
               transition={{ delay: 0.6 }}
               className="font-mono text-xs md:text-sm text-gray-400"
             >
-              <span className="text-white">saqlain@portfolio</span>
+              <span className="text-white">aleena@portfolio</span>
               <span className="text-gray-400">:</span>
               <span className="text-white">~</span>
               <span className="text-gray-400">$</span>
@@ -161,9 +161,7 @@ const HeroSection = () => {
               transition={{ delay: 0.8 }}
               className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight tracking-tight break-words"
             >
-              <GlitchText text="SAQLAIN" />
-              <br />
-              <GlitchText text="ABBAS" />
+              <GlitchText text="ALEENA TAHIR" />
             </motion.h1>
 
             {/* Subtitle with border */}
@@ -174,7 +172,7 @@ const HeroSection = () => {
               className="border-b-2 lg:border-b-0 lg:border-l-4 border-white pb-2 lg:pb-0 lg:pl-6 py-3 hover:lg:border-l-8 transition-all duration-300 hover:bg-white/5 w-fit mx-auto lg:mx-0"
             >
               <p className="font-mono text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 leading-relaxed break-words">
-                AI Engineer | Full Stack Engineer
+                Full Stack AI Engineer | Agents & DevOps Specialist
               </p>
             </motion.div>
 
@@ -199,7 +197,7 @@ const HeroSection = () => {
               transition={{ delay: 1.4 }}
             >
               <a
-                href="https://saqlainabbas.app"
+                href="https://github.com/AleenaTahir1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-xs md:text-sm text-gray-500 hover:text-white transition-colors duration-300 inline-flex items-center gap-2 group"
@@ -208,7 +206,7 @@ const HeroSection = () => {
                   →
                 </span>
                 <span className="border-b border-gray-500 group-hover:border-white">
-                  saqlainabbas.app
+                  github.com/AleenaTahir1
                 </span>
               </a>
             </motion.div >
@@ -232,8 +230,8 @@ const HeroSection = () => {
               </button>
 
               <a
-                href={`${import.meta.env.BASE_URL}SaqlainAbbas_CV.pdf`}
-                download="SaqlainAbbas_CV.pdf"
+                href={`${import.meta.env.BASE_URL}Aleena_Tahir_CV.pdf`}
+                download="Aleena_Tahir_CV.pdf"
                 className="btn-brutalist inline-flex items-center justify-center group w-full sm:w-auto text-xs sm:text-sm md:text-base bg-white text-black hover:bg-black hover:text-white hover:border-white"
               >
                 <span className="text-gray-400 mr-2 group-hover:text-white">{">"}</span>
