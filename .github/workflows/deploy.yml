@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -21,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '19'
+          node-version: '20'
           cache: 'npm'
 
       - name: Install Dependencies
@@ -30,16 +32,14 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          CI: false # This prevents builds from failing on warnings
+          CI: false
 
-      - name: Create .nojekyll file
-        run: touch ./dist/.nojekyll
+      - name: List dist contents
+        run: ls -la ./dist
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
           clean: true
-          clean-exclude: |
-            .nojekyll
