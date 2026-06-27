@@ -6,41 +6,47 @@
 
 @layer base {
 
-    /* Theme CSS Variables - Earthy Tones */
+    /* Theme CSS Variables - Black + Terminal Accents */
     :root {
-        --bg-primary: #1a1612;
-        --bg-secondary: #2a2420;
-        --bg-tertiary: #3a3430;
-        --text-primary: #e8ddd4;
-        --text-secondary: #b8a89a;
-        --text-muted: #7a6a5a;
-        --border-color: #c4a77d;
-        --accent-color: #c4a77d;
+        --bg-primary: #000000;
+        --bg-secondary: #0a0a0a;
+        --bg-tertiary: #141414;
+        --text-primary: #e8e8ee;
+        --text-secondary: #9a9aa6;
+        --text-muted: #5c5c66;
+        --border-color: #262626;
+        --accent-color: #22d3ee;
+        --accent-violet: #a855f7;
+        --accent-green: #22c55e;
         --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
-    /* Dark Theme (default) - Earthy */
+    /* Dark Theme (default) - Black */
     html.dark {
-        --bg-primary: #1a1612;
-        --bg-secondary: #2a2420;
-        --bg-tertiary: #3a3430;
-        --text-primary: #e8ddd4;
-        --text-secondary: #b8a89a;
-        --text-muted: #7a6a5a;
-        --border-color: #c4a77d;
-        --accent-color: #c4a77d;
+        --bg-primary: #000000;
+        --bg-secondary: #0a0a0a;
+        --bg-tertiary: #141414;
+        --text-primary: #e8e8ee;
+        --text-secondary: #9a9aa6;
+        --text-muted: #5c5c66;
+        --border-color: #262626;
+        --accent-color: #22d3ee;
+        --accent-violet: #a855f7;
+        --accent-green: #22c55e;
     }
 
-    /* Light Theme - Earthy */
+    /* Light Theme - Warm off-white, high contrast */
     html.light {
-        --bg-primary: #f5f0eb;
-        --bg-secondary: #e8e0d8;
-        --bg-tertiary: #d4ccc4;
-        --text-primary: #2a2420;
-        --text-secondary: #5a4a3a;
-        --text-muted: #8a7a6a;
-        --border-color: #8b7355;
-        --accent-color: #8b7355;
+        --bg-primary: #f4f3ee;
+        --bg-secondary: #ebe9e1;
+        --bg-tertiary: #dddace;
+        --text-primary: #15161b;
+        --text-secondary: #45474f;
+        --text-muted: #73757e;
+        --border-color: #c6c3b8;
+        --accent-color: #0e7490;
+        --accent-violet: #6d28d9;
+        --accent-green: #15803d;
     }
 
     * {

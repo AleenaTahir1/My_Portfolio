@@ -57,3 +57,6 @@ pnpm-debug.log*
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Local reference clones (design inspiration, not part of the app)
+_reference/

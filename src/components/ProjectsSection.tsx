@@ -4,72 +4,93 @@ import ProjectSchema from "./ProjectSchema";
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Cloudon.me",
+      description:
+        "Website and main app for an AI-first cloud storage platform — manage files, generate AI summaries, use Telegram-first workflows, and access cloud storage through a clean web experience.",
+      technologies: ["Next.js", "AI Summaries", "Telegram Bot", "Cloud Storage", "Web App"],
+      link: "https://cloudon.me",
+      year: "2026",
+    },
+    {
+      title: "Luxure.io Website & AI Integrations",
+      description:
+        "AI-powered integrations for a luxury real estate website — lead automation, voice/call workflows, CRM updates, meeting booking flows, and website-connected agent actions.",
+      technologies: ["Zapier", "ElevenLabs", "Monday CRM", "AI Agents", "Email Automation"],
+      link: "https://luxure.io",
+      year: "2026",
+    },
+    {
+      title: "DisasterConnect",
+      description:
+        "Real-time desktop app for disaster management and emergency response — incident tracking, resources, task boards, team messaging, alerts, SOS, reports, admin roles, and offline sync.",
+      technologies: ["Tauri", "React", "TypeScript", "Supabase", "Leaflet"],
+      year: "2026",
+    },
+    {
+      title: "PinNotes",
+      description:
+        "Lightweight Windows desktop sticky-notes app — floating always-on-top notes, color selection, local-first usage, and no accounts or cloud dependency.",
+      technologies: ["Tauri", "React", "TypeScript", "Windows"],
+      github: "https://github.com/AleenaTahir1/Pin-Notes",
+      link: "https://github.com/AleenaTahir1/Pin-Notes",
+      year: "2026",
+    },
+    {
+      title: "Nami",
+      description:
+        "Secure, lightweight real-time chat app built in Rust with media sharing and presence/status features.",
+      technologies: ["Rust", "WebSocket", "Real-time", "Tauri"],
+      github: "https://github.com/AleenaTahir1/nami",
+      link: "https://github.com/AleenaTahir1/nami",
+      year: "2026",
+    },
+    {
       title: "Gig Synappix",
       description:
-        "Hire & Get Hired! A full platform for smarter connections with backend in FastAPI and frontend in React with AI chatbot. Post your task or find your next side hustle.",
-      technologies: ["FastAPI", "React", "AI Chatbot", "Python", "PostgreSQL"],
-      github: "https://github.com/AleenaTahir1/GigSynappix",
-      link: "https://github.com/AleenaTahir1/GigSynappix",
+        "Full gig marketplace for hiring and getting hired — FastAPI backend, React frontend, and an AI chatbot experience.",
+      technologies: ["FastAPI", "React", "AI Chatbot", "Python"],
       year: "2025",
     },
     {
-      title: "Hill Icon Skardu",
+      title: "Hill Icon (Skardu Hotel)",
       description:
-        "Built a complete website for Hill Icon Skardu Hotel from scratch. Designed logo and custom icons. Developed in Next.js with fast performance, WhatsApp integration for booking, and SEO optimization.",
-      technologies: ["Next.js", "WhatsApp API", "SEO", "Vercel", "Tailwind CSS"],
-      github: "https://hilliconskardu.com/",
+        "Full hotel website with custom branding, performance-focused UI, SEO, deployment, and a WhatsApp booking flow.",
+      technologies: ["Next.js", "SEO", "WhatsApp", "Tailwind CSS"],
       link: "https://hilliconskardu.com/",
       year: "2025",
     },
     {
-      title: "OmniRecall",
+      title: "NUTECH 360° Virtual Tour",
       description:
-        "AI-Powered Knowledge Assistant built in Rust. Privacy-first desktop AI with Spotlight-style interface, multi-provider support (Gemini, OpenAI, Anthropic, Ollama), and RAG for local PDFs and code files.",
-      technologies: ["Rust", "RAG", "OpenAI", "Ollama", "Tauri"],
-      github: "https://github.com/Razee4315/omnirecall",
-      link: "https://github.com/Razee4315/omnirecall",
+        "Immersive campus virtual tour platform with guided navigation features for events and visitors.",
+      technologies: ["React", "360° Media", "WebGL", "Deployment"],
+      github: "https://github.com/AleenaTahir1/nutech-tour",
+      link: "https://github.com/AleenaTahir1/nutech-tour",
       year: "2025",
     },
     {
       title: "Scoutly",
       description:
-        "Automated Job Search Agent. An n8n workflow that takes a CV, analyzes it using AI, searches multiple job platforms, and sends a summary email with relevant job details.",
-      technologies: ["n8n", "AI", "Automation", "Email API", "LangChain"],
+        "Automated job-search agent that analyzes a CV with AI, searches multiple job platforms, and emails curated summaries of relevant roles.",
+      technologies: ["n8n", "LLMs", "Email Automation", "AI"],
       github: "https://github.com/AleenaTahir1/Scodly-Agent",
       link: "https://github.com/AleenaTahir1/Scodly-Agent",
       year: "2025",
     },
     {
-      title: "NUTECH Virtual Tour",
+      title: "OmniRecall",
       description:
-        "Comprehensive 360° virtual tour platform for the university. Engineered an immersive digital experience with event-specific navigation features for prospective students and families.",
-      technologies: ["React", "Three.js", "360° Photography", "WebGL"],
-      github: "https://razee4315.github.io/nutech-tour-threejs/",
-      link: "https://razee4315.github.io/nutech-tour-threejs/",
-      year: "2025",
-    },
-    {
-      title: "UNBROKEN",
-      description:
-        "Brutalist E-Commerce Experience. High-impact fullscreen landing page for performance equipment with raw industrial aesthetic, video-first interface, and tactical HUD data visualizations.",
-      technologies: ["React", "Tailwind CSS", "Video", "Clip-path", "Framer Motion"],
-      github: "https://github.com/AleenaTahir1/UNBROKEN",
-      year: "2025",
-    },
-    {
-      title: "Nami",
-      description:
-        "Real-time chat application like WhatsApp built in Rust. Share images, videos, chat with online status - more secure and lightweight than traditional solutions.",
-      technologies: ["Rust", "WebSocket", "Real-time", "Encryption", "Tauri"],
-      github: "https://github.com/AleenaTahir1/nami",
-      link: "https://github.com/AleenaTahir1/nami",
+        "Privacy-first desktop AI knowledge assistant with global hotkeys, a Spotlight-style UI, local RAG over PDFs/code, and multi-provider LLM support.",
+      technologies: ["Rust", "RAG", "Multi-LLM", "Tauri"],
+      github: "https://github.com/AleenaTahir1/omnirecall",
+      link: "https://github.com/AleenaTahir1/omnirecall",
       year: "2025",
     },
     {
       title: "CropWise",
       description:
-        "Crop Disease Classification Web Application using CNN to classify diseases in crop leaves from uploaded images. Features AI-powered prediction, model training pipeline, and Flask web interface.",
-      technologies: ["Python", "TensorFlow", "Flask", "CNN", "Tailwind CSS"],
+        "Crop disease classification web app that predicts diseases from leaf images using CNNs, including the training pipeline and a Flask UI.",
+      technologies: ["Python", "CNN", "Flask", "TensorFlow"],
       github: "https://github.com/AleenaTahir1/CropWise",
       link: "https://github.com/AleenaTahir1/CropWise",
       year: "2025",

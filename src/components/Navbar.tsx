@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ThemeToggle from "./ThemeToggle";
+import LampToggle from "./LampToggle";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = () => {
                   {item.label}
                 </button>
               ))}
-              <ThemeToggle />
+              <LampToggle />
             </div>
 
             {/* Mobile Menu Button */}
@@ -95,7 +95,7 @@ const Navbar = () => {
               {item.label}
             </motion.button>
           ))}
-          <ThemeToggle />
+          <LampToggle />
         </div>
       </motion.div>
     </>

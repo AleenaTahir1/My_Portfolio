@@ -4,7 +4,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  github: string | null;
+  github?: string | null;
   year: string;
 }
 

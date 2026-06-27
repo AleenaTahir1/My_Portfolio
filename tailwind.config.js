@@ -11,15 +11,29 @@ export default {
         mono: ['"JetBrains Mono"', '"Space Mono"', '"IBM Plex Mono"', 'Consolas', 'Monaco', 'monospace'],
       },
       colors: {
+        // Black base + terminal accents.
+        // Names kept so existing `bg-brutalist-*` classes shift automatically.
         brutalist: {
-          black: '#1a1612',
-          darkgray: '#2a2420',
-          gray: '#3a3430',
-          lightgray: '#4a4440',
-          white: '#e8ddd4',
-          offwhite: '#f5f0eb',
-          border: '#c4a77d',
-        }
+          black: '#000000',
+          darkgray: '#0a0a0a',
+          gray: '#141414',
+          lightgray: '#262626',
+          white: '#e8e8ee',
+          offwhite: '#f5f5f7',
+          border: '#262626',
+        },
+        // Surface / terminal accent tokens.
+        space: {
+          deep: '#000000',
+          night: '#0a0a0a',
+          slate: '#141414',
+          line: '#262626',
+        },
+        neon: {
+          cyan: '#22d3ee',
+          violet: '#a855f7',
+          green: '#22c55e',
+        },
       },
       animation: {
         'blink': 'blink 1s step-end infinite',

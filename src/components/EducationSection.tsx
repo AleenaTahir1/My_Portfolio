@@ -10,7 +10,7 @@ const EducationSection = () => {
       location: "Islamabad, Pakistan",
       duration: "Aug 2023 – Present",
       status: "In progress",
-      cgpa: "CGPA: 3.88/4.00",
+      cgpa: "CGPA: 3.90/4.00",
       description: "Specializing in AI, machine learning, and full-stack development."
     },
     {

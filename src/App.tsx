@@ -9,6 +9,7 @@ import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
 
 // Lazy load non-critical components for better performance
+const SpaceBackground = lazy(() => import("./components/three/SpaceBackground"));
 const AboutSection = lazy(() => import("./components/AboutSection"));
 const TechStackSection = lazy(() => import("./components/TechStackSection"));
 const EducationSection = lazy(() => import("./components/EducationSection"));
@@ -26,7 +27,11 @@ const SectionLoader = () => (
 function App() {
   return (
     <ParallaxProvider>
-      <div className="bg-[var(--bg-primary)] min-h-screen transition-colors duration-300">
+      <div className="bg-transparent min-h-screen transition-colors duration-300">
+        {/* Global 3D starfield — fixed behind all content (desktop/dark only) */}
+        <Suspense fallback={null}>
+          <SpaceBackground />
+        </Suspense>
         <LoadingScreen />
         <CustomCursor />
         <ScrollProgress />
@@ -66,6 +71,18 @@ function App() {
                   <span className="text-white">~</span>
                   <span className="text-gray-600">$</span>
                   <span className="ml-2">© 2026 Aleena Tahir</span>
+                  <span className="ml-2 text-gray-600">
+                    · 3D planet by{" "}
+                    <a
+                      href="https://sketchfab.com/cmzw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-white"
+                    >
+                      cmzw
+                    </a>{" "}
+                    (CC-BY-4.0)
+                  </span>
                 </div>
 
                 <div className="flex flex-wrap gap-4 sm:gap-6 items-center">

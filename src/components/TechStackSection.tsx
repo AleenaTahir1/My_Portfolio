@@ -1,19 +1,26 @@
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+
+const SkillsBalls = lazy(() => import("./three/SkillsBalls"));
 
 const TechStackSection = () => {
   const techStack = [
-    // AI & Agents
-    "n8n", "LangChain", "RAG", "OpenAI", "Ollama", "Gemini", "Chatbot",
-    // ML & Vision
-    "Roboflow", "Machine Learning", "TensorFlow", "CNN", "Computer Vision",
-    // Backend
-    "FastAPI", "Supabase", "ChromaDB", "MongoDB", "Rust", "Python", "Go",
-    // DevOps
-    "AWS", "CI/CD", "GitHub Actions", "Docker", "Vercel",
+    // Languages
+    "Python", "Rust", "Go", "TypeScript", "JavaScript",
     // Frontend
-    "React", "Next.js", "Tailwind CSS", "TypeScript", "JavaScript",
-    // Other
-    "PostgreSQL", "WebSocket", "Tauri"
+    "React", "Next.js", "Tailwind CSS",
+    // AI & Agents
+    "OpenAI", "LangChain", "Ollama", "Gemini", "n8n", "RAG", "Chatbot",
+    // ML & Vision
+    "TensorFlow", "Machine Learning", "CNN", "Computer Vision", "Roboflow",
+    // Automation & APIs
+    "Zapier", "Twilio", "Telegram Bot", "ElevenLabs", "Stripe", "Monday CRM", "Showcase IDX",
+    // Backend & Data
+    "FastAPI", "PostgreSQL", "MongoDB", "Supabase", "ChromaDB", "WebSocket", "Backblaze B2",
+    // DevOps & Cloud
+    "AWS", "Docker", "GitHub Actions", "CI/CD", "Vercel",
+    // Tools
+    "Git", "VS Code", "Figma", "Tauri",
   ];
 
   return (
@@ -39,7 +46,29 @@ const TechStackSection = () => {
           <div className="h-px bg-[var(--accent-color)] w-full"></div>
         </motion.div>
 
-        {/* Tech Stack Grid */}
+        {/* 3D Tech Balls — core stack */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <Suspense
+            fallback={
+              <div className="font-mono text-xs text-[var(--text-muted)] py-10 text-center">
+                <span className="text-[var(--accent-color)]">$</span> loading 3D stack...
+              </div>
+            }
+          >
+            <SkillsBalls />
+          </Suspense>
+        </motion.div>
+
+        {/* Full skill set — boxed list (includes concepts without logos) */}
+        <div className="font-mono text-xs md:text-sm text-[var(--text-muted)] mb-4">
+          <span className="text-[var(--accent-color)]">{">"}</span> full_skillset --list
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +82,7 @@ const TechStackSection = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.03 }}
+              transition={{ delay: index * 0.02 }}
               whileHover={{ scale: 1.05, y: -2 }}
               className="font-mono text-sm md:text-base border-2 border-[var(--accent-color)] px-4 py-2 text-white bg-brutalist-black transition-all duration-200 hover:bg-[var(--accent-color)] hover:text-black cursor-default"
             >
