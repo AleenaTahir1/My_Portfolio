@@ -37,13 +37,29 @@ export default defineConfig({
   },
   // Optimize dependencies
   optimizeDeps: {
-    include: ['react', 'react-dom', 'framer-motion', '@mui/material', '@mui/icons-material'],
+    // Restrict the dep scanner to the app entry so it never crawls _reference/
+    entries: ['index.html'],
+    include: [
+      'react',
+      'react-dom',
+      'framer-motion',
+      '@mui/material',
+      '@mui/icons-material',
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
+      'maath',
+    ],
     exclude: ['@emailjs/browser'],
   },
   // Enable compression
   server: {
     hmr: {
       overlay: false,
+    },
+    // Don't watch the local reference clones (Vue/other-stack source)
+    watch: {
+      ignored: ['**/_reference/**'],
     },
   },
 })
