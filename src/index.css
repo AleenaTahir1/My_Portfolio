@@ -182,6 +182,11 @@ html.light .text-white {
     color: var(--text-primary) !important;
 }
 
+/* Space-themed glows (nebula/starfield tints) are dark-mode-only effects */
+html.light .cosmic-glow {
+    display: none;
+}
+
 html.light .text-gray-300 {
     color: var(--text-secondary) !important;
 }

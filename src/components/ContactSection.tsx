@@ -64,9 +64,9 @@ const ContactSection = () => {
       id="contact"
       className="relative min-h-screen flex items-center bg-transparent border-t-2 border-[var(--accent-color)] overflow-hidden"
     >
-      {/* nebula glow over the global 3D starfield */}
+      {/* nebula glow over the global 3D starfield (dark mode only) */}
       <div
-        className="absolute inset-0 -z-[1] pointer-events-none"
+        className="cosmic-glow absolute inset-0 -z-[1] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at 75% 50%, rgba(168,85,247,0.12), transparent 55%), radial-gradient(ellipse at 25% 60%, rgba(34,211,238,0.10), transparent 55%)",

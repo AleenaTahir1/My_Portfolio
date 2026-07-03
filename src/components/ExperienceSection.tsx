@@ -3,11 +3,21 @@ import { motion } from "framer-motion";
 const ExperienceSection = () => {
   const experiences = [
     {
+      company: "SecureIntent.AI",
+      role: "Co-founder & Lead Systems Engineer",
+      year: "2026 - Present",
+      location: "Remote",
+      id: "01",
+      description:
+        "Co-founded SecureIntent.AI and lead systems engineering — building a desktop security app that detects and blocks secrets, credentials, and sensitive data before they are pasted into AI tools.",
+      technologies: ["Desktop App", "Security", "Secrets Detection", "DLP", "AI Tools"],
+    },
+    {
       company: "VIYLSA",
       role: "Founder & CEO",
       year: "2025 - Present",
       location: "On-site",
-      id: "01",
+      id: "02",
       description:
         "Founded and lead a 360° virtual tour company delivering immersive digital visits with AI-powered integrations — owning product direction, client requirements, tour workflows, and web presence.",
       technologies: ["360° Media", "AI Integration", "React", "Web", "Product"],
@@ -17,7 +27,7 @@ const ExperienceSection = () => {
       role: "AI Engineer",
       year: "2026 - Present",
       location: "Remote",
-      id: "02",
+      id: "03",
       description:
         "Building AI integrations for a luxury real estate platform — Zapier, ElevenLabs, Monday CRM, email/call automation, calendar bookings, and lead workflows woven into one streamlined experience.",
       technologies: ["Zapier", "ElevenLabs", "Monday CRM", "AI Agents", "Automation"],
@@ -27,7 +37,7 @@ const ExperienceSection = () => {
       role: "CTO",
       year: "2026 - Present",
       location: "Remote",
-      id: "03",
+      id: "04",
       description:
         "Building an AI-powered cloud storage platform end-to-end — landing site, main app, backend logic, cloud storage workflows, AI file summaries, and Telegram-first flows — plus product and growth strategy.",
       technologies: ["React", "FastAPI", "Telegram Bot", "AI", "Cloud Storage"],
@@ -37,7 +47,7 @@ const ExperienceSection = () => {
       role: "Full Stack AI Engineer",
       year: "2025 - 2026",
       location: "Remote",
-      id: "04",
+      id: "05",
       description:
         "Built full-stack AI features, automation workflows, backend APIs, and modern web interfaces for client-facing products, with production-ready feature delivery.",
       technologies: ["React", "FastAPI", "Python", "AI Integration", "Automation"],
@@ -47,7 +57,7 @@ const ExperienceSection = () => {
       role: "AI Engineer",
       year: "2025 - 2026",
       location: "Remote",
-      id: "05",
+      id: "06",
       description:
         "Developed AI workflows and LLM-based solutions for automation and intelligent UX, integrating AI models, APIs, and agent-style systems into real product workflows.",
       technologies: ["LangChain", "LLMs", "AI Agents", "Python", "APIs"],
@@ -57,7 +67,7 @@ const ExperienceSection = () => {
       role: "AI Developer",
       year: "2025",
       location: "Hybrid",
-      id: "06",
+      id: "07",
       description:
         "Worked on AI development tasks, prototype features, and applied automation for business and product use cases.",
       technologies: ["Python", "AI", "Automation", "Prototyping"],

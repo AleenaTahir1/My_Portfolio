@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ProjectSchema from "./ProjectSchema";
+import TiltCard from "./TiltCard";
 
 const ProjectsSection = () => {
   const projects = [
@@ -36,19 +37,11 @@ const ProjectsSection = () => {
       year: "2026",
     },
     {
-      title: "Nami",
-      description:
-        "Secure, lightweight real-time chat app built in Rust with media sharing and presence/status features.",
-      technologies: ["Rust", "WebSocket", "Real-time", "Tauri"],
-      github: "https://github.com/AleenaTahir1/nami",
-      link: "https://github.com/AleenaTahir1/nami",
-      year: "2026",
-    },
-    {
       title: "Gig Synappix",
       description:
         "Full gig marketplace for hiring and getting hired — FastAPI backend, React frontend, and an AI chatbot experience.",
       technologies: ["FastAPI", "React", "AI Chatbot", "Python"],
+      link: "https://gig.synappix.com",
       year: "2025",
     },
     {
@@ -57,15 +50,6 @@ const ProjectsSection = () => {
         "Full hotel website with custom branding, performance-focused UI, SEO, deployment, and a WhatsApp booking flow.",
       technologies: ["Next.js", "SEO", "WhatsApp", "Tailwind CSS"],
       link: "https://hilliconskardu.com/",
-      year: "2025",
-    },
-    {
-      title: "NUTECH 360° Virtual Tour",
-      description:
-        "Immersive campus virtual tour platform with guided navigation features for events and visitors.",
-      technologies: ["React", "360° Media", "WebGL", "Deployment"],
-      github: "https://github.com/AleenaTahir1/nutech-tour",
-      link: "https://github.com/AleenaTahir1/nutech-tour",
       year: "2025",
     },
     {
@@ -84,15 +68,6 @@ const ProjectsSection = () => {
       technologies: ["Rust", "RAG", "Multi-LLM", "Tauri"],
       github: "https://github.com/AleenaTahir1/omnirecall",
       link: "https://github.com/AleenaTahir1/omnirecall",
-      year: "2025",
-    },
-    {
-      title: "CropWise",
-      description:
-        "Crop disease classification web app that predicts diseases from leaf images using CNNs, including the training pipeline and a Flask UI.",
-      technologies: ["Python", "CNN", "Flask", "TensorFlow"],
-      github: "https://github.com/AleenaTahir1/CropWise",
-      link: "https://github.com/AleenaTahir1/CropWise",
       year: "2025",
     },
   ];
@@ -135,8 +110,9 @@ const ProjectsSection = () => {
               transition={{ duration: 0.4, delay: index % 2 * 0.1 }}
               className="group h-full"
             >
-              {/* Project Card - removed expensive heavy scale hover, used translate instead */}
-              <div className="h-full border-2 border-white bg-brutalist-darkgray transition-transform duration-300 group-hover:translate-x-[-4px] group-hover:translate-y-[-4px] flex flex-col shadow-[4px_4px_0_rgba(255,255,255,0.1)] group-hover:shadow-[8px_8px_0_rgba(255,255,255,0.15)]">
+              {/* Project Card — 3D mouse tilt via TiltCard */}
+              <TiltCard>
+              <div className="h-full border-2 border-white bg-brutalist-darkgray flex flex-col shadow-[4px_4px_0_rgba(255,255,255,0.1)] group-hover:shadow-[8px_8px_0_rgba(255,255,255,0.15)] transition-shadow duration-300">
                 {/* Project Header */}
                 <div className="border-b-2 border-white p-4 md:p-6 bg-brutalist-black overflow-hidden shrink-0">
                   <div className="flex items-start justify-between gap-4">
@@ -207,6 +183,7 @@ const ProjectsSection = () => {
                   )}
                 </div>
               </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

@@ -1,8 +1,8 @@
-import { useRef, useMemo, Suspense } from "react";
+import { useRef, useMemo, useEffect, Suspense, type ReactNode } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { inSphere } from "maath/random";
-import type { Points as ThreePoints } from "three";
+import type { Points as ThreePoints, Group } from "three";
 import { useTheme } from "../../contexts/ThemeContext";
 
 /**
@@ -52,13 +52,37 @@ const StarLayer = ({ count, radius, color, size, speed, animate }: StarLayerProp
   );
 };
 
+/**
+ * Mouse-parallax rig — the canvas itself is pointer-events-none, so we listen
+ * on window and ease the whole star group toward the cursor each frame.
+ */
+const ParallaxRig = ({ enabled, children }: { enabled: boolean; children: ReactNode }) => {
+  const group = useRef<Group>(null);
+  const target = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (!enabled) return;
+    const onMove = (e: MouseEvent) => {
+      target.current.x = (e.clientX / window.innerWidth) * 2 - 1; // -1..1
+      target.current.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [enabled]);
+
+  useFrame((_, delta) => {
+    if (!enabled || !group.current) return;
+    const ease = Math.min(delta * 2, 1);
+    group.current.rotation.y += (target.current.x * 0.15 - group.current.rotation.y) * ease;
+    group.current.rotation.x += (target.current.y * 0.1 - group.current.rotation.x) * ease;
+  });
+
+  return <group ref={group}>{children}</group>;
+};
+
 const SpaceBackground = () => {
   const { mode } = useTheme();
-  const isLight = mode === "light";
-  // Darker, muted particles in light mode so they read on a light background.
-  const palette = isLight
-    ? { dust: "#9c9a90", cyan: "#0e7490", violet: "#6d28d9" }
-    : { dust: "#e6ebff", cyan: "#22d3ee", violet: "#a855f7" };
+  const palette = { dust: "#e6ebff", cyan: "#22d3ee", violet: "#a855f7" };
 
   // Respect device + accessibility preferences (evaluated once at mount).
   const { isMobile, reducedMotion } = useMemo(() => {
@@ -69,6 +93,9 @@ const SpaceBackground = () => {
     };
   }, []);
 
+  // The starfield is a dark-sky effect — light mode gets a clean background.
+  if (mode === "light") return null;
+
   // Fewer points on mobile to protect performance / battery.
   const scale = isMobile ? 0.4 : 1;
   const animate = !reducedMotion;
@@ -77,12 +104,13 @@ const SpaceBackground = () => {
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, isMobile ? 1.5 : 2]}>
         <Suspense fallback={null}>
+          <ParallaxRig enabled={!isMobile && !reducedMotion}>
           {/* dense dust */}
           <StarLayer
             count={Math.round(6000 * scale)}
             radius={1.5}
             color={palette.dust}
-            size={isLight ? 0.002 : 0.0015}
+            size={0.0015}
             speed={1}
             animate={animate}
           />
@@ -104,6 +132,7 @@ const SpaceBackground = () => {
             speed={0.6}
             animate={animate}
           />
+          </ParallaxRig>
         </Suspense>
         <Preload all />
       </Canvas>

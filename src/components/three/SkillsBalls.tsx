@@ -82,8 +82,8 @@ const BallMesh = forwardRef<Mesh, BallMeshProps>(
     const [decal] = useTexture([tech.icon]);
     const ballColor = light
       ? hovered
-        ? "#d3d0c6"
-        : "#b2afa5"
+        ? "#ffffff"
+        : "#eef0f4"
       : hovered
         ? "#ffffff"
         : "#eef2ff";

@@ -34,9 +34,9 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-16"
     >
-      {/* subtle radial glow layered over the global 3D starfield */}
+      {/* subtle radial glow layered over the global 3D starfield (dark mode only) */}
       <div
-        className="absolute inset-0 -z-[1] pointer-events-none"
+        className="cosmic-glow absolute inset-0 -z-[1] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at 50% 40%, rgba(34,211,238,0.08), transparent 60%)",

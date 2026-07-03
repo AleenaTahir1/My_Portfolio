@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import LampToggle from "./LampToggle";
+import RocketToggle from "./RocketToggle";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,7 +53,7 @@ const Navbar = () => {
                   {item.label}
                 </button>
               ))}
-              <LampToggle />
+              <RocketToggle />
             </div>
 
             {/* Mobile Menu Button */}
@@ -95,7 +95,7 @@ const Navbar = () => {
               {item.label}
             </motion.button>
           ))}
-          <LampToggle />
+          <RocketToggle />
         </div>
       </motion.div>
     </>
