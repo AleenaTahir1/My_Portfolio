@@ -182,6 +182,15 @@ html.light .text-white {
     color: var(--text-primary) !important;
 }
 
+/* Company logos are white silhouettes; flip them to black and skip the colour layer */
+html.light .logo-mono {
+    filter: invert(1);
+}
+
+html.light .logo-colour {
+    display: none;
+}
+
 /* Space-themed glows (nebula/starfield tints) are dark-mode-only effects */
 html.light .cosmic-glow {
     display: none;

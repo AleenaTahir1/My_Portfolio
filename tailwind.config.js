@@ -40,6 +40,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-in forwards',
         'slide-in': 'slideIn 0.5s ease-out forwards',
         'typewriter': 'typewriter 2s steps(40) forwards',
+        'marquee': 'marquee 45s linear infinite',
       },
       keyframes: {
         blink: {
@@ -57,6 +58,10 @@ export default {
         typewriter: {
           '0%': { width: '0' },
           '100%': { width: '100%' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
       spacing: {

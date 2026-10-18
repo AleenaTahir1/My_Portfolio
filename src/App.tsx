@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
+import CompaniesStrip from "./components/CompaniesStrip";
 import StructuredData from "./components/StructuredData";
 import LoadingScreen from "./components/LoadingScreen";
 import CustomCursor from "./components/CustomCursor";
@@ -38,6 +39,7 @@ function App() {
         <Navbar />
         <main>
           <HeroSection />
+          <CompaniesStrip />
           <Suspense fallback={<SectionLoader />}>
             <AboutSection />
           </Suspense>

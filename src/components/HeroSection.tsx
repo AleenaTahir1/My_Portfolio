@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden pt-16"
+      className="relative min-h-[80svh] flex items-center justify-center bg-transparent overflow-hidden pt-16"
     >
       {/* subtle radial glow layered over the global 3D starfield (dark mode only) */}
       <div
@@ -23,7 +23,7 @@ const HeroSection = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-20 pb-24 md:pb-32 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[auto_auto] lg:justify-center gap-12 lg:gap-20 items-center">
           {/* Photo */}
           <motion.div
