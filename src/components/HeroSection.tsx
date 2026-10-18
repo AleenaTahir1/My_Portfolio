@@ -106,7 +106,7 @@ const HeroSection = () => {
                       src={`${import.meta.env.BASE_URL}profile.webp`}
                       alt="Aleena Tahir - Full Stack AI Engineer professional profile picture"
                       fetchPriority="high"
-                      className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-[var(--border-color)] transition-all duration-300 hover:scale-[1.02]"
+                      className="w-52 h-52 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover border-4 border-[var(--border-color)] transition-all duration-300 hover:scale-[1.02]"
                     />
 
                     {/* Corner Markers */}
