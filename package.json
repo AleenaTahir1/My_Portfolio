@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Aleena Tahir - Full Stack AI Engineer Portfolio Website",
   "author": "Aleena Tahir",
-  "homepage": "https://aleenatahir1.github.io/My_Portfolio/",
+  "homepage": "https://aleenatahir.me/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

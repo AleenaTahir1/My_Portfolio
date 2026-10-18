@@ -4,12 +4,12 @@
 
   <!-- Homepage (the sections are #anchors on this one page, which crawlers treat as the same URL) -->
   <url>
-    <loc>https://aleenatahir1.github.io/My_Portfolio/</loc>
+    <loc>https://aleenatahir.me/</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://aleenatahir1.github.io/My_Portfolio/profile.webp</image:loc>
+      <image:loc>https://aleenatahir.me/profile.webp</image:loc>
       <image:title>Aleena Tahir - Full Stack AI Engineer Profile Picture</image:title>
       <image:caption>Professional profile picture of Aleena Tahir, Full Stack AI Engineer and DevOps Specialist</image:caption>
     </image:image>
@@ -17,7 +17,7 @@
 
   <!-- Resume PDF -->
   <url>
-    <loc>https://aleenatahir1.github.io/My_Portfolio/Aleena_Tahir_CV.pdf</loc>
+    <loc>https://aleenatahir.me/Aleena_Tahir_CV.pdf</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

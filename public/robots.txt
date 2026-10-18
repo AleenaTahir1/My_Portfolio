@@ -1,5 +1,5 @@
-# robots.txt for https://aleenatahir1.github.io/My_Portfolio/
+# robots.txt for https://aleenatahir.me/
 User-agent: *
 Allow: /
 
-Sitemap: https://aleenatahir1.github.io/My_Portfolio/sitemap.xml
+Sitemap: https://aleenatahir.me/sitemap.xml

@@ -2,7 +2,7 @@
 
 Personal portfolio — brutalist-style, terminal-inspired UI, monospace typography.
 
-**Live:** [aleenatahir1.github.io/My_Portfolio/](https://aleenatahir1.github.io/My_Portfolio/)
+**Live:** [aleenatahir.me/](https://aleenatahir.me/)
 
 ## Tech Stack
 - React + TypeScript

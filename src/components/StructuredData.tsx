@@ -5,13 +5,13 @@ const StructuredData = () => {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+    "@id": "https://aleenatahir.me/#person",
     name: "Aleena Tahir",
     alternateName: "AleenaTahir1",
-    url: "https://aleenatahir1.github.io/My_Portfolio",
+    url: "https://aleenatahir.me",
     image: {
       "@type": "ImageObject",
-      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
+      url: "https://aleenatahir.me/profile.webp",
       width: 864,
       height: 864,
     },
@@ -35,7 +35,7 @@ const StructuredData = () => {
     sameAs: [
       "https://github.com/AleenaTahir1",
       "https://linkedin.com/in/aleenatahir",
-      "https://aleenatahir1.github.io/My_Portfolio",
+      "https://aleenatahir.me",
     ],
     knowsAbout: [
       "Artificial Intelligence",
@@ -72,13 +72,13 @@ const StructuredData = () => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://aleenatahir1.github.io/My_Portfolio/#website",
-    url: "https://aleenatahir1.github.io/My_Portfolio",
+    "@id": "https://aleenatahir.me/#website",
+    url: "https://aleenatahir.me",
     name: "Aleena Tahir Portfolio",
     description:
       "Professional portfolio of Aleena Tahir — Full Stack AI Engineer",
     publisher: {
-      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+      "@id": "https://aleenatahir.me/#person",
     },
     inLanguage: "en-US",
   };
@@ -87,20 +87,20 @@ const StructuredData = () => {
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://aleenatahir1.github.io/My_Portfolio/#webpage",
-    url: "https://aleenatahir1.github.io/My_Portfolio",
+    "@id": "https://aleenatahir.me/#webpage",
+    url: "https://aleenatahir.me",
     name: "Aleena Tahir | Full Stack AI Engineer",
     description:
       "Portfolio of Aleena Tahir — Full Stack AI Engineer",
     isPartOf: {
-      "@id": "https://aleenatahir1.github.io/My_Portfolio/#website",
+      "@id": "https://aleenatahir.me/#website",
     },
     about: {
-      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+      "@id": "https://aleenatahir.me/#person",
     },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
+      url: "https://aleenatahir.me/profile.webp",
     },
     datePublished: "2024-01-01T00:00:00+00:00",
     // Update when the content changes; a render-time date would always claim "today"
@@ -112,11 +112,11 @@ const StructuredData = () => {
   const profilePageSchema = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    "@id": "https://aleenatahir1.github.io/My_Portfolio/#profilepage",
-    url: "https://aleenatahir1.github.io/My_Portfolio",
+    "@id": "https://aleenatahir.me/#profilepage",
+    url: "https://aleenatahir.me",
     name: "Aleena Tahir - Professional Profile",
     mainEntity: {
-      "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
+      "@id": "https://aleenatahir.me/#person",
     },
     inLanguage: "en-US",
   };
@@ -130,31 +130,31 @@ const StructuredData = () => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://aleenatahir1.github.io/My_Portfolio/",
+        item: "https://aleenatahir.me/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "About",
-        item: "https://aleenatahir1.github.io/My_Portfolio/#about",
+        item: "https://aleenatahir.me/#about",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Experience",
-        item: "https://aleenatahir1.github.io/My_Portfolio/#experience",
+        item: "https://aleenatahir.me/#experience",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Projects",
-        item: "https://aleenatahir1.github.io/My_Portfolio/#projects",
+        item: "https://aleenatahir.me/#projects",
       },
       {
         "@type": "ListItem",
         position: 5,
         name: "Contact",
-        item: "https://aleenatahir1.github.io/My_Portfolio/#contact",
+        item: "https://aleenatahir.me/#contact",
       },
     ],
   };
