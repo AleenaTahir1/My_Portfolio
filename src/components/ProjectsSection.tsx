@@ -91,7 +91,7 @@ const ProjectsSection = () => {
           className="mb-16"
         >
           <div className="font-mono text-sm md:text-base text-gray-400 mb-4">
-            <span className="text-white">02.</span> WORK
+            <span className="text-white">05.</span> WORK
           </div>
           <h2 className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 break-words">
             SELECTED PROJECTS

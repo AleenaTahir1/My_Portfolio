@@ -35,7 +35,6 @@ const ProjectSchema = ({ projects }: ProjectSchemaProps) => {
     }),
     inLanguage: "en",
     isAccessibleForFree: true,
-    license: "https://opensource.org/licenses/MIT",
   }));
 
   return (

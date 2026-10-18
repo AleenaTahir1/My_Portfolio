@@ -123,7 +123,7 @@ const HeroSection = () => {
                     transition={{ delay: 0.7 }}
                     className="mt-4 font-mono text-xs md:text-sm text-gray-500 text-center border-t-2 border-white pt-3"
                   >
-                    <span className="text-white">{">"}</span> profile.jpg [
+                    <span className="text-white">{">"}</span> profile.webp [
                     <span className="text-green-500">LOADED</span>]
                   </motion.div>
                 </div>

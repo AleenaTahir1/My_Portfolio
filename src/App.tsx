@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import SEO from "./components/SEO";
 import StructuredData from "./components/StructuredData";
 import LoadingScreen from "./components/LoadingScreen";
 import CustomCursor from "./components/CustomCursor";
@@ -35,7 +34,6 @@ function App() {
         <LoadingScreen />
         <CustomCursor />
         <ScrollProgress />
-        <SEO />
         <StructuredData />
         <Navbar />
         <main>

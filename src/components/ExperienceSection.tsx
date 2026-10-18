@@ -89,7 +89,7 @@ const ExperienceSection = () => {
           className="mb-16"
         >
           <div className="font-mono text-sm md:text-base text-gray-400 mb-4">
-            <span className="text-white">02.</span> EXPERIENCE
+            <span className="text-white">04.</span> EXPERIENCE
           </div>
           <h2 className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 break-words">
             WORK HISTORY

@@ -1,17 +1,37 @@
-import { useState, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { useForm, ValidationError } from "@formspree/react";
 
 const EarthCanvas = lazy(() => import("./three/EarthCanvas"));
 
+// The globe only shows at the lg breakpoint; below it, don't download the model at all
+const LARGE_SCREEN = "(min-width: 1024px)";
+
+const emptyForm = {
+  name: "",
+  email: "",
+  message: "",
+};
+
 const ContactSection = () => {
-  const [state, handleSubmit] = useForm("xojowvqd");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [state, handleSubmit, resetForm] = useForm("xojowvqd");
+  const [formData, setFormData] = useState(emptyForm);
+  const [isLargeScreen, setIsLargeScreen] = useState(
+    () => window.matchMedia(LARGE_SCREEN).matches,
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(LARGE_SCREEN);
+    const handleChange = (e: MediaQueryListEvent) => setIsLargeScreen(e.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  const sendAnother = () => {
+    setFormData(emptyForm);
+    resetForm();
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -45,7 +65,7 @@ const ContactSection = () => {
               </div>
               <div className="pt-6">
                 <button
-                  onClick={() => window.location.reload()}
+                  onClick={sendAnother}
                   className="btn-brutalist"
                 >
                   <span className="text-gray-500 mr-2">{">"}</span>
@@ -82,7 +102,7 @@ const ContactSection = () => {
           className="mb-12"
         >
           <div className="font-mono text-sm md:text-base text-gray-400 mb-4">
-            <span className="text-[var(--accent-color)]">04.</span> CONTACT
+            <span className="text-[var(--accent-color)]">06.</span> CONTACT
           </div>
           <h2 className="font-mono font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6 break-words">
             GET IN TOUCH
@@ -208,9 +228,11 @@ const ContactSection = () => {
             transition={{ delay: 0.3 }}
             className="hidden lg:block h-[450px] xl:h-[550px]"
           >
-            <Suspense fallback={null}>
-              <EarthCanvas />
-            </Suspense>
+            {isLargeScreen && (
+              <Suspense fallback={null}>
+                <EarthCanvas />
+              </Suspense>
+            )}
           </motion.div>
         </div>
 

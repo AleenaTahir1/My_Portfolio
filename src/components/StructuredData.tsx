@@ -12,22 +12,24 @@ const StructuredData = () => {
     image: {
       "@type": "ImageObject",
       url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
-      width: 400,
-      height: 400,
+      width: 864,
+      height: 864,
     },
     description:
-      "Full Stack AI Engineer — 2nd-year AI student at NUTECH, building web apps and AI-powered tools.",
+      "Full Stack AI Engineer and AI student at NUTECH, building web apps and AI-powered tools.",
     jobTitle: "Full Stack AI Engineer",
+    // Current roles, matching the Experience section
     worksFor: [
-      { "@type": "Organization", name: "Neura" },
-      { "@type": "Organization", name: "Cript" },
-      { "@type": "Organization", name: "Ocryz" },
+      { "@type": "Organization", name: "SecureIntent.AI" },
+      { "@type": "Organization", name: "VIYLSA" },
+      { "@type": "Organization", name: "Luxure.io" },
+      { "@type": "Organization", name: "Cloudon" },
     ],
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Westridge-3, Rawalpindi",
-      addressRegion: "Islamabad",
-      addressCountry: "Pakistan",
+      addressLocality: "Rawalpindi",
+      addressRegion: "Punjab",
+      addressCountry: "PK",
     },
     email: "aleenatahirf23@nutech.edu.pk",
     sameAs: [
@@ -37,18 +39,24 @@ const StructuredData = () => {
     ],
     knowsAbout: [
       "Artificial Intelligence",
+      "AI Agents",
+      "Retrieval-Augmented Generation",
+      "LangChain",
       "Machine Learning",
-      "Deep Learning",
-      "Natural Language Processing",
+      "Computer Vision",
       "Python",
-      "React",
+      "Rust",
+      "Go",
       "TypeScript",
-      "Full Stack Development",
-      "Web Development",
-      "Django",
-      "Node.js",
-      "Firebase",
+      "React",
+      "Next.js",
+      "FastAPI",
       "PostgreSQL",
+      "Supabase",
+      "Docker",
+      "AWS",
+      "CI/CD",
+      "Full Stack Development",
     ],
     alumniOf: {
       "@type": "EducationalOrganization",
@@ -73,14 +81,6 @@ const StructuredData = () => {
       "@id": "https://aleenatahir1.github.io/My_Portfolio/#person",
     },
     inLanguage: "en-US",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://aleenatahir1.github.io/My_Portfolio/?s={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
   // WebPage Schema
@@ -103,7 +103,8 @@ const StructuredData = () => {
       url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
     },
     datePublished: "2024-01-01T00:00:00+00:00",
-    dateModified: new Date().toISOString(),
+    // Update when the content changes; a render-time date would always claim "today"
+    dateModified: "2026-10-18T00:00:00+00:00",
     inLanguage: "en-US",
   };
 
@@ -158,23 +159,6 @@ const StructuredData = () => {
     ],
   };
 
-  // Organization Schema (for companies worked with)
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://aleenatahir1.github.io/My_Portfolio/#organization",
-    name: "Aleena Tahir Portfolio",
-    url: "https://aleenatahir1.github.io/My_Portfolio",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://aleenatahir1.github.io/My_Portfolio/profile.webp",
-    },
-    sameAs: [
-      "https://github.com/AleenaTahir1",
-      "https://linkedin.com/in/aleenatahir",
-    ],
-  };
-
   return (
     <Helmet>
       {/* Person Schema */}
@@ -198,11 +182,6 @@ const StructuredData = () => {
       {/* Breadcrumb Schema */}
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
-      </script>
-
-      {/* Organization Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
       </script>
     </Helmet>
   );

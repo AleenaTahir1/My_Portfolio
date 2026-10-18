@@ -27,7 +27,7 @@ const ScrollProgress = () => {
     <>
       {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-white origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-white origin-left z-[110]"
         style={{ scaleX }}
       />
 
